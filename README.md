@@ -1,6 +1,11 @@
 # nvim
 config of nvim for mac
 
+### git
+$ git fetch --all
+$ git fetch --tags
+$ git reset --hard origin/master
+
 ### 安装说明
 
 ```bash
