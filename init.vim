@@ -545,7 +545,8 @@ func SkipPair()
     endif
 endfunc
 " 将tab键绑定为跳出括号
-inoremap <TAB> <c-r>=SkipPair()<CR>
+"inoremap <TAB> <c-r>=SkipPair()<CR>
+inoremap <leader>c <c-r>=SkipPair()<CR>
 
 " Quickly close the current window
 nnoremap <leader>q :q<CR>
@@ -661,8 +662,8 @@ endif
 set background=dark
 set t_Co=256
 
-" colorscheme solarized
-colorscheme molokai
+colorscheme solarized
+"colorscheme molokai
 "colorscheme snazzy
 "let g:SnazzyTransparent = 1
 "color snazzy
