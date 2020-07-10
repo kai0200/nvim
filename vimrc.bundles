@@ -314,8 +314,9 @@ endif
 " File navigation
 "Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 "Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug '/usr/local/opt/fzf'
-Plug 'junegunn/fzf.vim'
+"Plug '/usr/local/opt/fzf'
+"Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+"Plug 'junegunn/fzf.vim'
 Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'airblade/vim-rooter'
 "Plug 'pechorin/any-jump.vim'
@@ -1643,6 +1644,14 @@ let g:NERDTreeIndicatorMapCustom = {
     \ "Unknown"   : "?"
     \ }
 
+" lazygit {{{
+Plug 'izotomas/lazygit-vim'
+
+" Open up lazygit
+noremap ,g :Git
+noremap <c-g> :tabe<CR>:-tabmove<CR>:term lazygit<CR>
+"nnoremap <c-n> :tabe<CR>:-tabmove<CR>:term lazynpm<CR>
+"" }}}
 
 " ===================== End of Plugin Settings =====================
 
