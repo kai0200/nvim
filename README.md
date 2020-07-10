@@ -13,14 +13,24 @@ nvim
 :PlugInstall
 ```
 
-### 说明
+### 目录说明
 
 未上传目录 .gitignore
 
 ```bash
-bundle
+bundle  # 需要手工创建
+mkdir -p  ~/.config/nvim/bundle
+
 ```
-2. 软连接 nvim
+### 快捷打开init.vim 
+```
+,ev # init.vim
+,ez # .zshrc
+,sv # source $MYVIMRC
+```
+nnoremap <leader>ev :vsp $MYVIMRC<CR>
+nnoremap <leader>ez :vsp ~/.zshrc<CR>
+nnoremap <leader>sv :source $MYVIMRC<CR>
 
 
 ---

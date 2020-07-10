@@ -273,10 +273,8 @@ set formatoptions+=B
 "==========================================
 " others 其它设置
 "==========================================
-" vimrc文件修改之后自动加载, windows
-autocmd! bufwritepost _vimrc source %
 " vimrc文件修改之后自动加载, linux
-autocmd! bufwritepost .vimrc source %
+autocmd! bufwritepost init.vim source %
 
 " 自动补全配置
 " 让Vim的补全菜单行为与一般IDE一致(参考VimTip1228)
@@ -569,6 +567,7 @@ nnoremap U <C-r>
 nnoremap <leader>ev :vsp $MYVIMRC<CR>
 nnoremap <leader>ez :vsp ~/.zshrc<CR>
 nnoremap <leader>sv :source $MYVIMRC<CR>
+nnoremap <leader>eb :vsp ~/.config/nvim/vimrc.bundles<CR>
 
 "==========================================
 " FileType Settings  文件类型设置
