@@ -1,10 +1,13 @@
 # nvim
 config of nvim for mac
 
-### git
+git
+--------
+```shell
 $ git fetch --all
 $ git fetch --tags
 $ git reset --hard origin/master
+```
 
 ### 安装说明
 
@@ -27,7 +30,7 @@ bundle  # 需要手工创建
 mkdir -p  ~/.config/nvim/bundle
 
 ```
-### 快捷打开init.vim 
+### 快捷打开init.vim
 ```
 ,ev # init.vim
 ,ez # .zshrc
