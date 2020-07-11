@@ -1,3 +1,37 @@
+目标
+====
+
+* nvim 快捷键使用说明
+
+* 学会markdown 快速笔记的方式
+
+nvim
+----
+
+### markdown
+
+1. dhruvasagar/vim-table-mode
+
+https://github.com/dhruvasagar/vim-table-mode
+
+,tm
+- 快捷键使用说明
+|| 进入tab模式
+|+
+
+
+2. vim-markdown-toc
+
+- :GenTocGFM
+
+生成 GFM 链接风格的 Table of Contents.
+适用于 GitHub 仓库里的 Markdown 文件。
+
+- :GenTocRedcarpet
+
+生成 Redcarpet 链接风格的 Table of Contents.
+
+
 # nvim
 config of nvim for mac
 
@@ -66,3 +100,20 @@ nnoremap <leader>sv :source $MYVIMRC<CR>
 
 :source ~/.config/nvim/vimrc.bundles
 ```
+
+### 2020-07-11
+
+修改
+----
+
+- far.vim  # 批量替换，这个暂时去掉
+- bullets.vim markdown
+
+**增加以下配置**
+" Markdown
+Plug 'iamcco/markdown-preview.nvim', { 'do': { -> mkdp#util#install_sync() }, 'for' :['markdown', 'vim-plug'] }
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
+Plug 'theniceboy/bullets.vim'
+
+- tab切换 注销,th 等操作

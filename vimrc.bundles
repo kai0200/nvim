@@ -187,16 +187,21 @@ if count(g:bundle_groups, 'tmux')
     Plug 'christoomey/vim-tmux-navigator'
 endif
 
-"if count(g:bundle_groups, 'markdown')
-    Plug 'godlygeek/tabular'
-    Plug 'plasticboy/vim-markdown', {'for': 'md'}
-    " https://github.com/suan/vim-instant-markdown
-    " npm -g install instant-markdown-d
-    Plug 'suan/vim-instant-markdown'
-    let g:instant_markdown_slow = 1
-    let g:instant_markdown_autostart = 0
-    map <F12> :InstantMarkdownPreview<CR>
-"endif
+" Markdown {{{
+" 表格: 在任意空行插入||,然后退出插入模式即可启用表格格式化插件.
+Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
+Plug 'godlygeek/tabular'
+
+"预览
+Plug 'plasticboy/vim-markdown', {'for': 'md'}
+" https://github.com/suan/vim-instant-markdown
+" npm -g install instant-markdown-d
+Plug 'suan/vim-instant-markdown'
+let g:instant_markdown_slow = 1
+let g:instant_markdown_autostart = 0
+map <F12> :InstantMarkdownPreview<CR>
+"}}}
 
 if count(g:bundle_groups, 'golang')
     " 1. vim a.go
@@ -900,6 +905,41 @@ endif
 
 " markdown {{{
     let g:vim_markdown_folding_disabled=1
+
+    " ===
+    " === vim-table-mode
+    " ===
+    "noremap <LEADER>tm :TableModeToggle<CR>
+    noremap <LEADER>tm :TableModeToggle<CR>
+    "let g:table_mode_disable_mappings = 1
+    let g:table_mode_cell_text_object_i_map = 'k<Bar>'
+
+
+    " ===
+    " === vim-markdown-toc
+    " ===
+    "let g:vmt_auto_update_on_save = 0
+    "let g:vmt_dont_insert_fence = 1
+    ":GenTocGFM
+    "生成 GFM 链接风格的 Table of Contents.
+    "适用于 GitHub 仓库里的 Markdown 文件。
+    ":GenTocRedcarpet
+    "生成 Redcarpet 链接风格的 Table of Contents.
+
+    let g:vmt_cycle_list_item_markers = 1
+    let g:vmt_fence_text = 'TOC'
+    let g:vmt_fence_closing_text = '/TOC'
+
+    " ===
+    " === Bullets.vim
+    " ===
+    " let g:bullets_set_mappings = 0
+    let g:bullets_enabled_file_types = [
+    			\ 'markdown',
+    			\ 'text',
+    			\ 'gitcommit',
+    			\ 'scratch'
+    			\]
 " }}}
 
 
@@ -1328,35 +1368,6 @@ let g:VM_maps["Undo"]               = 'l'
 let g:VM_maps["Redo"]               = '<C-r>'
 
 
-" ===
-" === Far.vim
-" ===
-noremap <LEADER>f :F  **/*<left><left><left><left><left>
-let g:far#mapping = {
-		\ "replace_undo" : ["l"],
-		\ }
-
-
-" ===
-" === vim-calc
-" ===
-"noremap <LEADER>a :call Calc()<CR>
-" Testing
-"if !empty(glob('~/Github/vim-calc/vim-calc.vim'))
-"source ~/Github/vim-calc/vim-calc.vim
-"endif
-
-
-" ===
-" === Bullets.vim
-" ===
-" let g:bullets_set_mappings = 0
-let g:bullets_enabled_file_types = [
-			\ 'markdown',
-			\ 'text',
-			\ 'gitcommit',
-			\ 'scratch'
-			\]
 
 
 " ===

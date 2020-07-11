@@ -457,18 +457,18 @@ noremap <right> :bn<CR>
 " http://vim.wikia.com/wiki/Alternative_tab_navigation
 " http://stackoverflow.com/questions/2005214/switching-to-a-particular-tab-in-vim
 
-" tab切换
-map <leader>th :tabfirst<cr>
-map <leader>tl :tablast<cr>
-
-map <leader>tj :tabnext<cr>
-map <leader>tk :tabprev<cr>
-map <leader>tn :tabnext<cr>
-map <leader>tp :tabprev<cr>
-
-map <leader>te :tabedit<cr>
-map <leader>td :tabclose<cr>
-map <leader>tm :tabm<cr>
+" tab切换 注销使用<leader>1 2 3 切换了
+"map <leader>th :tabfirst<cr>
+"map <leader>tl :tablast<cr>
+"
+"map <leader>tj :tabnext<cr>
+"map <leader>tk :tabprev<cr>
+"map <leader>tn :tabnext<cr>
+"map <leader>tp :tabprev<cr>
+"
+"map <leader>te :tabedit<cr>
+"map <leader>td :tabclose<cr>
+"map <leader>tm :tabm<cr>
 
 " normal模式下切换到确切的tab
 noremap <leader>1 1gt
