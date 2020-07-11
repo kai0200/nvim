@@ -5,6 +5,101 @@
 
 * 学会markdown 快速笔记的方式
 
+插件列表
+========
+
+- NrrwRgn  # Enter 选择到段落末尾 Ctrl+y 小范围编辑 :w 保存
+
+- Vim-Jinja2-Syntax  # ansible python 模版文件语法加量
+
+- ag.vim   # 搜索Ag user user.list
+
+- ale      # 语法检查的插件,异步方式  Key <gs> 交换True False
+
+- antovim  # 超级简单的vim插件，用于遍历光标下与单词相关的反义词/单词
+
+- argtextobj.vim  # `daa` 删除一个参数
+
+- auto-pairs      # 括号自动操作<M-e> Alt+e 默认是开关，自定义了<,-c> 跳出括号 ] 不生效
+
+- braceless.vim   # 折叠单独 zc zo |  全部 zM zR 等
+
+- clever-f.vim    # f  t 键修改方便搜索
+
+- closetag.vim    # 封闭标签自动补全
+
+- coc.nvim        # 自动补全大师
+
+- ctrlsf.vim      # 搜索配合Ag
+
+- fzf-gitignore   # 自动索引 TODO 还没学会怎么用
+
+- fzf.vim         # 自动索引 TODO 还没学会怎么用
+
+- gundo.vim       # Gundo.vim is Vim plugin to visualize your Vim undo tree.
+
+- html5.vim
+
+- lazygit-vim
+
+- markdown-preview.nvim
+
+- molokai         # 主题
+- nerdtree        # 目录树
+
+- python-syntax
+
+- quick-scope     # 彩色显示F f T t 搜索到的项目
+
+- rainbow_parentheses.vim  # 括号高亮
+
+- rnvimr          # 浮动窗口  mac nvim `:checkhealth rnvimr` 不支持，取消，
+
+semshi
+splitjoin.vim
+tabular
+tagbar
+tmux-complete.vim
+undotree
+vim-after-object
+vim-airline
+vim-airline-themes
+vim-autoformat
+vim-capslock
+vim-closetag
+vim-colors-solarized
+vim-ctrlspace
+vim-easymotion
+vim-gitgutter
+vim-gitignore
+vim-go
+vim-indent-guides
+vim-instant-markdown
+vim-isort
+vim-javascript
+vim-js
+vim-json
+vim-markdown
+vim-markdown-toc
+vim-nerdtree-tabs
+vim-python-pep8-indent
+vim-quickrun
+vim-rooter        # 支持项目目录
+vim-snazzy
+vim-snippets
+vim-subversive
+vim-surround
+vim-table-mode
+vim-textobj-entire
+vim-textobj-indent
+vim-textobj-line
+vim-textobj-user
+vim-tmux-navigator
+vim-trailing-whitespace
+vim-virtualenv
+vista.vim
+wildfire.vim
+yajs.vim
 nvim
 ----
 

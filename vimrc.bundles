@@ -25,6 +25,7 @@ endif
 " vim plugin bundle control, command model
 " ----------------------------------------------------------------------------
 
+" plug start {{{
 call plug#begin('~/.config/nvim/bundle')
 
 " 移动光标到插件名上, 使用'#'快速跳转到每个插件的配置处
@@ -111,16 +112,18 @@ Plug 'vim-scripts/matchit.zip'
 " ctrlp ctrlpfunky
 "Plug 'ctrlpvim/ctrlp.vim' | Plug 'tacahiroy/ctrlp-funky'
 
-" ctrlsf
+" ctrlsf 全局搜索
 " 类似sublimetext的搜索
 " In CtrlSF window:
 " 回车/o, 打开
 " t       在tab中打开(建议)
-" T - Lkie t but focus CtrlSF window instead of opened new tab.
+" T - Like t but focus CtrlSF window instead of opened new tab.
 " q - Quit CtrlSF window.
+Plug 'vim-scripts/ag.vim'
 Plug 'dyng/ctrlsf.vim'
-" incsearch
-" Plug 'haya14busa/incsearch.vim'
+
+" incsearch 同时高亮所有匹配的字符
+Plug 'haya14busa/incsearch.vim'
 " map /  <Plug>(incsearch-forward)
 " map ?  <Plug>(incsearch-backward)
 " map g/ <Plug>(incsearch-stay)
@@ -149,16 +152,18 @@ Plug 'sjl/gundo.vim'
 " 状态栏增强展示
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
+
 " rainbow_parentheses
 " 括号显示增强
 Plug 'kien/rainbow_parentheses.vim'
+
 " 主题 solarized
 " solarized
 Plug 'altercation/vim-colors-solarized'
+
 " molokai
 " 主题 molokai
 Plug 'tomasr/molokai'
-
 Plug 'connorholyday/vim-snazzy'
 
 " nav
@@ -188,19 +193,21 @@ if count(g:bundle_groups, 'tmux')
 endif
 
 " Markdown {{{
-" 表格: 在任意空行插入||,然后退出插入模式即可启用表格格式化插件.
-Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
-Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
-Plug 'godlygeek/tabular'
+if count(g:bundle_groups, 'markdown')
+    " 表格: 在任意空行插入||,然后退出插入模式即可启用表格格式化插件.
+    Plug 'dhruvasagar/vim-table-mode', { 'on': 'TableModeToggle' }
+    Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
+    Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 
-"预览
-Plug 'plasticboy/vim-markdown', {'for': 'md'}
-" https://github.com/suan/vim-instant-markdown
-" npm -g install instant-markdown-d
-Plug 'suan/vim-instant-markdown'
-let g:instant_markdown_slow = 1
-let g:instant_markdown_autostart = 0
-map <F12> :InstantMarkdownPreview<CR>
+    "预览
+    Plug 'plasticboy/vim-markdown', {'for': 'md'}
+    " https://github.com/suan/vim-instant-markdown
+    " npm -g install instant-markdown-d
+    Plug 'suan/vim-instant-markdown'
+    let g:instant_markdown_slow = 1
+    let g:instant_markdown_autostart = 0
+    map <F12> :InstantMarkdownPreview<CR>
+endif
 "}}}
 
 if count(g:bundle_groups, 'golang')
@@ -322,7 +329,6 @@ endif
 "Plug '/usr/local/opt/fzf'
 "Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 "Plug 'junegunn/fzf.vim'
-Plug 'kevinhwang91/rnvimr', {'do': 'make sync'}
 Plug 'airblade/vim-rooter'
 "Plug 'pechorin/any-jump.vim'
 
@@ -356,7 +362,7 @@ Plug 'theniceboy/antovim' " gs to switch
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
 Plug 'junegunn/vim-after-object' " da= to delete what's after =
-Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
+"Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
 Plug 'easymotion/vim-easymotion'
 " Plug 'Konfekt/FastFold'
@@ -365,13 +371,16 @@ Plug 'easymotion/vim-easymotion'
 Plug 'svermeulen/vim-subversive'
 Plug 'theniceboy/argtextobj.vim'
 Plug 'rhysd/clever-f.vim'
-Plug 'chrisbra/NrrwRgn'
+"Plug 'chrisbra/rrrwRgn'
 Plug 'AndrewRadev/splitjoin.vim'
 
 call plug#end()
 
 
 " ################### 基础 ######################
+
+"Jinja2
+au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
 
 " syntastic {{{
 if has_key(g:plugs, 'syntastic')
@@ -633,7 +642,7 @@ endif
     let g:ctrlp_match_window_reversed=0
     let g:ctrlp_mruf_max=500
     let g:ctrlp_follow_symlinks=1
-    " 如果安装了ag, 使用ag
+    " 如果安装了ag, 使用aEnter 选择到段落末尾g
     " if executable('ag')
     " " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
     " let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
@@ -909,7 +918,6 @@ endif
     " ===
     " === vim-table-mode
     " ===
-    "noremap <LEADER>tm :TableModeToggle<CR>
     noremap <LEADER>tm :TableModeToggle<CR>
     "let g:table_mode_disable_mappings = 1
     let g:table_mode_cell_text_object_i_map = 'k<Bar>'
@@ -938,7 +946,8 @@ endif
     			\ 'markdown',
     			\ 'text',
     			\ 'gitcommit',
-    			\ 'scratch'
+    			\ 'scratch',
+                \ 'md'
     			\]
 " }}}
 
@@ -1687,30 +1696,6 @@ let g:vmt_fence_text = 'TOC'
 let g:vmt_fence_closing_text = '/TOC'
 
 
-" ===
-" === rnvimr
-" ===
-let g:rnvimr_ex_enable = 1
-let g:rnvimr_pick_enable = 1
-let g:rnvimr_draw_border = 0
-" let g:rnvimr_bw_enable = 1
-highlight link RnvimrNormal CursorLine
-nnoremap <silent> R :RnvimrSync<CR>:RnvimrToggle<CR><C-\><C-n>:RnvimrResize 0<CR>
-let g:rnvimr_action = {
-            \ '<C-t>': 'NvimEdit tabedit',
-            \ '<C-x>': 'NvimEdit split',
-            \ '<C-v>': 'NvimEdit vsplit',
-            \ 'gw': 'JumpNvimCwd',
-            \ 'yw': 'EmitRangerCwd'
-            \ }
-let g:rnvimr_layout = { 'relative': 'editor',
-            \ 'width': &columns,
-            \ 'height': &lines,
-            \ 'col': 0,
-            \ 'row': 0,
-            \ 'style': 'minimal' }
-let g:rnvimr_presets = [{'width': 1.0, 'height': 1.0}]
-
 
 " ===
 " === vim-subversive
@@ -1764,7 +1749,7 @@ vmap <LEADER>cu g<
 
 
 " ===
-" === NrrwRgn
+" === NrrwRgn  Enter 选择到段落末尾 Ctrl+y 小范围编辑 :w 保存
 " ===
 let g:nrrw_rgn_nomap_nr = 1
 let g:nrrw_rgn_nomap_Nr = 1
