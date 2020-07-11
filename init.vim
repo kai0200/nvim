@@ -1,11 +1,9 @@
 "==========================================
-" Author:  wklken
-" Version: 9.1
-" Email: wklken@yeah.net
-" BlogPost: http://www.wklken.me
+" Author: Kai
+" Version: nvim v0.4.3
+" Email: kai0200@sohu.com
 " ReadMe: README.md
-" Donation: http://www.wklken.me/pages/donation.html
-" Last_modify: 2015-12-15
+" Last_modify: 2020-07-11
 " Sections:
 "       -> Initial Plugin 加载插件
 "       -> General Settings 基础设置
@@ -237,7 +235,7 @@ function! NumberToggle()
     set relativenumber
   endif
 endfunc
-nnoremap <C-n> :call NumberToggle()<cr>
+nnoremap <C-w> :call NumberToggle()<cr>
 
 " 防止tmux下vim的背景色显示异常
 " Refer: http://sunaku.github.io/vim-256color-bce.html
@@ -659,11 +657,11 @@ endif
 
 
 " theme主题
-set background=dark
-set t_Co=256
+"set background=dark
+"set t_Co=256
 
-"colorscheme solarized
-colorscheme molokai
+colorscheme solarized
+"colorscheme molokai
 "colorscheme snazzy
 "let g:SnazzyTransparent = 1
 "color snazzy

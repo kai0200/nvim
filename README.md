@@ -80,7 +80,10 @@
 - vim-json             # json
 - vim-markdown         # md
 - vim-markdown-toc     # md
-- vim-multiple-cursors   # 多行编辑，配合tabulra 实现代码自动对齐
+- vim-multiple-cursors
+
+  多行编辑，配合tabulra 实现代码自动对齐. v模式选中单词，C-m C-m 连续选中相同的词，正常vi命令修改即可，很方便
+
 - vim-nerdtree-tabs    # tree
 - vim-python-pep8-indent  #
 - vim-quickrun         # F10 run
@@ -89,7 +92,7 @@
 - vim-snippets         # 减少按键次数 减轻记忆负担  可能和coc
 - vim-subversive       # 批量替换 :TODO  :%s/aa/bb/g 感觉可以替换这个功能
 - vim-surround         # 单词周围加符号 单词周围加双引号：ysiw"  改 cs"' 删除ds'
-- vim-table-mode       # markdown 表格处理很方便
+- vim-table-mode       # markdown 表格处理很方便 key map: <leader>tm
 - vim-textobj-entire   # 增加文件文本对象: e   dae yae cie
 - vim-textobj-indent   # 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
 - vim-textobj-line     # 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
@@ -98,8 +101,11 @@
 - vim-trailing-whitespace # ,<space> 清除空格
 - vim-virtualenv       # python venv 更换环境
 - vista.vim            # 好看的标签，需要按git说明配置mac
-- wildfire.vim         # 文本选中，不会用
 - yajs.vim             # javascript
+
+删除的
+------
+- wildfire.vim         # 文本选中，不会用 ctrl+m  和 vim-multiple-cursors 冲突
 
 nvim
 ----

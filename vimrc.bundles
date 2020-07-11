@@ -359,7 +359,7 @@ Plug 'jiangmiao/auto-pairs'
 "Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
 Plug 'theniceboy/antovim' " gs to switch
 Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
-Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
+"Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
 Plug 'junegunn/vim-after-object' " da= to delete what's after =
 "Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
 Plug 'tpope/vim-capslock'	" Ctrl+L (insert) to toggle capslock
@@ -619,7 +619,7 @@ endif
 
 " }}}
 
-" multiplecursors {{{
+"vim-multiple-cursors {{{
     let g:multi_cursor_use_default_mapping=0
     " Default mapping
     let g:multi_cursor_next_key='<C-m>'
@@ -951,7 +951,7 @@ endif
     			\ 'scratch',
                 \ 'md'
     			\]
-" }}}
+"}}}
 
 
 " javascript {{{
@@ -1343,43 +1343,6 @@ function g:Undotree_CustomMap()
 	nmap <buffer> U 5<plug>UndotreeNextState
 	nmap <buffer> E 5<plug>UndotreePreviousState
 endfunc
-
-
-" ==
-" == vim-multiple-cursor
-" ==
-"let g:multi_cursor_use_default_mapping = 0
-"let g:multi_cursor_start_word_key = '<c-k>'
-"let g:multi_cursor_select_all_word_key = '<a-k>'
-"let g:multi_cursor_start_key = 'g<c-k>'
-"let g:multi_cursor_select_all_key = 'g<a-k>'
-"let g:multi_cursor_next_key = '<c-k>'
-"let g:multi_cursor_prev_key = '<c-p>'
-"let g:multi_cursor_skip_key = '<C-s>'
-"let g:multi_cursor_quit_key = '<Esc>'
-
-
-" ===
-" === vim-visual-multi
-" ===
-"let g:VM_theme             = 'iceblue'
-"let g:VM_default_mappings = 0
-let g:VM_leader                     = {'default': ',', 'visual': ',', 'buffer': ','}
-let g:VM_maps                       = {}
-let g:VM_custom_motions             = {'n': 'h', 'i': 'l', 'u': 'k', 'e': 'j', 'N': '0', 'I': '$', 'h': 'e'}
-let g:VM_maps['i']                  = 'k'
-let g:VM_maps['I']                  = 'K'
-let g:VM_maps['Find Under']         = '<C-k>'
-let g:VM_maps['Find Subword Under'] = '<C-k>'
-let g:VM_maps['Find Next']          = ''
-let g:VM_maps['Find Prev']          = ''
-let g:VM_maps['Remove Region']      = 'q'
-let g:VM_maps['Skip Region']        = '<c-n>'
-let g:VM_maps["Undo"]               = 'l'
-let g:VM_maps["Redo"]               = '<C-r>'
-
-
-
 
 " ===
 " === Vista.vim
