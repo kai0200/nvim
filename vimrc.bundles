@@ -104,7 +104,7 @@ Plug 'vim-scripts/matchit.zip'
 "Plug 'terryma/vim-expand-region'
 " 多光标选中编辑
 " multiplecursors
-"Plug 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
 " quick locate file or function
 " 文件搜索
@@ -136,12 +136,11 @@ Plug 'thinca/vim-quickrun'
 "" fugitive
 "Plug 'tpope/vim-fugitive'
 "" gitgutter
-"Plug 'airblade/vim-gitgutter'
+Plug 'airblade/vim-gitgutter'
 " Git
 Plug 'theniceboy/vim-gitignore', { 'for': ['gitignore', 'vim-plug'] }
 Plug 'fszymanski/fzf-gitignore', { 'do': ':UpdateRemotePlugins' }
 "Plug 'mhinz/vim-signify'
-Plug 'airblade/vim-gitgutter'
 
 " gundo
 " edit history, 可以查看回到某个历史状态
@@ -372,6 +371,7 @@ Plug 'svermeulen/vim-subversive'
 Plug 'theniceboy/argtextobj.vim'
 Plug 'rhysd/clever-f.vim'
 "Plug 'chrisbra/rrrwRgn'
+" gS gJ 单行变多行 python 感觉不常用
 Plug 'AndrewRadev/splitjoin.vim'
 
 call plug#end()
@@ -379,6 +379,8 @@ call plug#end()
 
 " ################### 基础 ######################
 
+"vim-ctrlspace
+let g:CtrlSpaceDefaultMappingKey = "<C-.> "
 "Jinja2
 au BufNewFile,BufRead *.html,*.htm,*.shtml,*.stm set ft=jinja
 

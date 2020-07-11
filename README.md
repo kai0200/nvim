@@ -28,7 +28,7 @@
 
 - closetag.vim    # 封闭标签自动补全
 
-- coc.nvim        # 自动补全大师
+- coc.nvim        # 自动补全大师  tt 打开文件目录
 
 - ctrlsf.vim      # 搜索配合Ag
 
@@ -54,52 +54,53 @@
 - rainbow_parentheses.vim  # 括号高亮
 
 - rnvimr          # 浮动窗口  mac nvim `:checkhealth rnvimr` 不支持，取消，
+- semshi          # Semshi在Neovim中为Python提供了语义突出显示功能
+- splitjoin.vim   # gS 单行变多行 gJ 光标放在块首部
+- tabular         # 代码自动对齐配合vim-multiple-cursors 使用 :Tabularize /= 选中等号对齐 V模式下输入:Tabularize /= 一样效果
+- tagbar          # F9 查看函数，类 右边状态栏
+- tmux-complete.vim    # 防止tmux vim冲突<C-X><C-U>
+- undotree             # :UndotreeToggle    help ?
+- vim-after-object     # . = ...未明白
+- vim-airline          # 底部状态增强/美化插件
+- vim-airline-themes   # 底部状态增强/美化插件
+- vim-autoformat       # 代码自动美化 \f 此配置主要处理js java
+- vim-capslock         # <Ctrl+G>c 临时大写锁
+- vim-closetag         # html 自动关闭标签
+- vim-colors-solarized # 主题
+- vim-ctrlspace        # <C-.> 改键未成功 ：TODO
+- vim-easymotion       # 强化版检索式移动 ,,hjkl
+- vim-gitgutter        # 在sign列中显示git diff <leader>gs :GitGutterToggle<CR>
+- vim-gitignore        # 无用可以废弃了
+- vim-go               # go 开发插件
+- vim-indent-guides    # 用于可视显示缩进级别
+- vim-instant-markdown # markdown 预览
+- vim-isort            # 用Isort对python导入进行排序
+- vim-javascript       # javascript
+- vim-js               # js
+- vim-json             # json
+- vim-markdown         # md
+- vim-markdown-toc     # md
+- vim-multiple-cursors   # 多行编辑，配合tabulra 实现代码自动对齐
+- vim-nerdtree-tabs    # tree
+- vim-python-pep8-indent  #
+- vim-quickrun         # F10 run
+- vim-rooter           # 支持项目目录
+- vim-snazzy           # 主题
+- vim-snippets         # 减少按键次数 减轻记忆负担  可能和coc
+- vim-subversive       # 批量替换 :TODO  :%s/aa/bb/g 感觉可以替换这个功能
+- vim-surround         # 单词周围加符号 单词周围加双引号：ysiw"  改 cs"' 删除ds'
+- vim-table-mode       # markdown 表格处理很方便
+- vim-textobj-entire   # 增加文件文本对象: e   dae yae cie
+- vim-textobj-indent   # 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
+- vim-textobj-line     # 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
+- vim-textobj-user     # 支持自定义文本对象
+- vim-tmux-navigator   # 避免tmux 和vim 冲突
+- vim-trailing-whitespace # ,<space> 清除空格
+- vim-virtualenv       # python venv 更换环境
+- vista.vim            # 好看的标签，需要按git说明配置mac
+- wildfire.vim         # 文本选中，不会用
+- yajs.vim             # javascript
 
-semshi
-splitjoin.vim
-tabular
-tagbar
-tmux-complete.vim
-undotree
-vim-after-object
-vim-airline
-vim-airline-themes
-vim-autoformat
-vim-capslock
-vim-closetag
-vim-colors-solarized
-vim-ctrlspace
-vim-easymotion
-vim-gitgutter
-vim-gitignore
-vim-go
-vim-indent-guides
-vim-instant-markdown
-vim-isort
-vim-javascript
-vim-js
-vim-json
-vim-markdown
-vim-markdown-toc
-vim-nerdtree-tabs
-vim-python-pep8-indent
-vim-quickrun
-vim-rooter        # 支持项目目录
-vim-snazzy
-vim-snippets
-vim-subversive
-vim-surround
-vim-table-mode
-vim-textobj-entire
-vim-textobj-indent
-vim-textobj-line
-vim-textobj-user
-vim-tmux-navigator
-vim-trailing-whitespace
-vim-virtualenv
-vista.vim
-wildfire.vim
-yajs.vim
 nvim
 ----
 
