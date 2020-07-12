@@ -23,6 +23,7 @@
     ,a      # coc-vim v 选择以后 ,a
     ,e      # 快速对齐 V模式下
     ,e=  #
+    normal  # TODO 学习
     ```
 
 ### 快速对齐 junegunn/vim-easy-align
