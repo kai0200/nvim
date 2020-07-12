@@ -2,9 +2,32 @@
 ====
 
 * nvim 快捷键使用说明
+```vim
+:message
+:map <key>
+:verbose imap <tab>
+:h  # K 帮助
+
+Ctrl-m  #多行选择修改
+        # 字符串两边加引号
+,a   # coc-vim v 选择以后 ,a
+
+# surround.vim
+ysiw"  # 在字符串两添加\"
+S"     # V模式下选中部分两边添加\"  , 这个比较方便好理解
+S<p class="important">   # 在V 模式下为行增加P标签
+
+cs"'   # 替换两边\" \'
+cs'<q> # 替换
+cst"   # 移除
+yss(   # 整行加括号
+ds[ds) # 删除[  删除(
+
+```
 
 * 学会markdown 快速笔记的方式
 
+* 可参考配置 [other](https://www.cnblogs.com/cniwoq/p/13272746.html)
 插件列表
 ========
 
@@ -20,7 +43,7 @@
 
 - argtextobj.vim  # `daa` 删除一个参数
 
-- auto-pairs      # 括号自动操作<M-e> Alt+e 默认是开关，自定义了<,-c> 跳出括号 ] 不生效
+- auto-pairs  deleted    # 括号自动操作<M-p> Alt+p 默认是开关，自定义了<,-c> 跳出括号 ] 不生效
 
 - braceless.vim   # 折叠单独 zc zo |  全部 zM zR 等
 
@@ -30,6 +53,30 @@
 
 - coc.nvim        # 自动补全大师  tt 打开文件目录
 
+    1. verbose imap <tab>
+
+    2. :CocInstall coc-python
+
+    3. :CocList
+
+    4. :CocConfig
+
+    5. Key map
+    ```vim
+    <tab>
+    <Ctrl+Space>  # coc#refresh()
+    <CR>          # Enter 确认
+    `[g`  and `]g`   # 导航 :CocDiagnostics get all diagnostics of current buffer in location list
+    `\` \`
+    # GoTo code navigation
+    gd <Plug>(coc-definition)
+    gy <Plug>(coc-type-definition)
+    gi <Plug>(coc-implementation)
+    gr <Plug>(coc-references)
+
+    K  show_document
+    <leader>rn    #coc-rename
+    ```
 - ctrlsf.vim      # 搜索配合Ag
 
 - fzf-gitignore   # 自动索引 TODO 还没学会怎么用
@@ -219,3 +266,7 @@ Plug 'mzlogin/vim-markdown-toc', { 'for': ['gitignore', 'markdown'] }
 Plug 'theniceboy/bullets.vim'
 
 - tab切换 注销,th 等操作
+
+[] tmux vim 键位冲突问题
+[] markdown 标记学习
+
