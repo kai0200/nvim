@@ -77,7 +77,7 @@ Plug 'bronson/vim-trailing-whitespace'
 
 " easyalign
 " 快速赋值语句对齐
-" Plug 'junegunn/vim-easy-align'
+Plug 'junegunn/vim-easy-align'
 
 " quick movement
 " easymotion
@@ -570,8 +570,8 @@ endif
 " }}}
 
 " easyalign {{{
-    vmap <Leader>a <Plug>(EasyAlign)
-    nmap <Leader>a <Plug>(EasyAlign)
+    vmap <Leader>e <Plug>(EasyAlign)
+    nmap <Leader>e <Plug>(EasyAlign)
     if !exists('g:easy_align_delimiters')
     let g:easy_align_delimiters = {}
     endif

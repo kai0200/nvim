@@ -1,35 +1,93 @@
 目标
 ====
 
-* nvim 快捷键使用说明
-```vim
-:message
-:map <key>
-:verbose imap <tab>
-:h  # K 帮助
+    * 学会markdown 快速笔记的方式
 
-Ctrl-m  #多行选择修改
-        # 字符串两边加引号
-,a   # coc-vim v 选择以后 ,a
+    * 可参考配置 [other](https://www.cnblogs.com/cniwoq/p/13272746.html)
 
-# surround.vim
-ysiw"  # 在字符串两添加\"
-S"     # V模式下选中部分两边添加\"  , 这个比较方便好理解
-S<p class="important">   # 在V 模式下为行增加P标签
 
-cs"'   # 替换两边\" \'
-cs'<q> # 替换
-cst"   # 移除
-yss(   # 整行加括号
-ds[ds) # 删除[  删除(
+# 发现快捷键
 
-```
+> 总结常用快捷键，vim自带的一些就不在此处介绍了
 
-* 学会markdown 快速笔记的方式
+### 容易忘记的快捷键
 
-* 可参考配置 [other](https://www.cnblogs.com/cniwoq/p/13272746.html)
-插件列表
-========
+    ```vim
+    :message
+    :map <key>
+    :verbose imap <tab>
+    :h  # K 帮助
+
+    Ctrl-m  # 多行选择修改
+    S"\     # V 模式下 字符串两边加引号
+    ,a      # coc-vim v 选择以后 ,a
+    ,e      # 快速对齐 V模式下
+    ,e=  #
+    ```
+
+### 快速对齐 junegunn/vim-easy-align
+
+    ```viml
+    # 改键盘为,a 为 ,e
+    ,e=        对齐等号表达
+    ,e:        对齐冒号表达式(json/map等)
+
+    # 默认左对齐
+    ,e<space>  首个空格对齐
+    ,e2<space> 第二个空格对齐
+    ,e-<space> 倒数第一个空格对齐
+    ,e-2<space> 倒数第二个空格对齐
+    ,e*<space> 所有空格依次对齐
+    ```
+
+# 右对齐
+,a<Enter>*<space>
+
+### surround.vim
+
+    ysiw"  # 在字符串两添加\"
+    S"     # V模式下选中部分两边添加\"  , 这个比较方便好理解
+    S<p class="important">   # 在V 模式下为行增加P标签
+
+    cs"'   # 替换两边\" \'
+    cs'<q> # 替换
+    cst"   # 移除
+    yss(   # 整行加括号
+    ds[ds) # 删除[  删除(
+
+### coc.nvim
+
+    1. verbose imap <tab>
+
+    2. :CocInstall coc-python
+
+    3. :CocList
+
+    4. :CocConfig
+
+    5. Key map
+    ```viml
+    <tab>
+    <Ctrl+Space>  # coc#refresh()
+    <CR>          # Enter 确认
+    `[g`  and `]g`   # 导航 :CocDiagnostics get all diagnostics of current buffer in location list
+    `\` \`
+    # GoTo code navigation
+    gd <Plug>(coc-definition)
+    gy <Plug>(coc-type-definition)
+    gi <Plug>(coc-implementation)
+    gr <Plug>(coc-references)
+    Ctrl+o        # 回到刚才编辑的未知
+
+    K  show_document
+
+    <leader>rn    # coc-rename
+
+    *
+    ,f  # V模式 自动格式程序代码
+    ```
+
+# 插件列表
 
 - NrrwRgn  # Enter 选择到段落末尾 Ctrl+y 小范围编辑 :w 保存
 
@@ -53,30 +111,6 @@ ds[ds) # 删除[  删除(
 
 - coc.nvim        # 自动补全大师  tt 打开文件目录
 
-    1. verbose imap <tab>
-
-    2. :CocInstall coc-python
-
-    3. :CocList
-
-    4. :CocConfig
-
-    5. Key map
-    ```vim
-    <tab>
-    <Ctrl+Space>  # coc#refresh()
-    <CR>          # Enter 确认
-    `[g`  and `]g`   # 导航 :CocDiagnostics get all diagnostics of current buffer in location list
-    `\` \`
-    # GoTo code navigation
-    gd <Plug>(coc-definition)
-    gy <Plug>(coc-type-definition)
-    gi <Plug>(coc-implementation)
-    gr <Plug>(coc-references)
-
-    K  show_document
-    <leader>rn    #coc-rename
-    ```
 - ctrlsf.vim      # 搜索配合Ag
 
 - fzf-gitignore   # 自动索引 TODO 还没学会怎么用
