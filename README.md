@@ -10,7 +10,7 @@
 
 > 总结常用快捷键，vim自带的一些就不在此处介绍了
 
-### 容易忘记的快捷键
+- 容易忘记的快捷键
 
     ```vim
     :message
@@ -24,9 +24,13 @@
     ,e      # 快速对齐 V模式下
     ,e=  #
     normal  # TODO 学习
+    :pwd    #
+    mm      # 标记位置为m
+    `m      # 回到m处
+    ,c      # 跳出括号
     ```
 
-### 快速对齐 junegunn/vim-easy-align
+- junegunn/vim-easy-align 快速对齐
 
     ```viml
     # 改键盘为,a 为 ,e
@@ -39,24 +43,25 @@
     ,e-<space> 倒数第一个空格对齐
     ,e-2<space> 倒数第二个空格对齐
     ,e*<space> 所有空格依次对齐
+    ,a<Enter>*<space>
     ```
 
-# 右对齐
-,a<Enter>*<space>
+- surround.vim
 
-### surround.vim
+    ```viml
+    S"     # V模式下选中部分两边添加\"  , 这个比较方便好理解
+    ds[ds) # 删除[  删除(
+    cs"'   # 替换两边\" \'
 
     ysiw"  # 在字符串两添加\"
-    S"     # V模式下选中部分两边添加\"  , 这个比较方便好理解
     S<p class="important">   # 在V 模式下为行增加P标签
 
-    cs"'   # 替换两边\" \'
     cs'<q> # 替换
     cst"   # 移除
     yss(   # 整行加括号
-    ds[ds) # 删除[  删除(
+    ```
 
-### coc.nvim
+- coc.nvim
 
     1. verbose imap <tab>
 
@@ -67,12 +72,12 @@
     4. :CocConfig
 
     5. Key map
+
     ```viml
     <tab>
     <Ctrl+Space>  # coc#refresh()
     <CR>          # Enter 确认
     `[g`  and `]g`   # 导航 :CocDiagnostics get all diagnostics of current buffer in location list
-    `\` \`
     # GoTo code navigation
     gd <Plug>(coc-definition)
     gy <Plug>(coc-type-definition)
@@ -93,7 +98,7 @@
 
 - NrrwRgn  # Enter 选择到段落末尾 Ctrl+y 小范围编辑 :w 保存
 
-- Vim-Jinja2-Syntax  # ansible python 模版文件语法加量
+- Vim-Jinja2-Syntax  # ansible/python 等模版文件语法加量
 
 - ag.vim   # 搜索Ag user user.list
 
@@ -150,7 +155,31 @@
 - vim-capslock         # <Ctrl+G>c 临时大写锁
 - vim-closetag         # html 自动关闭标签
 - vim-colors-solarized # 主题
-- vim-ctrlspace        # <C-.> 改键未成功 ：TODO
+- vim-ctrlspace        # 配合生成状态栏 后期在看
+
+    1. 标签/缓冲区/文件管理
+    2. 快速模糊查找
+    3. 工作区会话
+    4. 自己喜欢的项目标签
+
+
+    ```viml
+    <C-space> 开启快捷键 改为<leader>.
+    ? 查看相关快捷键
+    h	开关缓冲文件列表
+    H	打开搜索模式缓冲文件列表
+    o	开关文件列表
+    O	打开搜索模式文件列表
+    l	开关tab页列表
+    L	打开搜索模式tab页列表
+    w	开关工作空间列表
+    W	打开搜索模式工作空间列表
+    b	开关书签列表
+    B	打开搜索模式书签列表
+    BS（回退键）,返回普通ctrlspace窗口
+
+    ```
+
 - vim-easymotion       # 强化版检索式移动 ,,hjkl
 - vim-gitgutter        # 在sign列中显示git diff <leader>gs :GitGutterToggle<CR>
 - vim-gitignore        # 无用可以废弃了
@@ -176,6 +205,9 @@
 - vim-subversive       # 批量替换 :TODO  :%s/aa/bb/g 感觉可以替换这个功能
 - vim-surround         # 单词周围加符号 单词周围加双引号：ysiw"  改 cs"' 删除ds'
 - vim-table-mode       # markdown 表格处理很方便 key map: <leader>tm
+
+    * ,tm 处理表格
+
 - vim-textobj-entire   # 增加文件文本对象: e   dae yae cie
 - vim-textobj-indent   # 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
 - vim-textobj-line     # 增加缩进文本对象: i   dai yai cii - 相同缩进属于同一块
@@ -193,7 +225,7 @@
 nvim
 ----
 
-### markdown
+- markdown
 
 1. dhruvasagar/vim-table-mode
 
