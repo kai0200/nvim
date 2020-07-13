@@ -21,7 +21,7 @@
     :echo coc#util#get_config_home() # echo 命令
     :h      # K 帮助
     tt      # 打开左侧目录
-    ,,c     # CocCommand
+    ,cc     # CocCommand
     ,ec     # 开关语法检查
     M-p     # Alt+p 开关括号自动完成
     ,tn     # 创建TODO :CocCommand todolist.create
