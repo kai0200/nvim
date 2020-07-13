@@ -660,11 +660,11 @@ endif
 "set background=dark
 "set t_Co=256
 
-colorscheme solarized
+"colorscheme solarized
 "colorscheme molokai
 "colorscheme snazzy
-"let g:SnazzyTransparent = 1
-"color snazzy
+let g:SnazzyTransparent = 1
+color snazzy
 
 
 

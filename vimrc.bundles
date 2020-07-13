@@ -223,6 +223,7 @@ if count(g:bundle_groups, 'python')
     Plug 'hdima/python-syntax'
     Plug 'hynek/vim-python-pep8-indent'
     Plug 'Glench/Vim-Jinja2-Syntax'
+    "Plug 'davidhalter/jedi-vim'
 
     " isort  https://github.com/timothycrosley/isort#readme + https://github.com/fisadev/vim-isort#installation
     " pip install isort
@@ -358,7 +359,6 @@ Plug 'jiangmiao/auto-pairs'
 "Plug 'mg979/vim-visual-multi'
 "Plug 'tomtom/tcomment_vim' " in <space>cn to comment a line
 Plug 'theniceboy/antovim' " gs to switch
-Plug 'tpope/vim-surround' " type yskw' to wrap the word with '' or type cs'` to change 'word' to `word`
 "Plug 'gcmt/wildfire.vim' " in Visual mode, type k' to select all text in '', or type k) k] k} kp
 Plug 'junegunn/vim-after-object' " da= to delete what's after =
 "Plug 'godlygeek/tabular' " ga, or :Tabularize <regex> to align
@@ -462,6 +462,16 @@ if has_key(g:plugs, 'syntastic')
 endif
 " }}}
 
+""jedi-vim {{{
+"    let g:jedi#goto_command = "<leader>d"
+"    let g:jedi#goto_assignments_command = "<leader>g"
+"    let g:jedi#goto_stubs_command = "<leader>s"
+"    "let g:jedi#goto_definitions_command = "gd"
+"    let g:jedi#documentation_command = "K"
+"    let g:jedi#usages_command = "<leader>n"
+"    let g:jedi#completions_command = "<C-Space>"
+"    let g:jedi#rename_command = "<leader>r"
+""}}}
 
 " ale {{{
 if has_key(g:plugs, 'ale')
@@ -485,7 +495,7 @@ if has_key(g:plugs, 'ale')
 
     nmap <silent> <Leader>ep <Plug>(ale_previous_wrap)
     nmap <silent> <Leader>en <Plug>(ale_next_wrap)
-
+    " 关闭语法检查
     nnoremap <silent> <Leader>ec :ALEToggle<CR>
 
     " troggle quickfix list
@@ -578,6 +588,9 @@ endif
     " If a delimiter is in a highlight group whose name matches any of the followings, it will be ignored.
     let g:easy_align_ignore_groups = ['Comment', 'String']
 " }}}
+" jiangmiao/auto-pairs {{{
+    "let g:AutoPairsShortcutToggle = '<M-p>'
+"}}
 
 " ################### 快速移动 ###################
 
@@ -1016,7 +1029,7 @@ nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 nnoremap <LEADER>g= :GitGutterNextHunk<CR>
 
 
-" coc {{{
+" coc.vim {{{
 " fix the most annoying bug that coc has
 "silent! au BufEnter,BufRead,BufNewFile * silent! unmap if
 let g:coc_global_extensions = [
@@ -1042,7 +1055,6 @@ let g:coc_global_extensions = [
   \ 'coc-translator',
   \ 'coc-tslint',
   \ 'coc-tsserver',
-  \ 'coc-vimlsp',
   \ 'coc-vimlsp',
   \ 'coc-yaml',
   \ 'coc-yank']
@@ -1122,10 +1134,12 @@ nmap <silent> [g <Plug>(coc-diagnostic-prev)
 nmap <silent> ]g <Plug>(coc-diagnostic-next)
 
 " GoTo code navigation.
+nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
 nmap <silent> gd <Plug>(coc-definition)
 nmap <silent> gy <Plug>(coc-type-definition)
 nmap <silent> gi <Plug>(coc-implementation)
 nmap <silent> gr <Plug>(coc-references)
+nmap tt :CocCommand explorer<CR>
 
 " Use K to show documentation in preview window.
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -1220,40 +1234,11 @@ nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
 "nmap <silent> <TAB> <Plug>(coc-range-select)
 "xmap <silent> <TAB> <Plug>(coc-range-select)
 " use <tab> for trigger completion and navigate to the next complete item
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]	=~ '\s'
-endfunction
-inoremap <silent><expr> <TAB>
-	\ pumvisible() ? "\<C-n>" :
-	\ <SID>check_back_space() ? "\<TAB>" :
-	\ coc#refresh()
-inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-inoremap <expr> <cr> complete_info()["selected"] != "-1" ? "\<C-y>" : "\<C-g>u\<CR>"
-function! s:check_back_space() abort
-	let col = col('.') - 1
-	return !col || getline('.')[col - 1]  =~# '\s'
-endfunction
-inoremap <silent><expr> <c-space> coc#refresh()
-inoremap <silent><expr> <c-o> coc#refresh()
 
 " Open up coc-commands
-nnoremap <c-c> :CocCommand<CR>
-" Text Objects
-xmap kf <Plug>(coc-funcobj-i)
-xmap af <Plug>(coc-funcobj-a)
-omap kf <Plug>(coc-funcobj-i)
-omap af <Plug>(coc-funcobj-a)
-" Useful commands
-nnoremap <silent> <space>y :<C-u>CocList -A --normal yank<cr>
-nmap <silent> gd <Plug>(coc-definition)
-nmap <silent> gy <Plug>(coc-type-definition)
-nmap <silent> gi <Plug>(coc-implementation)
-nmap <silent> gr <Plug>(coc-references)
-nmap <leader>rn <Plug>(coc-rename)
-nmap tt :CocCommand explorer<CR>
-" coc-translator
-nmap ts <Plug>(coc-translator-p)
+nnoremap <leader>cc :CocCommand<CR>
+
+
 " Remap for do codeAction of selected region
 function! s:cocActionsOpenFromSelected(type) abort
   execute 'CocCommand actions.open ' . a:type
@@ -1270,17 +1255,7 @@ noremap <silent> <leader>ts :CocList tasks<CR>
 " Use <C-l> for trigger snippet expand.
 imap <C-l> <Plug>(coc-snippets-expand)
 
-" Use <C-j> for select text for visual placeholder of snippet.
-vmap <C-e> <Plug>(coc-snippets-select)
-
-" Use <C-j> for jump to next placeholder, it's default of coc.nvim
-let g:coc_snippet_next = '<c-e>'
-
-" Use <C-k> for jump to previous placeholder, it's default of coc.nvim
-let g:coc_snippet_prev = '<c-n>'
-
-" Use <C-j> for both expand and jump (make expand higher priority.)
-imap <C-e> <Plug>(coc-snippets-expand-jump)
+"}}}
 
 "" ===
 "" === FZF

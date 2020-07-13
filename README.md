@@ -13,21 +13,44 @@
 - 容易忘记的快捷键
 
     ```vim
+    # 常用命令
     :message
     :map <key>
     :verbose imap <tab>
-    :h  # K 帮助
+    :pwd
+    :echo coc#util#get_config_home() # echo 命令
+    :h      # K 帮助
+    tt      # 打开左侧目录
+    ,,c     # CocCommand
+    ,ec     # 开关语法检查
+    M-p     # Alt+p 开关括号自动完成
+    ,tn     # 创建TODO :CocCommand todolist.create
+    ,tl     # 显示TODO :CocList todolist
+    ,ts     # :CocList tasks
 
+    # 文字编辑
     Ctrl-m  # 多行选择修改
     S"\     # V 模式下 字符串两边加引号
     ,a      # coc-vim v 选择以后 ,a
     ,e      # 快速对齐 V模式下
-    ,e=  #
-    normal  # TODO 学习
-    :pwd    #
+    ,e=     #
+    fx      # 行内跳转到x
+    M-p     # 禁用输入括号自动补全 (tmux 上取消了M-p)
+
+
+    # 标记mark
     mm      # 标记位置为m
     `m      # 回到m处
     ,c      # 跳出括号
+
+    # 单词拼写检查
+    zm      # 需要:set spell 光标处zm更换单词
+    ]s      # 将光标移到下一个拼写错误处
+    [s      # 将光标移到上一个拼写错误处
+    zg      # 将单词加入词典
+    zug     # 撤销将单词加入词典
+    z=      # 拼写建议
+
     ```
 
 - junegunn/vim-easy-align 快速对齐
@@ -62,6 +85,13 @@
     ```
 
 - coc.nvim
+    > :CocList extensions  显示插件情况*激活 +加载
+    > :CocConfig 打开用户配置文件
+    > :CocLocalConfig 打开项目配置文件
+    > :checkhealth   检查
+    > :CocInfo   查看服务相关情况
+    > :CocOpenLog  打开coclog
+
 
     1. verbose imap <tab>
 
@@ -79,7 +109,7 @@
     <CR>          # Enter 确认
     `[g`  and `]g`   # 导航 :CocDiagnostics get all diagnostics of current buffer in location list
     # GoTo code navigation
-    gd <Plug>(coc-definition)
+    gd <Plug>(coc-definition)      # 如果有错误尝试 pip3 uninstall jedi 再重装
     gy <Plug>(coc-type-definition)
     gi <Plug>(coc-implementation)
     gr <Plug>(coc-references)
@@ -91,6 +121,12 @@
 
     *
     ,f  # V模式 自动格式程序代码
+    ,t  # 翻译单词
+    Ctrl+C        # :CocCommand
+    :CocList      # List 可用列表 Ctrl+o 和 i 切换命令|插入模式
+    :CocOpenLog   # coc 日志
+    :CocCommand explorer   # tt 快捷键的操作
+
     :TODO  继续学习coc快捷键
     ```
 
@@ -127,6 +163,8 @@
 - gundo.vim       # Gundo.vim is Vim plugin to visualize your Vim undo tree.
 
 - html5.vim
+
+- jedi-vim    # python函数跳转插件 ,d ,g ,s K ,n C-space ,r
 
 - lazygit-vim
 
