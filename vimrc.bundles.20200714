@@ -2,15 +2,6 @@
 " bundle 插件管理和配置项
 " ==========================================
 
-" theme主题
-"set background=dark
-"set t_Co=256
-"colorscheme solarized
-"colorscheme molokai
-"colorscheme snazzy
-"let g:SnazzyTransparent = 1
-"color snazzy
-
 "------------------------------------------- begin of configs --------------------------------------------
 
 " ################### 包依赖 #####################

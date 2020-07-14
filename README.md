@@ -1,10 +1,14 @@
 目标
 ====
 
+:TODO
     * 学会markdown 快速笔记的方式
 
     * 可参考配置 [other](https://www.cnblogs.com/cniwoq/p/13272746.html)
 
+    * markdown \*\* 两个\*输入不显示的问题
+
+    * nvim 自动配置,[参考](https://github.com/theniceboy/nvim)
 
 # 发现快捷键
 
@@ -21,7 +25,7 @@
     :echo coc#util#get_config_home() # echo 命令
     :h      # K 帮助
     tt      # 打开左侧目录
-    ,cc     # CocCommand
+    ,cc     # CocCommand         ---deleted
     ,ec     # 开关语法检查
     M-p     # Alt+p 开关括号自动完成
     ,tn     # 创建TODO :CocCommand todolist.create
@@ -32,11 +36,23 @@
     Ctrl-m  # 多行选择修改
     S"\     # V 模式下 字符串两边加引号
     ,a      # coc-vim v 选择以后 ,a
-    ,e      # 快速对齐 V模式下
-    ,e=     #
+    ,e=     # 按等号对齐
+    ,cc     # 增加注释
+    ,cu     # 删除注释
     fx      # 行内跳转到x
     M-p     # 禁用输入括号自动补全 (tmux 上取消了M-p)
+    gs      # 更换 True False
+    ,f      # 选中文本按语法格式整理
 
+    # 宏命令 批量修改=对齐
+    q       # 开始录制
+    a       # 到a键
+    s-v     # 选中要修改的部分
+    :'<,'>Tabularize /=   # 批量修改 =
+    q       # 保存宏命令
+
+    v       # 选中要修改的部分
+    @a      # 执行宏a
 
     # 标记mark
     mm      # 标记位置为m
