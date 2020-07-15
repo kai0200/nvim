@@ -69,20 +69,6 @@ set nobackup
 " 关闭交换文件
 set noswapfile
 
-
-" TODO: remove this, use gundo
-" create undo file
-" if has('persistent_undo')
-  " " How many undos
-  " set undolevels=1000
-  " " number of lines to save for undo
-  " set undoreload=10000
-  " " So is persistent undo ...
-  " "set undofile
-  " set noundofile
-  " " set undodir=/tmp/vimundo/
-" endif
-
 set wildignore=*.swp,*.bak,*.pyc,*.class,.svn
 
 " 突出显示当前列
@@ -93,7 +79,7 @@ set cursorline
 
 " 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
 " 好处：误删什么的，如果以前屏幕打开，可以找回
-set t_ti= t_te=
+"set t_ti= t_te=
 
 
 " 鼠标暂不启用, 键盘党....
@@ -243,7 +229,7 @@ if &term =~ '256color'
   " disable Background Color Erase (BCE) so that color schemes
   " render properly when inside 256-color tmux and GNU screen.
   " see also http://snk.tuxfamily.org/log/vim-256color-bce.html
-  set t_ut=
+  set t_ut=''
 endif
 
 "==========================================
@@ -318,10 +304,10 @@ endif
 " 主要按键重定义
 
 " 关闭方向键, 强迫自己用 hjkl
-map <Left> <Nop>
-map <Right> <Nop>
-map <Up> <Nop>
-map <Down> <Nop>
+"map <Left> <Nop>
+"map <Right> <Nop>
+"map <Up> <Nop>
+"map <Down> <Nop>
 
 "Treat long lines as break lines (useful when moving around in them)
 "se swap之后，同物理行上线直接跳
@@ -410,10 +396,14 @@ noremap L $
 
 
 " 命令行模式增强，ctrl - a到行首， -e 到行尾
-cnoremap <C-j> <t_kd>
-cnoremap <C-k> <t_ku>
 cnoremap <C-a> <Home>
 cnoremap <C-e> <End>
+cnoremap <C-p> <Up>
+cnoremap <C-n> <Down>
+cnoremap <C-h> <Left>
+cnoremap <C-l> <Right>
+cnoremap <C-b> <S-Left>
+cnoremap <C-w> <S-Right>
 
 
 " 搜索相关
@@ -444,11 +434,11 @@ autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
 " tab/buffer相关
 
 " 切换前后buffer
-nnoremap [b :bprevious<cr>
-nnoremap ]b :bnext<cr>
+"nnoremap [b :bprevious<cr>
+"nnoremap ]b :bnext<cr>
 " 使用方向键切换buffer
-noremap <left> :bp<CR>
-noremap <right> :bn<CR>
+"noremap <left> :bp<CR>
+"noremap <right> :bn<CR>
 
 
 " tab 操作
@@ -518,7 +508,7 @@ map <Leader>sa ggVG
 nnoremap gv `[v`]
 
 " select block
-nnoremap <leader>v V`}
+"nnoremap <leader>v V`}  v ) 替代块选择
 
 " w!! to sudo & write a file
 cmap w!! w !sudo tee >/dev/null %
@@ -657,8 +647,8 @@ endif
 
 
 " theme主题
-"set background=dark
-"set t_Co=256
+set background=dark
+set t_Co=256
 
 "colorscheme solarized
 "colorscheme molokai
@@ -682,10 +672,3 @@ highlight clear SpellRare
 highlight SpellRare term=underline cterm=underline
 highlight clear SpellLocal
 highlight SpellLocal term=underline cterm=underline
-
-" ===
-" === MarkdownPreview
-" ===
-" set to 1, nvim will open the preview window after entering the markdown buffer
-" default: 0
-
