@@ -1,0 +1,108 @@
+#=============================================================================
+# dark_powered.toml --- dark powered configuration example for SpaceVim
+# Copyright (c) 2016-2017 Wang Shidong & Contributors
+# Author: Wang Shidong < wsdjeg at 163.com >
+# URL: https://spacevim.org
+# License: GPLv3
+#=============================================================================
+
+# All SpaceVim option below [option] section
+[options]
+  # set spacevim theme. by default colorscheme layer is not loaded,
+  # if you want to use more colorscheme, please load the colorscheme
+  # layer
+  colorscheme = "gruvbox"
+  colorscheme_bg = "dark"
+  # Disable guicolors in basic mode, many terminal do not support 24bit
+  # true colors
+  enable_guicolors = true
+  # Disable statusline separator, if you want to use other value, please
+  # install nerd fonts
+  statusline_separator = "arrow"
+  statusline_inactive_separator = "arrow"
+  buffer_index_type = 4
+  enable_tabline_filetype_icon = true
+  enable_tabline_ft_icon = true
+  statusline_inactive_separator = "bar"
+
+  # 显示输入状态
+  enable_statusline_mode = true
+
+  # 目录显示默认显示在左边
+  filetree_direction = "left"
+
+  filemanager = "defx"
+  autocomplete_method = "coc"
+  bootstrap_before = "myspacevim#before"
+  bootstrap_after = "myspacevim#after"
+
+  # SPC x g t 翻译
+  enable_googlesuggest = true
+
+# Enable autocomplete layer
+[[layers]]
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "complete"
+  auto_completion_tab_key_behavior = "smart"
+
+[[layers]]
+  name = 'shell'
+  default_position = 'top'
+  default_height = 30
+
+[[layers]]
+  name = 'Shougo/vimproc.vim'
+
+# ----------------------------------------------------------
+# python 
+# 1. SPC bf 自动格式化 yapf pip install --user yapf
+# 2. 自动删除未使用的import pip install --user autoflake
+# 3. 排序import             pip install --user isort
+# 4. 代码测试覆盖情况统计   pip install --user coverage
+# 5. 快捷键: 'gd' 'SPC l g d'  
+# 启动 python 或 ipython 交互进程，快捷键为： SPC l s i 
+# SPC l s b	发送整个文件内容至 REPL
+# SPC l s l	发送当前行内容至 REPL
+# SPC l s s	发送已选中的内容至 REPL
+# SPC l i r	使用 autoflake 移除未使用的导包
+# SPC l i s	使用 isort 对导包进行排序
+# normal	SPC l c r	coverager report
+# normal	SPC l c s	coverager show
+# normal	SPC l c e	coverager session
+# normal	SPC l c f	coverager refresh
+[[layers]]
+  name = 'lang#python'
+  enable_typeinfo = true # 显示类型,可以注释 
+  python_file_head = [
+        '#!/usr/bin/env python',
+        '# -*- coding: utf-8 -*-',
+        '',
+        ''
+  ]
+
+# markdown 
+# SPC b f	Normal	格式化当前文件
+# SPC l k	Normal/Visual	为光标下的单词或者选中文本增加 URL 链接
+# SPC l K	Normal/Visual	为光标下的单词或者选中文本增加图片链接
+# SPC l p	Normal	通过浏览器实时预览当前文件
+[[layers]]
+  name = "lang#markdown"
+
+# 多光标操作
+[[custom_plugins]]
+  name = 'terryma/vim-multiple-cursors'
+
+# markdown 表格和预览
+[[custom_plugins]]
+  name = 'dhruvasagar/vim-table-mode'
+  on = 'TableModeToggle'
+
+# 以悬浮窗口的形式打开终端
+[[custom_plugins]]
+  name = 'voldikss/vim-floaterm'
+# coc.nvim 核心配置，不要删除
+[[custom_plugins]]
+  name = 'neoclide/coc.nvim'
+  merge = 0
+  build =  'yarn install --frozen-lockfile'
+
