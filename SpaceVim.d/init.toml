@@ -29,7 +29,7 @@
   enable_statusline_mode = true
 
   # 目录显示默认显示在左边
-  filetree_direction = "left"
+  #filetree_direction = "left"
 
   filemanager = "defx"
   autocomplete_method = "coc"
@@ -88,6 +88,34 @@
 [[layers]]
   name = "lang#markdown"
 
+#  插件
+# <Leader> f <Space>	模糊查找快捷键，并执行该快捷键
+# <Leader> f e	模糊搜索寄存器
+# <Leader> f h	模糊搜索 history/yank
+# <Leader> f j	模糊搜索 jump, change
+# <Leader> f l	模糊搜索 location list
+# <Leader> f m	模糊搜索 output messages
+# <Leader> f o	模糊搜索当前函数列表
+# <Leader> f t	模糊搜索全局函数列表
+# <Leader> f q	模糊搜索 quickfix list
+# <Leader> f r	重置上次搜索窗口
+[[layers]]
+  name = "unite"
+
+# m 标签栏目
+# 快捷键	功能描述
+# m a	显示书签列表
+# m m	切换当前行标签状态
+# m n	跳至下一个书签
+# m p	跳至前一个书签
+# m i	给当前行标签添加说明
+[[layers]]
+    name = "tools"
+
+# =======
+# ================= Custom_plugins =================================================
+# =======
+
 # 多光标操作
 [[custom_plugins]]
   name = 'terryma/vim-multiple-cursors'
@@ -105,4 +133,11 @@
   name = 'neoclide/coc.nvim'
   merge = 0
   build =  'yarn install --frozen-lockfile'
+
+
+
+# Test 插件 =============================
+# tmux 兼容插件
+[[custom_plugins]]
+  name = 'wellle/tmux-complete.vim'
 

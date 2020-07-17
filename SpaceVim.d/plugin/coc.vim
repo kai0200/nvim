@@ -77,7 +77,6 @@ let s:coc_extensions = [
              \ 'coc-vimlsp',
              \ 'coc-yaml',
              \ 'coc-yank',
-             \ 'coc-shell'
 			\]
 " popup 翻译快捷键
 nmap <Leader>t <Plug>(coc-translator-p)
