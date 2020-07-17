@@ -1,8 +1,12 @@
 func! myspacevim#before() abort
 
   " ------------------- START  -----------------------
-  
+  "
+  let g:python_host_prog = '/usr/bin/python2.7'
+  let g:python3_host_prog = '/usr/local/bin/python3.8'
 
+  " for # indent, python文件中输入新行时#号注释不切回行首
+  autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
 
   " 自定义自己的spc快捷键
   " -------------------------
@@ -26,14 +30,14 @@ func! myspacevim#before() abort
 
   "" 书签选中之后自动关闭 quickfix window
   let g:bookmark_auto_close = 1
-  
+
   "" ctrl + ] 查询 cppman
   "" 如果想让该快捷键自动查询 man，将Cppman 替换为 Cppman!
   "autocmd FileType c,cpp noremap <C-]> <Esc>:execute "Cppman " . expand("<cword>")<CR>
 
   "" 让光标自动进入到popup window 中间
   "let g:git_messenger_always_into_popup = v:true
-  
+
   "" 设置映射规则，和 spacevim 保持一致
   "call SpaceVim#custom#SPC('nnoremap', ['g', 'm'], 'GitMessenger', 'show commit message in popup window', 1)
   "call SpaceVim#custom#SPC('nnoremap', ['g', 'l'], 'FloatermNew lazygit', 'open lazygit in floaterm', 1)
@@ -76,14 +80,14 @@ func! myspacevim#before() abort
   au FocusLost * :wa
   au FocusGained,BufEnter * :checktime
 
-	" 设置可以高亮的关键字
-	if has("autocmd")
-	  " Highlight TODO, FIXME, NOTE, etc.
-	  if v:version > 701
-	    autocmd Syntax * call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\)')
-	    autocmd Syntax * call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
-	  endif
-	endif
+  " 设置可以高亮的关键字
+  if has("autocmd")
+    " Highlight TODO, FIXME, NOTE, etc.
+    if v:version > 701
+      autocmd  FileType c,py,sh call matchadd('Todo',  '\W\zs\(TODO\|FIXME\|CHANGED\|DONE\|XXX\|BUG\|HACK\)')
+      autocmd  FileType c,py,sh call matchadd('Debug', '\W\zs\(NOTE\|INFO\|IDEA\|NOTICE\)')
+    endif
+  endif
 
   " ------------------- END -----------------------
   "
@@ -93,13 +97,13 @@ func! myspacevim#after() abort
   " ------------------- START  -----------------------
   " 放到此处用于重写 SpaceVim 映射的 F2
   " nnoremap  <F2>  :Vista!!<CR>
-  
+
   " Quickly save the current file
   nnoremap <leader>w :w<CR>
 
   " 去掉搜索高亮
   noremap <silent><leader>/ :nohls<CR>
-  
+
   " 代码折叠
   set foldenable
   " 折叠方法
@@ -142,6 +146,32 @@ func! myspacevim#after() abort
 
   " 复制选中区到系统剪切板中
   vnoremap <leader>c "+y
-  
+
+
+  " tab相关变更
+  " 设置Tab键的宽度        [等同的空格个数]
+  set tabstop=4
+  " 每一次缩进对应的空格数
+  set shiftwidth=4
+  " 按退格键时可以一次删掉 4 个空格
+  set softtabstop=4
+  " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
+  set smarttab
+  " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
+  set expandtab
+  " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
+  set shiftround
+
+  " 具体编辑文件类型的一般设置，比如不要 tab 等
+  "autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+  "autocmd FileType ruby,javascript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+  "autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
+  "autocmd BufRead,BufNewFile *.part set filetype=html
+  "autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+  "autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+
+  " disable showmatch when use > in php
+  au BufWinEnter *.php set mps-=<:>
+
   " ------------------- END -----------------------
 endf
