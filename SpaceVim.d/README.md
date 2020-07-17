@@ -56,24 +56,24 @@
 | SPC t S | Ⓢ       | S     | 拼写检查             |
 | SPC t w | ⓦ       | w     | 行尾空格检查         |
 
-- markdown 预览 <spc> l p
+- markdown 预览 [SPC] l p
 - FileTree 新建文件: N 显示隐藏: . 预览: p 快速查看: v 使用相关程序执行: gx 刷新: Ctrl+r 切换窗口文件: Ctrl+x 
 - q 宏 
-- 导航键 <spc> <s> , g z
-- 自定义<spc> 
+- 导航键 [SPC] s , g z
+- 自定义[SPC] 
 
   ```vim
   call SpaceVim#custom#SPC('nnoremap', ['f', 't'], 'echom "hello world"', 'test custom SPC', 1)
-  <spc> ? 看帮助
+  [SPC] ? 看帮助
   ```
 
-- 格式化代码 <spc>bf
-- 运行代码块 <spc>lr 
+- 格式化代码 [SPCbf
+- 运行代码块 [SPClr 
 - 多光标修改 Ctrl+m Ctrl+x Ctrl+p
-- 按等号对齐 <spc> x a =
-- 将选中字符串转为大写 <spc> x U
-- 数字+1 <spc> n + (临时快捷键模式+ -)
-- 注释/反注释 <spc> c l   CU: ,/
+- 按等号对齐 [SPC] x a =
+- 将选中字符串转为大写 [SPC] x U
+- 数字+1 [SPC] n + (临时快捷键模式+ -)
+- 注释/反注释 [SPC] c l   CU: ,/
 - 切换标签 gr
 
 - coc 缺少shell `npm i -g bash-language-server`
@@ -81,9 +81,9 @@
 - ,q  退出配置解决完毕 Ctrl+t newfile  ,q退出当前标签 原操作 st   sx
 - Ctrl+s ,w 保存
 
-- <spc> w . 调整窗口
-- <spc> b . 缓冲区清理  SPC b C-d	删除其它所有缓冲区
-- <spc> b h 打开初始页面
+- [SPC] w . 调整窗口
+- [SPC] b . 缓冲区清理  SPC b C-d	删除其它所有缓冲区
+- [SPC] b h 打开初始页面
 - mm    打标记 mm  切换: mn  mp mi
 - 看所有模块 命令 :SPLayer -l 或者快捷键 SPC h l 来展示
 - <Leader> f <Space>	模糊查找快捷键，并执行该快捷键
@@ -124,8 +124,8 @@
 - v 选中要复制的文字, <leader>c (实际操作为 "+y) 拷贝, 
 
 - 多光标 
-  1. <spc> se  
-  2. <spc> sh
+  1. [SPC] se  
+  2. [SPC] sh
 
 
 - 错误管理导航键 (以 e 开头)：   spc  e   l
