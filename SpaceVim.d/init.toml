@@ -54,13 +54,14 @@
   name = 'Shougo/vimproc.vim'
 
 # ----------------------------------------------------------
-# python 
+# python
 # 1. SPC bf 自动格式化 yapf pip install --user yapf
 # 2. 自动删除未使用的import pip install --user autoflake
 # 3. 排序import             pip install --user isort
 # 4. 代码测试覆盖情况统计   pip install --user coverage
-# 5. 快捷键: 'gd' 'SPC l g d'  
-# 启动 python 或 ipython 交互进程，快捷键为： SPC l s i 
+# 5. 快捷键: 'gd' 'SPC l g d'
+# 启动 python 或 ipython 交互进程，快捷键为： SPC l s i
+
 # SPC l s b	发送整个文件内容至 REPL
 # SPC l s l	发送当前行内容至 REPL
 # SPC l s s	发送已选中的内容至 REPL
@@ -70,17 +71,25 @@
 # normal	SPC l c s	coverager show
 # normal	SPC l c e	coverager session
 # normal	SPC l c f	coverager refresh
+#        '# vim: expandtab softtabstop=4 shiftwidth=4',
 [[layers]]
   name = 'lang#python'
-  enable_typeinfo = true # 显示类型,可以注释 
+  enable_typeinfo = true # 显示类型,可以注释
   python_file_head = [
-        '#!/usr/bin/env python',
         '# -*- coding: utf-8 -*-',
+        '# vim: expandtab softtabstop=4 shiftwidth=4',
         '',
         ''
   ]
 
-# markdown 
+[[layers]]
+  name = "format"
+
+[[layers]]
+   name = "debug"
+
+
+# markdown
 # SPC b f	Normal	格式化当前文件
 # SPC l k	Normal/Visual	为光标下的单词或者选中文本增加 URL 链接
 # SPC l K	Normal/Visual	为光标下的单词或者选中文本增加图片链接

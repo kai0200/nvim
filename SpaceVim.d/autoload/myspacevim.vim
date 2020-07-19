@@ -5,6 +5,27 @@ func! myspacevim#before() abort
   let g:python_host_prog = '/usr/bin/python2.7'
   let g:python3_host_prog = '/usr/local/bin/python3.8'
 
+  " tab相关变更
+  " 设置Tab键的宽度        [等同的空格个数]
+  set tabstop=4
+  " 每一次缩进对应的空格数
+  set shiftwidth=4
+  " 按退格键时可以一次删掉 4 个空格
+  set softtabstop=4
+  " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
+  set smarttab
+  " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
+  set expandtab
+  " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
+  set shiftround
+
+  " 具体编辑文件类型的一般设置，比如不要 tab 等
+  autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+  autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+  autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
+  autocmd BufRead,BufNewFile *.part set filetype=html
+  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
   " for # indent, python文件中输入新行时#号注释不切回行首
   autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
 
@@ -134,7 +155,6 @@ func! myspacevim#after() abort
 
   " Quickly close the current window
   "nnoremap <leader>q :q<CR>
-  nnoremap <leader>q :call SpaceVim#mapping#BufferEmpty()<CR>
 
   " 交换 ' `, 使得可以快速使用'跳到marked位置
   nnoremap ' `
@@ -148,30 +168,11 @@ func! myspacevim#after() abort
   vnoremap <leader>c "+y
 
 
-  " tab相关变更
-  " 设置Tab键的宽度        [等同的空格个数]
-  set tabstop=4
-  " 每一次缩进对应的空格数
-  set shiftwidth=4
-  " 按退格键时可以一次删掉 4 个空格
-  set softtabstop=4
-  " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
-  set smarttab
-  " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
-  set expandtab
-  " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
-  set shiftround
-
-  " 具体编辑文件类型的一般设置，比如不要 tab 等
-  "autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
-  "autocmd FileType ruby,javascript,html,css,xml set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-  "autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
-  "autocmd BufRead,BufNewFile *.part set filetype=html
-  "autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-  "autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
 
   " disable showmatch when use > in php
   au BufWinEnter *.php set mps-=<:>
+
+  set ts=4
 
   " ------------------- END -----------------------
 endf

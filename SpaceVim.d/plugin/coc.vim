@@ -7,6 +7,32 @@ set hidden
 set nobackup
 set nowritebackup
 
+set ts=4
+
+" tab相关变更
+" 设置Tab键的宽度        [等同的空格个数]
+set tabstop=4
+" 每一次缩进对应的空格数
+set shiftwidth=4
+" 按退格键时可以一次删掉 4 个空格
+set softtabstop=4
+" insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
+set smarttab
+" 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
+set expandtab
+" 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
+set shiftround
+
+" 具体编辑文件类型的一般设置，比如不要 tab 等
+autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
+autocmd BufRead,BufNewFile *.part set filetype=html
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+" for # indent, python文件中输入新行时#号注释不切回行首
+autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
+
 " 使用 Microsoft Python Language Server 不然 coc.nvim 会警告
 call coc#config("python.jediEnabled", v:false)
 
@@ -55,9 +81,9 @@ call coc#config("languageserver", {
 
 " coc.nvim 插件，用于支持 python java 等语言
 let s:coc_extensions = [
-			\ 'coc-python',
-			\ 'coc-java',
-			\ 'coc-json',
+      \ 'coc-python',
+	  \ 'coc-java',
+	  \ 'coc-json',
       \ 'coc-css',
       \ 'coc-html',
       \ 'coc-word',
@@ -70,14 +96,14 @@ let s:coc_extensions = [
       \ 'coc-tsserver',
       \ 'coc-vimtex',
       \ 'coc-todolist',
-             \'coc-syntax',
-             \ 'coc-tasks',
-             \ 'coc-todolist',
-             \ 'coc-translator',
-             \ 'coc-vimlsp',
-             \ 'coc-yaml',
-             \ 'coc-yank',
-			\]
+      \ 'coc-syntax',
+      \ 'coc-tasks',
+      \ 'coc-todolist',
+      \ 'coc-translator',
+      \ 'coc-vimlsp',
+      \ 'coc-yaml',
+      \ 'coc-yank',
+      \]
 " popup 翻译快捷键
 nmap <Leader>t <Plug>(coc-translator-p)
 vmap <Leader>t <Plug>(coc-translator-pv)
