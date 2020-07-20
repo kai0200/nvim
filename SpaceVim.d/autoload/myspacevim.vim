@@ -116,8 +116,11 @@ func! myspacevim#before() abort
   " ~/.SpaceVim.d/plugin/jedi.vim
   " 在此处加入的可能被其他插件覆盖,去plugin里添加一个修改掉就可以了
   map <leader>n :Defx<cr>
-
+ 
+  " markdown table 
   map <leader>tm :TableModeToggle<cr>
+
+
 
   " ------------------- END -----------------------
   "
