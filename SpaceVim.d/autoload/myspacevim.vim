@@ -2,8 +2,9 @@ func! myspacevim#before() abort
 
   " ------------------- START  -----------------------
   "
-  let g:python_host_prog = '/usr/bin/python2.7'
-  let g:python3_host_prog = '/usr/local/bin/python3.8'
+  "let g:python_host_prog = '/usr/bin/python2.7'
+  "let g:python3_host_prog = '/usr/local/bin/python3.8'
+  
 
   " tab相关变更
   " 设置Tab键的宽度        [等同的空格个数]
@@ -18,6 +19,7 @@ func! myspacevim#before() abort
   set expandtab
   " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
   set shiftround
+
 
   " 具体编辑文件类型的一般设置，比如不要 tab 等
   autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
@@ -64,7 +66,7 @@ func! myspacevim#before() abort
   "call SpaceVim#custom#SPC('nnoremap', ['g', 'l'], 'FloatermNew lazygit', 'open lazygit in floaterm', 1)
 
   " 设置默认的pdf阅览工具
-  let g:vimtex_view_method = 'zathura'
+  " let g:vimtex_view_method = 'zathura'
 
 
   " 保证在插入模式<F4>可以 toggle floaterm
@@ -77,7 +79,7 @@ func! myspacevim#before() abort
   let g:mapleader = ','
 
   "" 关闭所有隐藏设置 浮动窗口
-	let g:tex_conceal = ""
+  let g:tex_conceal = ""
 
   let g:floaterm_keymap_new    = '<C-n>'
   let g:floaterm_keymap_prev   = '<C-h>'
@@ -110,6 +112,13 @@ func! myspacevim#before() abort
     endif
   endif
 
+  " <leader>n "  jedi 占用了,n 查jedi git 配置修改到plugin/jedi.vim 生效了
+  " ~/.SpaceVim.d/plugin/jedi.vim
+  " 在此处加入的可能被其他插件覆盖,去plugin里添加一个修改掉就可以了
+  map <leader>n :Defx<cr>
+
+  map <leader>tm :TableModeToggle<cr>
+
   " ------------------- END -----------------------
   "
 endf
@@ -118,6 +127,7 @@ func! myspacevim#after() abort
   " ------------------- START  -----------------------
   " 放到此处用于重写 SpaceVim 映射的 F2
   " nnoremap  <F2>  :Vista!!<CR>
+  nnoremap  <F9>  :TagbarToggle<CR>
 
   " Quickly save the current file
   nnoremap <leader>w :w<CR>
@@ -174,5 +184,48 @@ func! myspacevim#after() abort
 
   set ts=4
 
+" F3 显示可打印字符开关
+" nnoremap <F3> :set list! list?<CR>
+" F4 换行开关
+nnoremap <F4> :set wrap! wrap?<CR>
+
+" F6 语法开关，关闭语法可以加快大文件的展示
+nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+
+set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
+                                "    paste mode, where you can paste mass data
+                                "    that won't be autoindented
+
+" F5 set paste问题已解决, 粘贴代码前不需要按F5了
+" F5 粘贴模式paste_mode开关,用于有格式的代码粘贴
+" Automatically set paste mode in Vim when pasting in insert mode
+function! XTermPasteBegin()
+  set pastetoggle=<Esc>[201~
+  set paste
+  return ""
+endfunction
+inoremap <special> <expr> <Esc>[200~ XTermPasteBegin()
+
+" 分屏窗口移动, Smart way to move between windows
+map <C-j> <C-W>j
+map <C-k> <C-W>k
+map <C-h> <C-W>h
+map <C-l> <C-W>l
+
+
+" 进入搜索Use sane regexes"
+nnoremap / /\v
+vnoremap / /\v
+
+
+" 去掉搜索高亮
+noremap <silent><leader>/ :nohls<CR>
+
+" F10 run
+map <F10> :call SpaceVim#plugins#runner#open()<CR>
+
+
+
   " ------------------- END -----------------------
+
 endf

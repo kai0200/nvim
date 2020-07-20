@@ -79,6 +79,8 @@ call coc#config("languageserver", {
       \},
       \})
 
+      "去掉了报错配置bash  "ignoredRootPaths": ["~"]
+      
 " coc.nvim 插件，用于支持 python java 等语言
 let s:coc_extensions = [
       \ 'coc-python',

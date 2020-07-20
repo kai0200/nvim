@@ -1,70 +1,91 @@
 # SpaceVim
 
-### 自定义快捷键
+## 备份 ##
+| Keys               | 快捷键说明                       |
+|--------------------|----------------------------------|
+| :g/^###/s/$/ ###/g | 替换所有###开头的行,末尾添加 ### |
 
-  - <SPC> 快捷键
-    ```vim
-    function! myspacevim#before() abort
-      call SpaceVim#custom#SPCGroupName(['G'], '+TestGroup')
-      call SpaceVim#custom#SPC('nore', ['G', 't'], 'echom 1', 'echomessage 1', 1)
-    endfunction
-    ```
 
-  - 组合快捷键
-    ```vim
-    function! myspacevim#before() abort
-      autocmd FileType c,cpp noremap <C-]> <Esc>:execute "Cppman " . expand("<cword>")<CR>
-      " 其他方式参看插件说明"
-    endfunction
-    ```
+### 自定义快捷键  ###
 
-### 查看日志
+- <SPC> 快捷键
+```vim
+function! myspacevim#before() abort
+  call SpaceVim#custom#SPCGroupName(['G'], '+TestGroup')
+  call SpaceVim#custom#SPC('nore', ['G', 't'], 'echom 1', 'echomessage 1', 1)
+endfunction
+```
 
-  ```viml
-  :SPDebugInfo!
+- spacevim 自动定义快捷键不生效问题
+需要修改的文件基本在 ~/.SpaceVim.d/autoload/myspacevim.vim 这个文件里,按vim默认方式替换即可.
+还有一种情况是被系统其他插件占用,如 
+```
+<leader>+n :call jedi#usages() 
+```
+研究了一下,附加插件的快捷键配置应该会覆盖用户指定的一些快捷键,需要用户在 ~/.SpaceVim.d/plugin/jedi.vim
+增加相应名字的插件配置,修改以前的快捷键
+```
+➜ cat  ~/.SpaceVim.d/plugin/jedi.vim
+let g:jedi#usages_command = "<leader>u"
+#调整说明查看不同插件的git吧,可能配置不太一样.
+```
+在jedi.vim 里修改了key设置,myspacevim.vim #befor() 函数段里增加的快捷键就会生效了.
+
+- 组合快捷键
+```vim
+function! myspacevim#before() abort
+  autocmd FileType c,cpp noremap <C-]> <Esc>:execute "Cppman " . expand("<cword>")<CR>
+  " 其他方式参看插件说明"
+endfunction
   ```
 
-### 禁用插件
+### 查看日志 ###
+
+```viml
+:SPDebugInfo!
+```
+
+### 禁用插件 ###
   ```vim
   disabled_plugins = ["clighter", "clighter8"]
   ```
 
-### 修改windows 键
+### 修改windows 键 ###
   ```
   spacevim_windows_leader:  s
   [options]
     windows_leader = ''
   ```
 
-### 恢复默认vim  f F t T
+### 恢复默认vim  f F t T ###
   ```
   [options]
     enable_language_specific_leader = false
   ```
 
-### 宏录制
+### 宏录制 ###
   ```
   q 恢复vim 模式
   [options]
     windows_smartclose = ''
   ```
 
-### 命令行方向键
+### 命令行方向键 ###
     Ctrl-a Ctrl-b Ctrl-f
 
-### 恢复vim 所有默认快捷键
+### 恢复vim 所有默认快捷键 ###
     vimcompatible = true
 
-### 添加本地克隆版本插件
+### 添加本地克隆版本插件 ###
   ```
   function! myspacevim#before() abort
     set rtp+=~/path/to/your/localplugin
   endfunction
   ```
-### 随机下一个主题
+### 随机下一个主题 ###
     SPC T n
 
-### 状态栏显示
+### 状态栏显示 ###
 
   | 快捷键  | Unicode | ASCII | 功能                 |
   |---------|---------|-------|----------------------|
@@ -74,10 +95,15 @@
   | SPC t S | Ⓢ       | S     | 拼写检查             |
   | SPC t w | ⓦ       | w     | 行尾空格检查         |
 
-### markdown 预览
-    [SPC] l p
+### markdown ###
 
-### FileTree
+| 功能 | 快捷键    |
+|------|-----------|
+| 预览 | [SPC] l p |
+| 表格 | ,tm       |
+    
+
+### FileTree ###
     新建文件: N
     显示隐藏: .
     预览: p
@@ -86,7 +112,7 @@
     刷新: Ctrl+r
     切换窗口文件: Ctrl+x
 
-### q 宏
+### q 宏 ###
   ```
   <leader> q r	原生 q 快捷键
   <leader> q r/	原生 q / 快捷键，打开命令行窗口
@@ -94,7 +120,7 @@
   <leader> q r:	原生 q : 快捷键，打开命令行窗口
   ```
 
-### 导航键 [SPC] s , g z
+### 导航键 [SPC] s , g z ###
   - s 文件关闭打开等
     ```
     新建：s-t
@@ -109,65 +135,65 @@
     ```
   - z 折行
 
-### 自定义[SPC]
+### 自定义[SPC] ###
 
   ```vim
   call SpaceVim#custom#SPC('nnoremap', ['f', 't'], 'echom "hello world"', 'test custom SPC', 1)
   [SPC] ? 看帮助
   ```
 
-### 格式化代码
+### 格式化代码 ###
   [SPC] b f
 
-### 运行代码块
+### 运行代码块 ###
   [SPC] l r
 
-### 多光标修改
+### 多光标修改 ###
   Ctrl+m Ctrl+x Ctrl+p
 
-### 按等号对齐
+### 按等号对齐 ###
   [SPC] x a =
 
-### 将选中字符串转为大写
+### 将选中字符串转为大写 ###
   [SPC] x U
 
-### 数字+1
+### 数字+1 ###
   [SPC] n + (临时快捷键模式+ -)
 
-### 注释/反注释
+### 注释/反注释 ###
   [SPC] c l   CU: ,/
 
-### 切换标签
+### 切换标签 ###
   gr
 
-### coc 缺少shell
+### coc 缺少shell ###
   `npm i -g bash-language-server`
 
-### 退出配置解决完毕
+### 退出配置解决完毕 ###
   Ctrl+t newfile  ,q退出当前标签 原操作 st   sx
 
-### 保存
+### 保存 ###
   Ctrl+s ,w
 
-### 调整窗口
+### 调整窗口 ###
   [SPC] w .
 
-### 缓冲区清理
+### 缓冲区清理 ###
   [SPC] b . 缓冲区清理  SPC b C-d	删除其它所有缓冲区
 
-### 打开初始页面
+### 打开初始页面 ###
   [SPC] b h
 
-### 标签
+### 标签 ###
   打标记 mm  切换: mn  mp mi
 
-### 看所有模块
+### 看所有模块 ###
   命令 :SPLayer -l 或者快捷键 SPC h l 来展示
 
-### 模糊查找快捷键，并执行该快捷键
+### 模糊查找快捷键，并执行该快捷键 ###
   <Leader> f <Space>
 
-### 搜索功能 spc  s
+### 搜索功能 spc  s ###
    1. 本文件  s s
    2. 目录    s d
    3. 任意目录 s f
@@ -175,7 +201,7 @@
    5. 后台 s j
    6. 网上 s w
 
-### 实时代码检索 spc s g G
+### 实时代码检索 spc s g G ###
 
 | 快捷键    | 功能描述                                           |
 |-----------|----------------------------------------------------|
@@ -184,7 +210,7 @@
 | SPC h k   | 使用快捷键导航，展示 SpaceVim 所支持的前缀键       |
 | SPC h m   | 使用 Unite 浏览所有 man 文档                       |
 
-### 常用的成对快捷键
+### 常用的成对快捷键 ###
   [ q	跳至前一个错误
   ] q	跳至下一个错误
   [ t	跳至前一个标签页
@@ -192,21 +218,21 @@
   [ w	跳至前一个窗口
   ] w	跳至下一个窗口
 
-### 以 g 为前缀的快捷键
+### 以 g 为前缀的快捷键 ###
   g '	跳至标签
   g *	正向搜索光标下的词
 
-### yw /(Ctrl+R0)
+### yw /(Ctrl+R0) ###
   让光标停留在单词的第一个字母上， 然后输入yw拷贝该单词， 然后输入 / (Ctrl + R) 0 （即 /”0），回车， 就查找到了第一个匹配的单词， 并且可以通过 n  或  N 进行上一个或下一个的匹配
 
-### v 选中要复制的文字,
+### v 选中要复制的文字, ###
   <leader>c (实际操作为 "+y) 拷贝,
 
-### 多光标
+### 多光标 ###
   1. [SPC] se
   2. [SPC] sh
 
-### 错误管理导航键 (以 e 开头)：   spc  e   l
+### 错误管理导航键 (以 e 开头)：   spc  e   l ###
 
 | 快捷键  | 功能描述                                                                    |
 |---------|-----------------------------------------------------------------------------|
@@ -220,7 +246,7 @@
 | SPC e . | 错误暂态（error transient state)                                            |
 
 
-### quickfix 列表移动：
+### quickfix 列表移动： ###
 
 | 快捷键       | 功能描述                       |
 |--------------|--------------------------------|
@@ -228,3 +254,11 @@
 | <Leader> q c | 清除 quickfix 列表             |
 | <Leader> q n | 跳到 quickfix 列表中下一个位置 |
 | <Leader> q p | 跳到 quickfix 列表中上一个位置 |
+
+### python2/3 设置
+```shell
+# 在.bashrc 或 .zshrc 增加设置
+# For coc.nvim python
+  export PYTHON_HOST_PROG="/usr/bin/python2"
+  export PYTHON3_HOST_PROG="/usr/local/opt/python@3.8/bin/python3.8"
+```
