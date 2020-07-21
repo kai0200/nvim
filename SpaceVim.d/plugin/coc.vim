@@ -9,31 +9,6 @@ call coc#config("diagnostic.enableHintSign", v:false)
 
 " c/c++ golang 和 bash 的 language server 设置
 call coc#config("languageserver", {
-      \"ccls": {
-      \  "command": "ccls",
-      \  "filetypes": ["c", "cpp"],
-      \  "rootPatterns": ["compile_commands.json", ".svn/", ".git/"],
-      \  "index": {
-      \     "threads": 8
-      \  },
-      \  "initializationOptions": {
-      \     "cache": {
-      \       "directory": ".ccls-cache"
-      \     },
-      \     "highlight": { "lsRanges" : v:true }
-      \   },
-      \  "client": {
-      \    "snippetSupport": v:true
-      \   }
-      \},
-      \"golang": {
-      \      "command": "gopls",
-      \      "rootPatterns": ["go.mod", ".vim/", ".git/", ".svn/"],
-      \      "filetypes": ["go"],
-      \      "initializationOptions": {
-      \        "usePlaceholders": "true"
-      \      }
-      \},
       \"bash": {
       \  "command": "bash-language-server",
       \  "args": ["start"],
