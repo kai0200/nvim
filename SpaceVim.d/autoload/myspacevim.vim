@@ -19,6 +19,10 @@ func! myspacevim#before() abort
   set expandtab
   " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
   set shiftround
+  " 取消备份。 视情况自己改
+  set nobackup
+  " 关闭交换文件
+  set noswapfile
 
 
   " 具体编辑文件类型的一般设置，比如不要 tab 等
@@ -188,12 +192,14 @@ func! myspacevim#after() abort
   set ts=4
 
 " F3 显示可打印字符开关
-" nnoremap <F3> :set list! list?<CR>
+"nnoremap <F3> :set signcolumn! signcolumn?<CR>
+" set signcolumn=no
 " F4 换行开关
 nnoremap <F4> :set wrap! wrap?<CR>
 
 " F6 语法开关，关闭语法可以加快大文件的展示
-nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
+nnoremap <F6> :set signcolumn! signcolumn?<CR>
+"nnoremap <F6> :exec exists('syntax_on') ? 'syn off' : 'syn on'<CR>
 
 set pastetoggle=<F5>            "    when in insert mode, press <F5> to go to
                                 "    paste mode, where you can paste mass data

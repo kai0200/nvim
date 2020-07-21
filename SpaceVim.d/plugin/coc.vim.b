@@ -3,9 +3,18 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " 使用 Microsoft Python Language Server 不然 coc.nvim 会警告
 call coc#config("python.jediEnabled", v:false)
+
 " 
 "call coc#config("diagnostic.hintSignColumn", v:false)
 call coc#config("diagnostic.enableHintSign", v:false)
+
+call coc#config('coc.preferences', {
+			\ "autoTrigger": "always",
+			\ "maxCompleteItemCount": 10,
+			\ "codeLens.enable": 1,
+			\ "diagnostic.virtualText": 1,
+			\})
+
 
 " c/c++ golang 和 bash 的 language server 设置
 call coc#config("languageserver", {
@@ -69,6 +78,15 @@ let s:coc_extensions = [
       \ 'coc-yaml',
       \ 'coc-yank',
       \]
+" popup 翻译快捷键
+nmap <Leader>t <Plug>(coc-translator-p)
+vmap <Leader>t <Plug>(coc-translator-pv)
+" echo
+nmap <Leader>e <Plug>(coc-translator-e)
+nmap <Leader>e <Plug>(coc-translator-ev)
+" replace
+nmap <Leader>r <Plug>(coc-translator-r)
+nmap <Leader>r <Plug>(coc-translator-rv)
 for extension in s:coc_extensions
 	call coc#add_extension(extension)
 endfor
@@ -83,6 +101,21 @@ function! s:check_back_space() abort
   let col = col('.') - 1
   return !col || getline('.')[col - 1]  =~# '\s'
 endfunction
+
+" 方便在中文中间使用 w 和 b 移动
+nmap <silent> w <Plug>(coc-ci-w)
+nmap <silent> b <Plug>(coc-ci-b)
+
+
+" Use <cr> for confirm completion, `<C-g>u` means break undo chain at current position.
+" Coc only does snippet and additional edit on confirm.
+inoremap <expr> <cr> pumvisible() ? "\<C-y>" : "\<C-g>u\<CR>"
+
+" Remap keys for gotos
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
 
 " Use K for show documentation in preview window
 nnoremap <silent> K :call <SID>show_documentation()<CR>
@@ -105,16 +138,16 @@ nmap <leader>rn <Plug>(coc-rename)
 
 " 注释掉，一般使用 `Space` `r` `f` 直接格式化整个文件
 " Remap for format selected region
- vmap <leader>f  <Plug>(coc-format-selected)
- nmap <leader>f  <Plug>(coc-format-selected)
+" vmap <leader>f  <Plug>(coc-format-selected)
+" nmap <leader>f  <Plug>(coc-format-selected)
 
-"augroup mygroup
-"  autocmd!
-"  " Setup formatexpr specified filetype(s).
-"  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
-"  " Update signature help on jump placeholder
-"  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
-"augroup end
+augroup mygroup
+  autocmd!
+  " Setup formatexpr specified filetype(s).
+  autocmd FileType typescript,json setl formatexpr=CocAction('formatSelected')
+  " Update signature help on jump placeholder
+  autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
+augroup end
 
 " Remap for do codeAction of selected region, ex: `<leader>aap` for current paragraph
 vmap <leader>a  <Plug>(coc-codeaction-selected)
@@ -135,6 +168,19 @@ command! -nargs=? Fold :call     CocAction('fold', <f-args>)
 " auto import for go on save
 autocmd BufWritePre *.go :call CocAction('runCommand', 'editor.action.organizeImport')
 
+" 这个和 SpaceVim 的 statusline/tabline 冲突了
+" Add diagnostic info for https://github.com/itchyny/lightline.vim
+" let g:lightline = {
+"       \ 'colorscheme': 'wombat',
+"       \ 'active': {
+"       \   'left': [ [ 'mode', 'paste' ],
+"       \             [ 'cocstatus', 'readonly', 'filename', 'modified' ] ]
+"       \ },
+"       \ 'component_function': {
+"       \   'cocstatus': 'coc#status'
+"       \ },
+"       \ }
+
 
 " Using CocList
 " Show all diagnostics
@@ -146,14 +192,14 @@ nnoremap <silent> <leader>d  :<C-u>CocList diagnostics<cr>
 "使用 :CocCommand translator.exportHistory导出翻译历史
 
 " popup
-nmap <leader>t <Plug>(coc-translator-p)
-vmap <leader>t <Plug>(coc-translator-pv)
+nmap ,t <Plug>(coc-translator-p)
+vmap ,t <Plug>(coc-translator-pv)
 " echo
-nmap <leader>e <Plug>(coc-translator-e)
-nmap <leader>e <Plug>(coc-translator-ev)
+nmap ,e <Plug>(coc-translator-e)
+nmap ,e <Plug>(coc-translator-ev)
 " replace
-nmap <leader>r <Plug>(coc-translator-r)
-nmap <leader>r <Plug>(coc-translator-rv)
+nmap ,r <Plug>(coc-translator-r)
+nmap ,r <Plug>(coc-translator-rv)
 
 " Manage extensions
 " nnoremap <silent> <space>e  :<C-u>CocList extensions<cr>
@@ -169,3 +215,36 @@ nmap <leader>r <Plug>(coc-translator-rv)
 " nnoremap <silent> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list
 " nnoremap <silent> <space>p  :<C-u>CocListResume<CR>
+
+" nn <silent> xl :call CocLocations('ccls','$ccls/navigate',{'direction':'D'})<cr>
+" nn <silent> xk :call CocLocations('ccls','$ccls/navigate',{'direction':'L'})<cr>
+" nn <silent> xj :call CocLocations('ccls','$ccls/navigate',{'direction':'R'})<cr>
+" nn <silent> xh :call CocLocations('ccls','$ccls/navigate',{'direction':'U'})<cr>
+"
+" noremap x <Nop>
+" nn <silent> xb :call CocLocations('ccls','$ccls/inheritance')<cr>
+" " bases of up to 3 levels
+" nn <silent> xb :call CocLocations('ccls','$ccls/inheritance',{'levels':3})<cr>
+" " derived
+" nn <silent> xd :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true})<cr>
+" " derived of up to 3 levels
+" nn <silent> xD :call CocLocations('ccls','$ccls/inheritance',{'derived':v:true,'levels':3})<cr>
+"
+" " caller
+" nn <silent> xc :call CocLocations('ccls','$ccls/call')<cr>
+" " callee
+" nn <silent> xC :call CocLocations('ccls','$ccls/call',{'callee':v:true})<cr>
+"
+" " $ccls/member
+" " member variables / variables in a namespace
+" nn <silent> xm :call CocLocations('ccls','$ccls/member')<cr>
+" " member functions / functions in a namespace
+" nn <silent> xf :call CocLocations('ccls','$ccls/member',{'kind':3})<cr>
+" " nested classes / types in a namespace
+" nn <silent> xs :call CocLocations('ccls','$ccls/member',{'kind':2})<cr>
+"
+" nmap <silent> xt <Plug>(coc-type-definition)<cr>
+" nn <silent> xv :call CocLocations('ccls','$ccls/vars')<cr>
+" nn <silent> xV :call CocLocations('ccls','$ccls/vars',{'kind':1})<cr>
+"
+" nn xx x

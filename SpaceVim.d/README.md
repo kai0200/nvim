@@ -264,3 +264,76 @@ endfunction
   export PYTHON_HOST_PROG="/usr/bin/python2"
   export PYTHON3_HOST_PROG="/usr/local/opt/python@3.8/bin/python3.8"
 ```
+
+### git.gitgutter 装订线(左边侧栏重复显示问题)
+
+安装的gitgutter 可以很好的显示git diff 增加删除修改等, 现有coc.nvim也出现提示标丑,想禁止掉查找很久.
+
+- 命令总结
+```vim
+:set signcolumn=no  # 关闭侧栏显示
+:GitGutterDisable   # 关闭git提醒
+:CocDisable         # 禁用Coc
+:autocmd CursorHold # autocmd 查看所有列表
+:sign list          # 查看sign 的插件命令
+:let  <tab>         # 可查看所有let 参数
+```
+
+- 办法  [参考]()https://www.reddit.com/r/vim/comments/do98do/how_do_i_get_the_pretty_icons_for_diagnostic/
+增加~/.SpaceVim/coc-settings.json   
+生效代码应该是 ```"git.enableGutters": false``` ,这样就是用gitgutter插件的git提醒,错误检查和报警使用coc.nvim的
+
+```json
+# ln -s ~/.SpaceVim.d/coc-settings.json  ~/.SpaceVim/
+# 软连接到真实目录,
+
+{
+  "codeLens.enable": true,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "diagnostic-languageserver.filetypes": {
+    "sh": "shellcheck"
+  },
+  "eslint.enable": false,
+  "eslint.filetypes": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact"
+  ],
+  "git.realtimeGutters": true,
+  "suggest.noselect": true,
+  "languageserver": {
+    "dhall": {
+      "command": "dhall-lsp-server",
+      "filetypes": ["dhall"]
+    },
+    "scala": {
+      "command": "node",
+      "args": ["/home/jesse/bin/sbt-server-stdio.js"],
+      "filetypes": ["scala"],
+      "initializationOptions": {},
+      "settings": {},
+      "rootPatterns": ["build.sbt"]
+    }
+  },
+  "list.insertMappings": {
+    "<C-x>": "action:split",
+    "<C-v>": "action:vsplit"
+  },
+  "list.normalMappings": {
+    "s": "action:split",
+    "v": "action:vsplit"
+  },
+  "list.source.files.command": "fd",
+  "list.source.files.args": ["--type", "f"],
+  "tsserver.enableJavascript": true,
+  "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.preferences.quoteStyle": "double",
+  "typescript.referencesCodeLens.enable": false,
+  "git.enableGutters": false
+}
+
+```

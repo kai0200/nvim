@@ -53,6 +53,11 @@
 [[layers]]
   name = 'Shougo/vimproc.vim'
 
+[[layers]]
+  name = "git"
+
+[[layers]]
+  name = "github"
 # ----------------------------------------------------------
 # python
 # 1. SPC bf 自动格式化 yapf pip install --user yapf

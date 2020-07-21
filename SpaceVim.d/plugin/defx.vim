@@ -2,3 +2,15 @@
 call defx#custom#option('_', {
     \ 'ignored_files': ".*,*.class,*.out,*.o,*.bc,*.a,compile_commands.json,*.d,*.mod*,*.cmd,.tmp_versions/,modules.order,Module.symvers,Mkfile.old,dkms.conf,*.ko",
     \ })
+
+
+call defx#custom#column('git', 'indicators', {
+  \ 'Modified'  : '✹',
+  \ 'Staged'    : '✚',
+  \ 'Untracked' : '✭',
+  \ 'Renamed'   : '➜',
+  \ 'Unmerged'  : '═',
+  \ 'Ignored'   : '☒',
+  \ 'Deleted'   : '✖',
+  \ 'Unknown'   : '?'
+  \ })
