@@ -123,7 +123,27 @@ func! myspacevim#before() abort
  
   " markdown table 
   map <leader>tm :TableModeToggle<cr>
-
+  " 配置markdown快速编辑键 {{{
+  autocmd Filetype markdown map <leader>w yiWi[<esc>Ea](<esc>pa)
+  autocmd Filetype markdown inoremap <buffer> <leader>f <Esc>/<++><CR>:nohlsearch<CR>"_c4l
+  autocmd Filetype markdown inoremap <buffer> <leader>w <Esc>/ <++><CR>:nohlsearch<CR>"_c5l<CR>
+  autocmd Filetype markdown inoremap <buffer> <leader>n ---<Enter><Enter>
+  autocmd Filetype markdown inoremap <buffer> <leader>b **** <++><Esc>F*hi
+  autocmd Filetype markdown inoremap <buffer> <leader>s ~~~~ <++><Esc>F~hi
+  autocmd Filetype markdown inoremap <buffer> <leader>i ** <++><Esc>F*i
+  autocmd Filetype markdown inoremap <buffer> <leader>d `` <++><Esc>F`i
+  autocmd Filetype markdown inoremap <buffer> <leader>c ```<Enter><++><Enter>```<Enter><Enter><++><Esc>4kA
+  autocmd Filetype markdown inoremap <buffer> <leader>m - [ ]
+  autocmd Filetype markdown inoremap <buffer> <leader>p ![](<++>) <++><Esc>F[a
+  autocmd Filetype markdown inoremap <buffer> <leader>a [](<++>) <++><Esc>F[a
+  autocmd Filetype markdown inoremap <buffer> <leader>1 #<Space><Enter><++><Esc>kA
+  autocmd Filetype markdown inoremap <buffer> <leader>2 ##<Space><Enter><++><Esc>kA
+  autocmd Filetype markdown inoremap <buffer> <leader>3 ###<Space><Enter><++><Esc>kA
+  autocmd Filetype markdown inoremap <buffer> <leader>4 ####<Space><Enter><++><Esc>kA
+  autocmd Filetype markdown inoremap <buffer> <leader>l --------<Enter>
+  autocmd Filetype markdown inoremap <buffer> <leader>p3 ###<Space> <++> - 项目组合 ###<Esc>I,f
+  autocmd Filetype markdown inoremap <buffer> <leader>p4 ####<Space> <++> - 项目组合 ####F[a
+  "}}}
 
 
   " ------------------- END -----------------------
@@ -182,7 +202,7 @@ func! myspacevim#after() abort
   nnoremap * #
 
   " 复制选中区到系统剪切板中
-  vnoremap <leader>c "+y
+  vnoremap <leader>y "+y
 
 
 
