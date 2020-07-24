@@ -5,6 +5,8 @@ func! myspacevim#before() abort
   "let g:python_host_prog = '/usr/bin/python2.7'
   "let g:python3_host_prog = '/usr/local/bin/python3.8'
   
+  " 打开光标下文件
+  " gd
 
   " tab相关变更
   " 设置Tab键的宽度        [等同的空格个数]
@@ -252,50 +254,7 @@ noremap <silent><leader>/ :nohls<CR>
 
 " F10 run
 "map <F10> :call SpaceVim#plugins#runner#open()<CR>
-noremap <F10> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-	exec "w"
-	if &filetype == 'c'
-		exec "!g++ % -o %<"
-		exec "!time ./%<"
-	elseif &filetype == 'cpp'
-		set splitbelow
-		exec "!g++ -std=c++11 % -Wall -o %<"
-		:sp
-		:res -15
-		:term ./%<
-	elseif &filetype == 'java'
-		exec "!javac %"
-		exec "!time java %<"
-	elseif &filetype == 'sh'
-		:!time bash %
-	elseif &filetype == 'python'
-		":set splitbelow
-		":sp
-		":term python3 %
-        :call SpaceVim#plugins#runner#open()
-	elseif &filetype == 'html'
-		silent! exec "!".g:mkdp_browser." % &"
-	elseif &filetype == 'markdown'
-		exec "MarkdownPreview"
-	elseif &filetype == 'tex'
-		silent! exec "VimtexStop"
-		silent! exec "VimtexCompile"
-	elseif &filetype == 'dart'
-		exec "CocCommand flutter.run -d ".g:flutter_default_device
-		CocCommand flutter.dev.openDevLog
-	elseif &filetype == 'javascript'
-		set splitbelow
-		:sp
-		:term export DEBUG="INFO,ERROR,WARNING"; node --trace-warnings .
-	elseif &filetype == 'go'
-		set splitbelow
-		:sp
-		:term go run .
-	endif
-endfunc
-
-
+noremap <F10> :call SpaceVim#plugins#runner#open()<CR>
 
   " ------------------- END -----------------------
 
