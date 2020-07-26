@@ -147,7 +147,7 @@ func! myspacevim#before() abort
   autocmd Filetype markdown inoremap <buffer> <leader>p4 ####<Space> <++> - 项目组合 ####F[a
   "}}}
 
-
+  set termguicolors
   " ------------------- END -----------------------
   "
 endf

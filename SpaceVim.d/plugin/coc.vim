@@ -22,7 +22,6 @@ call coc#config("languageserver", {
 " coc.nvim 插件，用于支持 python java 等语言
 let s:coc_extensions = [
       \ 'coc-python',
-	  \ 'coc-java',
 	  \ 'coc-json',
       \ 'coc-css',
       \ 'coc-html',

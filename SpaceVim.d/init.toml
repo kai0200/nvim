@@ -160,8 +160,6 @@
   merge = 0
   build =  'yarn install --frozen-lockfile'
 
-
-
 # Test 插件 =============================
 # tmux 兼容插件
 [[custom_plugins]]
