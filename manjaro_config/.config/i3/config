@@ -1,0 +1,255 @@
+#exec xrandr --output eDP1 --off 
+
+#
+# 顶部状态栏
+#
+        #position top
+
+bar {
+        font pango:monospace 12
+        status_command ~/.config/i3/bumblebee-status/bumblebee-status -m network_traffic cpu memory disk:home pasink pasource date time -p home.path=/home/caler time.format="%H:%M:%S" date.format="%Y-%m-%d" memory.format="{used}/{total}" disk.format="{left}" -t dracula-powerline
+}
+
+set $background #101010
+set $foreground #ffffff
+set $secondary  #948E8E
+set $primary    #94B1F3
+set $tertiary   #948E8
+
+
+#
+# 设置快捷键
+#
+
+set $mod Mod4
+new_window pixel 1     
+new_float normal
+
+# Hide borders
+hide_edge_borders vertical
+
+# Use Mouse+$mod to drag floating windows
+floating_modifier $mod
+
+for_window [class="(?i)qq"] floating enable border normal
+for_window [class="systemsettings5"] floating enable
+#for_window [class="Skype"] floating enable border normal
+for_window [class="(?i)virtualbox"] floating enable border normal
+#for_window [class="Xfburn"] floating enable
+
+focus_follows_mouse no # [是否跟随鼠标改变现在的焦点窗口]
+
+#bindsym $mod+q kill                                              # [关闭窗口]
+bindsym $mod+Shift+q kill
+bindsym $mod+Ctrl+l exec --no-startup-id i3lock-fancy            # [锁屏]
+#bindsym $mod+Return exec --no-startup-id alacritty               # [终端]
+bindsym $mod+Return exec --no-startup-id konsole              # [终端]
+bindsym $mod+c exec --no-startup-id chromium                     # [chromium]
+bindsym $mod+Shift+a exec --no-startup-id deepin-screenshot      # [截图]
+bindsym $mod+d exec --no-startup-id rofi -show drun              # [快速搜索]
+#bindsym $mod+q exec --no-startup-id rofi -show window
+#bindsym $mod+Shift+q exec --no-startup-id /usr/bin/qq
+
+# change focus
+bindsym $mod+h focus left
+bindsym $mod+j focus down
+bindsym $mod+k focus up
+bindsym $mod+l focus right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Left focus left
+bindsym $mod+Down focus down
+bindsym $mod+Up focus up
+bindsym $mod+Right focus right
+
+# change container layout (stacked, tabbed, toggle split)
+bindsym $mod+s layout stacking               # [堆积]
+bindsym $mod+w layout tabbed                 # [标签] 
+bindsym $mod+e layout toggle split           # [切换差分]
+
+# toggle tiling / floating
+#bindsym $mod+Shift+space floating toggl      
+bindsym $mod+Shift+space floating
+
+# split in horizontal orientation            # 竖分屏
+bindsym $mod+g split h
+
+# split in vertical orientation              # 横分屏
+bindsym $mod+v split v
+
+# enter fullscreen mode for the focused container  # 全屏
+bindsym $mod+f fullscreen toggle
+
+# Define names for default workspaces for which we configure key bindings later on.
+# We use variables to avoid repeating the names in multiple places.
+
+set $ws1 1
+set $ws2 2
+set $ws3 3
+set $ws4 4
+set $ws5 5
+set $ws6 6
+set $ws7 7
+set $ws8 8
+set $ws9 9
+set $ws0 10
+
+# switch to workspace
+bindsym $mod+1 workspace $ws1
+bindsym $mod+2 workspace $ws2
+bindsym $mod+3 workspace $ws3
+bindsym $mod+4 workspace $ws4
+bindsym $mod+5 workspace $ws5
+bindsym $mod+6 workspace $ws6
+bindsym $mod+7 workspace $ws7
+bindsym $mod+8 workspace $ws8
+bindsym $mod+9 workspace $ws9
+bindsym $mod+0 workspace $ws0
+
+# Move focused container to workspace
+bindsym $mod+Ctrl+1 move container to workspace $ws1
+bindsym $mod+Ctrl+2 move container to workspace $ws2
+bindsym $mod+Ctrl+3 move container to workspace $ws3
+bindsym $mod+Ctrl+4 move container to workspace $ws4
+bindsym $mod+Ctrl+5 move container to workspace $ws5
+bindsym $mod+Ctrl+6 move container to workspace $ws6
+bindsym $mod+Ctrl+7 move container to workspace $ws7
+bindsym $mod+Ctrl+8 move container to workspace $ws8
+bindsym $mod+Ctrl+9 move container to workspace $ws9
+bindsym $mod+Ctrl+0 move container to workspace $ws0
+
+# Move to workspace with focused container
+bindsym $mod+Shift+1 move container to workspace $ws1; workspace $ws1
+bindsym $mod+Shift+2 move container to workspace $ws2; workspace $ws2
+bindsym $mod+Shift+3 move container to workspace $ws3; workspace $ws3
+bindsym $mod+Shift+4 move container to workspace $ws4; workspace $ws4
+bindsym $mod+Shift+5 move container to workspace $ws5; workspace $ws5
+bindsym $mod+Shift+6 move container to workspace $ws6; workspace $ws6
+bindsym $mod+Shift+7 move container to workspace $ws7; workspace $ws7
+bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
+bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
+bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
+
+# set $monitor1 eDP1
+# set $monitor2 HDMI1
+# workspace 0 output $monitor1
+# workspace 1 output $monitor1
+# workspace 2 output $monitor1
+# workspace 3 output $monitor1
+# workspace 4 output $monitor2
+# workspace 5 output $monitor2
+# workspace 6 output $monitor2
+# workspace 7 output $monitor2
+# workspace 8 output $monitor2
+# workspace 9 output $monitor2
+# reload the configuration file
+
+
+bindsym Print exec --no-startup-id i3-scrot
+bindsym $mod+Print --release exec --no-startup-id i3-scrot -w
+bindsym $mod+Shift+Print --release exec --no-startup-id i3-scrot -s
+
+bindsym $mod+Shift+c reload
+# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+bindsym $mod+Shift+r restart
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -B 'Yes, exit i3' 'i3-msg exit'"
+
+# resize window (you can also use the mouse for that)
+mode "resize" {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing up will shrink the window’s height.
+        # Pressing down will grow the window’s height.
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
+        bindsym semicolon resize grow width 10 px or 10 ppt
+
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 10 px or 10 ppt
+        bindsym Down resize grow height 10 px or 10 ppt
+        bindsym Up resize shrink height 10 px or 10 ppt
+        bindsym Right resize grow width 10 px or 10 ppt
+
+        # back to normal: Enter or Escape or $mod+r
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+        bindsym $mod+r mode "default"
+}
+
+bindsym $mod+r mode "resize"
+bindsym Mod1+Tab workspace next
+bindsym Mod1+Shift+Tab workspace prev
+bindsym Mod1+space exec --no-startup-id krunner  # 运行krunner
+
+# 设置截图快捷键 ,先安装mate-utils, sudo pacman -S mate-utils
+bindsym $mod+p  exec  mate-screenshot -i
+
+#
+# 加载项
+#
+
+
+# 输入法
+exec --no-startup-id fcitx
+
+# 网络连接
+exec --no-startup-id kdeconnect-indicator
+
+# 换背景
+#exec --no-startup-id variety
+exec_always  --no-startup-id variety
+
+# kde上的剪切板
+exec --no-startup-id klipper
+
+# 自动平铺
+exec_always --no-startup-id autotiling
+
+# 透明
+exec --no-startup-id compton -b
+exec --no-startup-id volumeicon
+
+
+#
+# gaps  边框
+#
+
+gaps inner 10
+gaps outer -2
+#smart_gaps on
+#smart_borders on
+
+# arandr-0.1.10-4 设置显卡 .screenlayout/hdmi.sh 导出
+#exec xrandr --newmode "3840x2160_30.00"  712.75  3840 4160 4576 5312  2160 2163 2168 2237 -hsync +vsync
+#exec xrandr --addmode HDMI1 3840x2160_30.00
+#exec xrandr --output HDMI1 --mode 3840x2160_30.00
+#exec xrandr --dpi 150 --output HDMI1 -s  3840x2160
+
+
+#exec xrandr --output eDP1 --off --output DP1 --off --output HDMI1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off
+#exec xrandr --output eDP1 --off --output DP1 --off --output HDMI1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off
+#exec xrandr --dpi 125 --output HDMI1 -s  3840x2160
+
+#xrandr --output HDMI1 --mode 3840x2160_30.00  --right-of eDP1 --auto
+#xrandr --output HDMI1 --mode 3840x2160_30.00  --right-of eDP1 --mode 1366x768
+#xrandr --addmode eDP1 1368x768_60.00
+#xrandr --newmode "1368x768_60.00"   85.25  1368 1440 1576 1784  768 771 781 798 -hsync +vsync
+#xrandr --newmode 1368x768 59.88 Hz (CVT) hsync: 47.79 kHz; pclk: 85.25 MHz
+
+#
+# 电源管理
+#
+
+set $mode_system select: lock(L) exit(E) reboot(R) poweroff(P) cancel(Esc)
+bindsym Pause mode "$mode_system"
+mode "$mode_system" {
+    bindsym l exec --no-startup-id i3lock -c '#000000', mode "default"
+    bindsym e exec --no-startup-id i3-msg exit, mode "default"
+    bindsym r exec --no-startup-id systemctl reboot, mode "default"
+    bindsym p exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym Escape mode "default"
+}

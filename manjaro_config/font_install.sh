@@ -1,0 +1,1 @@
+yay -S powerline powerline-fonts wqy-bitmapfont wqy-microhei wqy-microhei-lite wqy-zenhei ttf-font-awesome ttf-font-icons ttf-font-logos ttf-roboto ttf-roboto-mono noto-fonts-cjk adobe-source-han-sans-cn-fonts adobe-source-han-serif-cn-fonts awesome-terminal-fonts nerd-fonts-complete
