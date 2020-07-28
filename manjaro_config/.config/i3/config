@@ -1,6 +1,12 @@
 #exec xrandr --output eDP1 --off 
 
 #
+# 字体
+#
+font pango:monospace 
+#font pango:DejaVu Sans Mono 8
+
+#
 # 顶部状态栏
 #
         #position top
@@ -16,6 +22,15 @@ set $secondary  #948E8E
 set $primary    #94B1F3
 set $tertiary   #948E8
 
+# => 窗口边框类型（边框类型有normal正常/none无边框/pixel 1 自定义宽度）
+# 默认普通窗口的边框类型
+new_window none
+# 默认浮动窗口的边框类型
+new_float normal
+# 取消工作区边缘的边框
+hide_edge_borders both
+# 在三种边框类型中切换
+bindsym $mod+b border toggle
 
 #
 # 设置快捷键
@@ -40,10 +55,14 @@ for_window [class="(?i)virtualbox"] floating enable border normal
 focus_follows_mouse no # [是否跟随鼠标改变现在的焦点窗口]
 
 #bindsym $mod+q kill                                              # [关闭窗口]
-bindsym $mod+Shift+q kill
+#bindsym $mod+Shift+q kill
+# => 关闭窗口
+bindsym mod1+F4 kill
+
 bindsym $mod+Ctrl+l exec --no-startup-id i3lock-fancy            # [锁屏]
-#bindsym $mod+Return exec --no-startup-id alacritty               # [终端]
-bindsym $mod+Return exec --no-startup-id konsole              # [终端]
+bindsym $mod+Return exec --no-startup-id alacritty               # [终端]
+bindsym $mod+m      exec --no-startup-id konsole
+#bindsym $mod+Return exec --no-startup-id konsole              # [终端]
 bindsym $mod+c exec --no-startup-id chromium                     # [chromium]
 bindsym $mod+Shift+a exec --no-startup-id deepin-screenshot      # [截图]
 bindsym $mod+d exec --no-startup-id rofi -show drun              # [快速搜索]
@@ -54,7 +73,7 @@ bindsym $mod+d exec --no-startup-id rofi -show drun              # [快速搜索
 bindsym $mod+h focus left
 bindsym $mod+j focus down
 bindsym $mod+k focus up
-bindsym $mod+l focus right
+bindsym $mod+semicolon focus right
 
 # alternatively, you can use the cursor keys:
 bindsym $mod+Left focus left
@@ -83,16 +102,17 @@ bindsym $mod+f fullscreen toggle
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
 
-set $ws1 1
-set $ws2 2
-set $ws3 3
-set $ws4 4
-set $ws5 5
-set $ws6 6
-set $ws7 7
-set $ws8 8
-set $ws9 9
-set $ws0 10
+set $mod Mod4
+set $WS1  1:
+set $WS2  2:
+set $WS3  3:
+set $WS4  4:
+set $WS5  5:
+set $WS6  6:
+set $WS7  7:
+set $WS8  8:
+set $WS9  9:
+set $WS0 10:
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -240,16 +260,16 @@ gaps outer -2
 #xrandr --newmode "1368x768_60.00"   85.25  1368 1440 1576 1784  768 771 781 798 -hsync +vsync
 #xrandr --newmode 1368x768 59.88 Hz (CVT) hsync: 47.79 kHz; pclk: 85.25 MHz
 
-#
-# 电源管理
-#
-
-set $mode_system select: lock(L) exit(E) reboot(R) poweroff(P) cancel(Esc)
+# => 电源管理（Pause Break键呼出)
+set $mode_system 系统:锁屏(L) 注销(O) 关机(S) 重启(R) 取消(Esc)
 bindsym Pause mode "$mode_system"
 mode "$mode_system" {
-    bindsym l exec --no-startup-id i3lock -c '#000000', mode "default"
-    bindsym e exec --no-startup-id i3-msg exit, mode "default"
-    bindsym r exec --no-startup-id systemctl reboot, mode "default"
-    bindsym p exec --no-startup-id systemctl poweroff, mode "default"
+    bindsym l exec i3lock -c '#333333', exec sleep .1 && exec xset dpms force off, mode "default"
+    bindsym o exec i3-msg exit
+    bindsym s exec systemctl poweroff
+    bindsym r exec systemctl reboot
     bindsym Escape mode "default"
 }
+
+# 透明
+exec_always --no-startup-id picom
