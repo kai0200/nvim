@@ -49,6 +49,7 @@ hide_edge_borders vertical
 floating_modifier $mod
 
 for_window [class="(?i)qq"] floating enable border normal
+for_window [class="(?i)WeChat.exe"] floating enable border normal
 for_window [class="vlc"] floating enable border normal
 for_window [class="systemsettings5"] floating enable
 #for_window [class="Skype"] floating enable border normal
@@ -268,7 +269,8 @@ gaps outer -2
 set $mode_system 系统:锁屏(L) 注销(O) 关机(S) 重启(R) 取消(Esc)
 bindsym Pause mode "$mode_system"
 mode "$mode_system" {
-    bindsym l exec i3lock -c '#333333', exec sleep .1 && exec xset dpms force off, mode "default"
+#bindsym l exec i3lock -c '#333333', exec sleep .1 && exec xset dpms force off, mode "default"
+    bindsym l exec i3lock-fancy 
     bindsym o exec i3-msg exit
     bindsym s exec systemctl poweroff
     bindsym r exec systemctl reboot

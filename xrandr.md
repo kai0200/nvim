@@ -70,7 +70,7 @@ yay -S deepin.com.qq.office
 # 修复 TIM 字体发虚
 yay -S lib32-freetype2-infinality-ultimate
 # Wine HiDPI 缩放
-env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" deepin-wine winecfg
+env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" winecfg
 
 
 # 这个博客讲了很多值得多看看
