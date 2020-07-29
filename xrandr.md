@@ -81,3 +81,12 @@ yay -S deepin.com.qq.office
 yay -S lib32-freetype2-infinality-ultimate
 # Wine HiDPI 缩放
 env WINEPREFIX="$HOME/.deepinwine/Deepin-TIM" deepin-wine winecfg
+
+https://www.limstash.com/articles/202004/1591   # arch linux 安装QQ wechat
+
+# 启动win下的程序  安装要运行setup.exe 即可
+export WINEARCH=win32  WINEPREFIX="$HOME/.deepinwine/Nethack"
+cd ~/Downloads/cnethack 
+wine 启动游戏.exe
+
+# 增加xrandr /etc/profile.d/HDMI1.sh
