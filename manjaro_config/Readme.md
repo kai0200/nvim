@@ -52,5 +52,35 @@ screen #0:
 ~ ❯❯❯ xrdb  -query   all                                                    
 Xft.dpi:	165
 
+# QQ  增加xsetingsd 修改/opt/deepinwine/tools/run.sh 文件
+这里的让tim在高分屏大小合适的解决方案在我这体验完美! 而正如上面的兄弟说的xsetingsd比gsd-xsettings好很多, 使用方法也可以像这样改良. 只对wine进行设置应当是对其他应用干扰最小的方式了. 总结下来在arch系kde高分屏安装tim流程如下:
+
+yay -S deepin.com.qq.office
+yay -S xsettingsd
+在wine的Grapics中修改dpi为210
+env WINEPREFIX=$HOME/.deepinwine/Deepin-TIM deepin-wine winecfg
+设置启动tim前启动xsetingsd. 修改 /opt/deepinwine/tools/run.sh:
+ RunApp()
+ {
++    if [[ -z "$(ps -e | grep -o xsettingsd)" ]]
++    then
++        /usr/bin/xsettingsd &
++    fi
+        if [ -d "$WINEPREFIX" ]; then
+                UpdateApp
+        else
+修一修不能输入中文等小毛病
+
+https://www.jianshu.com/p/38ba1a2fd638  # tim 启动缺少txplatform.exe  这个是在wine 配置里enable 就可以了
+缺少ncurses 报错添加一下就可以了
+yay -S ncurses5-compat-libs
+
+# 修改tim 悬浮问题
+i3/config 配置文件增加
+```
+for_window [instance="(?i)TIM.exe"] floating enable
+for_window [instance="(?i)TIM.exe"] border none
+
+```
 # 虚机问题
 
