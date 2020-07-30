@@ -29,7 +29,7 @@ set $tertiary   #948E8
 new_window pixel 1     
 # 默认浮动窗口的边框类型
 #new_float normal
-new_float none
+new_float normal
 # 取消工作区边缘的边框
 hide_edge_borders both
 # 在三种边框类型中切换
@@ -47,16 +47,16 @@ hide_edge_borders vertical
 # Use Mouse+$mod to drag floating windows
 floating_modifier $mod
 
-for_window [class="(?i)WeChat.exe"] floating enable border normal
+for_window [class="(?i)WeChat.exe"] floating enable border none
 for_window [instance="(?i)TIM.exe"] floating enable
 for_window [instance="(?i)TIM.exe"] border none
 for_window [class="vlc"] floating enable border normal
 for_window [class="systemsettings5"] floating enable
+for_window [class="Xfce4-appfinder"] floating enable
 #for_window [class="Skype"] floating enable border normal
-for_window [class="(?i)virtualbox"] floating enable border normal
 #for_window [class="Xfburn"] floating enable
 
-focus_follows_mouse no # [是否跟随鼠标改变现在的焦点窗口]
+focus_follows_mouse yes # [是否跟随鼠标改变现在的焦点窗口]
 
 #bindsym $mod+q kill                                              # [关闭窗口]
 #bindsym $mod+Shift+q kill
@@ -70,6 +70,7 @@ bindsym $mod+m      exec --no-startup-id konsole
 bindsym $mod+c exec --no-startup-id chromium                     # [chromium]
 bindsym $mod+Shift+a exec --no-startup-id deepin-screenshot      # [截图]
 bindsym $mod+d exec --no-startup-id rofi -show drun              # [快速搜索]
+bindsym mod1+F3 exec --no-startup-id xfce4-appfinder            # Alt+F2 程序搜索
 #bindsym $mod+q exec --no-startup-id rofi -show window
 #bindsym $mod+Shift+q exec --no-startup-id /usr/bin/qq
 
@@ -154,6 +155,18 @@ bindsym $mod+Shift+8 move container to workspace $ws8; workspace $ws8
 bindsym $mod+Shift+9 move container to workspace $ws9; workspace $ws9
 bindsym $mod+Shift+0 move container to workspace $ws0; workspace $ws0
 
+# move floating/tiling window
+bindsym $mod+Shift+h move left
+bindsym $mod+Shift+j move down
+bindsym $mod+Shift+k move up
+bindsym $mod+Shift+l move right
+
+# alternatively, you can use the cursor keys:
+bindsym $mod+Shift+Left move left
+bindsym $mod+Shift+Down move down
+bindsym $mod+Shift+Up move up
+bindsym $mod+Shift+Right move right
+
 #set $monitor1 HDMI1
 #set $monitor2 eDP1
 #workspace 0 output $monitor1
@@ -208,7 +221,7 @@ bindsym $mod+r mode "resize"
 bindsym Mod1+Tab workspace next
 bindsym Mod1+Shift+Tab workspace prev
 bindsym Mod1+space exec --no-startup-id krunner  # 运行krunner
-bindsym Mod1+f exec --no-startup-id thunar       # 好用的文件管理器
+#bindsym Mod1+f exec --no-startup-id thunar       # 好用的文件管理器
 
 # 设置截图快捷键 ,先安装mate-utils, sudo pacman -S mate-utils
 bindsym $mod+p  exec  mate-screenshot -i
@@ -237,7 +250,16 @@ exec_always --no-startup-id autotiling
 # 透明
 exec --no-startup-id compton -b
 exec --no-startup-id volumeicon
+#exec_always --no-startup-id picom
 
+# 网络连接图标
+exec --no-startup-id nm-applet
+
+# 电源管理 333 熄屏 666 挂起
+exec --no-startup-id xset dpms 333 666
+
+# 指定主屏幕
+exec --no-startup-id xrandr --output HDMI1 --primary
 
 #
 # gaps  边框
@@ -277,5 +299,4 @@ mode "$mode_system" {
     bindsym Escape mode "default"
 }
 
-# 透明
-exec_always --no-startup-id picom
+
