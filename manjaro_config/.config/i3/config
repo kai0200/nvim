@@ -3,7 +3,7 @@
 #
 # 字体
 #
-font pango:monospace 
+font pango:monospace
 #font pango:DejaVu Sans Mono 8
 #font pango:DejaVu Sans Mono for Powerline 11
 
@@ -14,7 +14,7 @@ font pango:monospace
 
 #position top
 bar {
-        font pango:monospace 12
+        font pango:monospace 10
         status_command ~/.config/i3/bumblebee-status/bumblebee-status -m network_traffic cpu memory disk:home pasink pasource date time -p home.path=/home/caler time.format="%H:%M:%S" date.format="%Y-%m-%d" memory.format="{used}/{total}" disk.format="{left}" -t dracula-powerline
 }
 
