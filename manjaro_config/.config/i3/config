@@ -3,9 +3,9 @@
 #
 # 字体
 #
-#font pango:monospace 
+font pango:monospace 
 #font pango:DejaVu Sans Mono 8
-font pango:DejaVu Sans Mono for Powerline 11
+#font pango:DejaVu Sans Mono for Powerline 11
 
 #
 # 顶部状态栏
