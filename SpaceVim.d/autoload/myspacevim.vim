@@ -26,7 +26,6 @@ func! myspacevim#before() abort
   " 关闭交换文件
   set noswapfile
 
-
   " 具体编辑文件类型的一般设置，比如不要 tab 等
   autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
   autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
@@ -257,5 +256,4 @@ noremap <silent><leader>/ :nohls<CR>
 noremap <F10> :call SpaceVim#plugins#runner#open()<CR>
 
   " ------------------- END -----------------------
-
 endf
