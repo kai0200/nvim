@@ -26,6 +26,13 @@ func! myspacevim#before() abort
   " 关闭交换文件
   set noswapfile
 
+  " 增加spacevim 背景透明模式
+  func! s:transparent_background()
+    highlight Normal guibg=NONE ctermbg=NONE
+    highlight NonText guibg=NONE ctermbg=NONE
+  endf
+  autocmd ColorScheme * call s:transparent_background()
+
   " 具体编辑文件类型的一般设置，比如不要 tab 等
   autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
   autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
