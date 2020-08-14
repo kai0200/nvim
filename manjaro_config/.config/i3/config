@@ -3,7 +3,11 @@
 #
 # 字体
 #
-font pango:monospace
+#font pango:monospace
+font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
+font pango:DejaVu Sans Mono 10
+font pango:DejaVu Sans Mono, Terminus Bold Semi-Condensed 11
+font pango:Terminus 11px
 #font pango:DejaVu Sans Mono 8
 #font pango:DejaVu Sans Mono for Powerline 11
 
@@ -12,9 +16,9 @@ font pango:monospace
 #
         #position top
 
-#position top
 bar {
         font pango:monospace 10
+        position top
         status_command ~/.config/i3/bumblebee-status/bumblebee-status -m network_traffic cpu memory disk:home pasink pasource date time -p home.path=/home/caler time.format="%H:%M:%S" date.format="%Y-%m-%d" memory.format="{used}/{total}" disk.format="{left}" -t dracula-powerline
 }
 
@@ -48,6 +52,7 @@ hide_edge_borders vertical
 floating_modifier $mod
 
 for_window [class="(?i)WeChat.exe"] floating enable border none
+for_window [class="(?i)QQ.exe"] floating enable border none
 for_window [instance="(?i)TIM.exe"] floating enable
 for_window [instance="(?i)TIM.exe"] border none
 for_window [class="vlc"] floating enable border normal
@@ -56,7 +61,7 @@ for_window [class="Xfce4-appfinder"] floating enable
 #for_window [class="Skype"] floating enable border normal
 #for_window [class="Xfburn"] floating enable
 
-focus_follows_mouse yes # [是否跟随鼠标改变现在的焦点窗口]
+focus_follows_mouse no # [是否跟随鼠标改变现在的焦点窗口]
 
 #bindsym $mod+q kill                                              # [关闭窗口]
 #bindsym $mod+Shift+q kill
@@ -93,7 +98,7 @@ bindsym $mod+e layout toggle split           # [切换差分]
 
 # toggle tiling / floating
 #bindsym $mod+Shift+space floating toggl      
-bindsym $mod+Shift+space floating
+bindsym $mod+Shift+space floating toggle
 
 # split in horizontal orientation            # 竖分屏
 bindsym $mod+g split h
@@ -167,18 +172,18 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-#set $monitor1 HDMI1
-#set $monitor2 eDP1
-#workspace 0 output $monitor1
-#workspace 1 output $monitor1
-#workspace 2 output $monitor1
-#workspace 3 output $monitor1
-#workspace 4 output $monitor2
-#workspace 5 output $monitor2
-#workspace 6 output $monitor2
-#workspace 7 output $monitor2
-# workspace 8 output $monitor2
-# workspace 9 output $monitor2
+set $monitor1 HDMI1
+set $monitor2 eDP1
+workspace 0 output $monitor1
+workspace 1 output $monitor1
+workspace 2 output $monitor1
+workspace 3 output $monitor1
+workspace 4 output $monitor1
+workspace 5 output $monitor1
+workspace 6 output $monitor1
+workspace 7 output $monitor1
+workspace 8 output $monitor2
+workspace 9 output $monitor2
 # reload the configuration file
 
 
@@ -234,9 +239,6 @@ bindsym $mod+p  exec  mate-screenshot -i
 # 输入法
 exec --no-startup-id fcitx
 
-# 网络连接
-exec --no-startup-id kdeconnect-indicator
-
 # 换背景
 #exec --no-startup-id variety
 exec_always  --no-startup-id variety
@@ -253,13 +255,13 @@ exec --no-startup-id volumeicon
 #exec_always --no-startup-id picom
 
 # 网络连接图标
-exec --no-startup-id nm-applet
+exec_always --no-startup-id nm-applet
 
 # 电源管理 333 熄屏 666 挂起
 exec --no-startup-id xset dpms 333 666
 
 # 指定主屏幕
-exec --no-startup-id xrandr --output HDMI1 --primary
+#exec --no-startup-id xrandr --output HDMI1 --primary
 
 #
 # gaps  边框
@@ -289,7 +291,8 @@ gaps outer -2
 
 # => 电源管理（Pause Break键呼出)
 set $mode_system 系统:锁屏(L) 注销(O) 关机(S) 重启(R) 取消(Esc)
-bindsym Pause mode "$mode_system"
+#bindsym Pause mode "$mode_system"
+bindsym mod1+l mode "$mode_system"
 mode "$mode_system" {
 #bindsym l exec i3lock -c '#333333', exec sleep .1 && exec xset dpms force off, mode "default"
     bindsym l exec i3lock-fancy 

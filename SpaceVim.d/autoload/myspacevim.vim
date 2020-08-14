@@ -130,7 +130,7 @@ func! myspacevim#before() abort
   map <leader>n :Defx<cr>
  
   " markdown table 
-  map <leader>tm :TableModeToggle<cr>
+  map <leader>mt :TableModeToggle<cr>
   " 配置markdown快速编辑键 {{{
   autocmd Filetype markdown map <leader>w yiWi[<esc>Ea](<esc>pa)
   autocmd Filetype markdown inoremap <buffer> <leader>f <Esc>/<++><CR>:nohlsearch<CR>"_c4l
