@@ -74,6 +74,9 @@
 # <Leader> y 复制到系统剪切板 <Leader> p 从系统剪切版本粘贴
 [[layers]]
   name = "default"
+
+[[layers]]
+  name = 'lang#go'
 # ----------------------------------------------------------
 # python
 # 1. SPC bf 自动格式化 yapf pip install --user yapf

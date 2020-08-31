@@ -2,8 +2,9 @@ func! myspacevim#before() abort
 
   " ------------------- START  -----------------------
   "
-  "let g:python_host_prog = '/usr/bin/python2.7'
+  let g:python_host_prog = '/usr/bin/python2.7'
   "let g:python3_host_prog = '/usr/local/bin/python3.8'
+  "let g:python_host_prog = '/opt/sohu/bin/python'
   
   " 打开光标下文件
   " gd

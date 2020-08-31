@@ -14,12 +14,10 @@ font pango:Terminus 11px
 #
 # 顶部状态栏
 #
-        #position top
-
 bar {
-        font pango:monospace 10
-        position top
-        status_command ~/.config/i3/bumblebee-status/bumblebee-status -m network_traffic cpu memory disk:home pasink pasource date time -p home.path=/home/caler time.format="%H:%M:%S" date.format="%Y-%m-%d" memory.format="{used}/{total}" disk.format="{left}" -t dracula-powerline
+  font pango:monospace 10
+  position top
+  status_command ~/.config/i3/bumblebee-status/bumblebee-status -m network_traffic cpu memory disk:home pasink pasource date time -p home.path=/home/caler time.format="%H:%M:%S" date.format="%Y-%m-%d" memory.format="{used}/{total}" disk.format="{left}" -t dracula-powerline
 }
 
 set $background #101010
@@ -115,9 +113,9 @@ bindsym $mod+f fullscreen toggle
 set $mod Mod4
 set $WS1  1:
 set $WS2  2:
-set $WS3  3:
+set $WS3  3:
 set $WS4  4:
-set $WS5  5:
+set $WS5  5:
 set $WS6  6:
 set $WS7  7:
 set $WS8  8:
@@ -241,7 +239,7 @@ exec --no-startup-id fcitx
 
 # 换背景
 #exec --no-startup-id variety
-exec_always  --no-startup-id variety
+exec --no-startup-id variety
 
 # kde上的剪切板
 exec --no-startup-id klipper
