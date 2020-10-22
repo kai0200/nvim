@@ -10,7 +10,9 @@ env:
   # each instance of Alacritty. If it is not present, alacritty will
   # check the local terminfo database and use `alacritty` if it is
   # available, otherwise `xterm-256color` is used.
-  TERM: xterm-256color
+  #TERM: xterm-256color
+  TERM: alacritty
+  #TERM: tmux-256color
   #WINIT_X11_SCALE_FACTOR: '2.0'
 
 hide_cursor_when_typing: true
@@ -21,27 +23,27 @@ window:
   # Specified in number of columns/lines, not pixels.
   # If both are `0`, this setting is ignored.
   dimensions:
-    columns: 120
-    lines: 50
+    columns: 0
+    lines: 0
 
   # Window position (changes require restart)
   #
   # Specified in number of pixels.
   # If the position is not set, the window manager will handle the placement.
-  #position:
-  #  x: 0
-  #  y: 0
+  position:
+    x: 0
+    y: 0
 
   # Window padding (changes require restart)
   #
   # Blank space added around the window in pixels. This padding is scaled
   # by DPI and the specified value is always added at both opposing sides.
-  #padding:
-  #  x: 0
-  #  y: 0
+  padding:
+    x: 0
+    y: 0
 
   # Spread additional padding evenly around the terminal content.
-  #dynamic_padding: false
+  dynamic_padding: false
 
   # Window decorations
   #
@@ -63,7 +65,7 @@ window:
   #
   # Values for `startup_mode` (macOS only):
   #   - SimpleFullscreen
-  #startup_mode: Windowed
+  startup_mode: Windowed
 
   # Window title
   #title: Alacritty
@@ -81,14 +83,15 @@ window:
   # Set this to `None` to use the default theme variant.
   # gtk_theme_variant: dark
 
-#scrolling:
+scrolling:
   # Maximum number of lines in the scrollback buffer.
   # Specifying '0' will disable scrolling.
-  #history: 10000
+  history: 10000
 
   # Number of lines the viewport will move for every line scrolled when
   # scrollback is enabled (history > 0).
-  #multiplier: 3
+  multiplier: 3
+
 
 # Font configuration
 font:
@@ -100,14 +103,12 @@ font:
     #   - (macOS) Menlo
     #   - (Linux/BSD) monospace
     #   - (Windows) Consolas
-    #family: monospace
-    family: Courier New
-    #family: DejaVu Sans Mono for Powerline
-
-    # 测试常用字体显示问题，看来还是alaritty设置问题，不能尝试设置太复杂字体
-    # The `style` can be specified to pick a specific face.
+    #family: Menlo
+    #family: Courier New
+    family: Hack Nerd Font Mono
+    #family: SauceCodePro Nerd Font
     #style: Regular
-    style: Bold
+    #style: Bold
 
   # Bold font face
   bold:
@@ -116,7 +117,9 @@ font:
     # If the bold family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: Courier New
+    #family: Courier New
+    #
+    family: Hack Nerd Font Mono
     #family: DejaVu Sans Mono for Powerline
 
     # The `style` can be specified to pick a specific face.
@@ -129,7 +132,8 @@ font:
     # If the italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: Courier New
+    #family: Courier
+    family: Hack Nerd Font Mono
     #family: DejaVu Sans Mono for Powerline
 
     # The `style` can be specified to pick a specific face.
@@ -142,27 +146,28 @@ font:
     # If the bold italic family is not specified, it will fall back to the
     # value specified for the normal font.
     #family: monospace
-    family: Courier New
+    #family: Courier New
     #family: DejaVu Sans Mono for Powerline
+    family: Hack Nerd Font Mono
 
     # The `style` can be specified to pick a specific face.
     style: Bold Italic
 
   # Point size
-  size: 19
+  size: 16
 
   # Offset is the extra space around each character. `offset.y` can be thought of
   # as modifying the line spacing, and `offset.x` as modifying the letter spacing.
-  #offset:
-  #  x: 0
-  #  y: 0
+  offset:
+    x: 0
+    y: 0
 
   # Glyph offset determines the locations of the glyphs within their cells with
   # the default being at the bottom. Increasing `x` moves the glyph to the right,
   # increasing `y` moves the glyph upwards.
-  #glyph_offset:
-  #  x: 0
-  #  y: 0
+  glyph_offset:
+    x: 0
+    y: 0
 
   # Thin stroke font rendering (macOS only)
   #
@@ -178,10 +183,10 @@ font:
   #
   # This is a global setting and will require a log out or restart to take
   # effect.
-  #use_thin_strokes: true
+  use_thin_strokes: true
 
 # If `true`, bold text is drawn using the bright color variants.
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 
 # Colors (Solarized Dark)
 colors:
@@ -270,7 +275,7 @@ colors:
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.95
+background_opacity: 0.90
 
 #selection:
   #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
@@ -694,18 +699,18 @@ key_bindings:
   - { key: Add,    mods: Command, action: IncreaseFontSize }
   - { key: Minus,  mods: Command, action: DecreaseFontSize }
   - { key: K,      mods: Command, action: ClearHistory     }
-  - { key: N,      mods: Command, action: SpawnNewInstance     }
+  - { key: N,      mods: Command, action: SpawnNewInstance }
   - { key: K,      mods: Command, chars: "\x0c"            }
   - { key: V,      mods: Command, action: Paste            }
   - { key: C,      mods: Command, action: Copy             }
   - { key: H,      mods: Command, action: Hide             }
   - { key: Q,      mods: Command, action: Quit             }
   - { key: W,      mods: Command, action: Quit             }
-  - { key: Paste,                 action: Paste                            }
-  - { key: Copy,                  action: Copy                             }
-  - { key: L,        mods: Control, action: ClearLogNotice                   }
-  - { key: F,        mods: Command|Shift, action: ToggleFullscreen                   }
-  - { key: L,        mods: Control, chars: "\x0c"                            }
+  - { key: Paste,                 action: Paste            }
+  - { key: Copy,                  action: Copy             }
+  - { key: L,        mods: Control, action: ClearLogNotice }
+  - { key: F,        mods: Command|Shift, action: ToggleFullscreen           }
+  - { key: L,        mods: Control, chars: "\x0c"          }
   - { key: Home,     mods: Alt,     chars: "\x1b[1;3H"                       }
   - { key: Home,                    chars: "\x1bOH",        mode: AppCursor  }
   - { key: Home,                    chars: "\x1b[H",        mode: ~AppCursor }
@@ -726,7 +731,7 @@ key_bindings:
   - { key: Back,                    chars: "\x7f"                            }
   - { key: Back,     mods: Alt,     chars: "\x1b\x7f"                        }
   - { key: Insert,                  chars: "\x1b[2~"                         }
-  - { key: Delete,                  chars: "\x1b[3~"                         }
+  #- { key: Delete,                  chars: "\x1b[3~"                         }
   - { key: Left,     mods: Shift,   chars: "\x1b[1;2D"                       }
   - { key: Left,     mods: Control, chars: "\x1b[1;5D"                       }
   - { key: Left,     mods: Alt,     chars: "\x1b[1;3D"                       }

@@ -2,47 +2,47 @@ func! myspacevim#before() abort
 
   " ------------------- START  -----------------------
   "
-  let g:python_host_prog = '/usr/bin/python2.7'
-  "let g:python3_host_prog = '/usr/local/bin/python3.8'
-  "let g:python_host_prog = '/opt/sohu/bin/python'
-  
+  let g:python_host_prog = '/usr/local/bin/python2.7'
+  let g:python3_host_prog = '/usr/local/bin/python3'
+  let g:loaded_python_provider = 0
+  "let g:loaded_python3_provider = 0
+
   " 打开光标下文件
   " gd
 
-  " tab相关变更
-  " 设置Tab键的宽度        [等同的空格个数]
-  set tabstop=4
-  " 每一次缩进对应的空格数
-  set shiftwidth=4
-  " 按退格键时可以一次删掉 4 个空格
-  set softtabstop=4
-  " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
-  set smarttab
-  " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
-  set expandtab
-  " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
-  set shiftround
-  " 取消备份。 视情况自己改
-  set nobackup
-  " 关闭交换文件
-  set noswapfile
-
-  " 增加spacevim 背景透明模式
-  func! s:transparent_background()
-    highlight Normal guibg=NONE ctermbg=NONE
-    highlight NonText guibg=NONE ctermbg=NONE
-  endf
-  autocmd ColorScheme * call s:transparent_background()
-
-  " 具体编辑文件类型的一般设置，比如不要 tab 等
-  autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
-  autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-  autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
-  autocmd BufRead,BufNewFile *.part set filetype=html
-  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
-  " for # indent, python文件中输入新行时#号注释不切回行首
-  autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
+"  " 设置Tab键的宽度        [等同的空格个数]
+"  set tabstop=4
+"  " 每一次缩进对应的空格数
+"  set shiftwidth=4
+"  " 按退格键时可以一次删掉 4 个空格
+"  set softtabstop=4
+"  " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
+"  set smarttab
+"  " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
+"  set expandtab
+"  " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
+"  set shiftround
+"  " 取消备份。 视情况自己改
+"  set nobackup
+"  " 关闭交换文件
+"  set noswapfile
+"
+"  " 增加spacevim 背景透明模式
+"  func! s:transparent_background()
+"    highlight Normal guibg=NONE ctermbg=NONE
+"    highlight NonText guibg=NONE ctermbg=NONE
+"  endf
+"  autocmd ColorScheme * call s:transparent_background()
+"
+"  " 具体编辑文件类型的一般设置，比如不要 tab 等
+"  autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+"  autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+"  autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
+"  autocmd BufRead,BufNewFile *.part set filetype=html
+"  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+"  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+"  " for # indent, python文件中输入新行时#号注释不切回行首
+"  autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
 
   " 自定义自己的spc快捷键
   " -------------------------
@@ -129,8 +129,8 @@ func! myspacevim#before() abort
   " ~/.SpaceVim.d/plugin/jedi.vim
   " 在此处加入的可能被其他插件覆盖,去plugin里添加一个修改掉就可以了
   map <leader>n :Defx<cr>
- 
-  " markdown table 
+
+  " markdown table
   map <leader>mt :TableModeToggle<cr>
   " 配置markdown快速编辑键 {{{
   autocmd Filetype markdown map <leader>w yiWi[<esc>Ea](<esc>pa)
@@ -218,7 +218,10 @@ func! myspacevim#after() abort
   " disable showmatch when use > in php
   au BufWinEnter *.php set mps-=<:>
 
-  set ts=4
+  "set ts=4
+  "set tabstop=4
+  "set shiftwidth=4
+  set expandtab  " 展开tab
 
 " F3 显示可打印字符开关
 "nnoremap <F3> :set signcolumn! signcolumn?<CR>
@@ -262,6 +265,13 @@ noremap <silent><leader>/ :nohls<CR>
 " F10 run
 "map <F10> :call SpaceVim#plugins#runner#open()<CR>
 noremap <F10> :call SpaceVim#plugins#runner#open()<CR>
+
+" 处理背景不透明问题
+"hi! Normal ctermbg=NONE guibg=NONE
+"hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
+
+set t_8f=^[[38;2;%lu;%lu;%lum
+set t_8b=^[[48;2;%lu;%lu;%lum
 
   " ------------------- END -----------------------
 endf

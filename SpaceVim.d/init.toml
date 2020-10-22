@@ -11,16 +11,24 @@
   # set spacevim theme. by default colorscheme layer is not loaded,
   # if you want to use more colorscheme, please load the colorscheme
   # layer
+  # 自动更新
+  automatic_update = true
+
+  default_indent = 4
+  expand_tab = true
+
   colorscheme = "gruvbox"
+  #colorscheme = "solarized"
+  #colorscheme = "NeoSolarized"
   colorscheme_bg = "dark"
   # Disable guicolors in basic mode, many terminal do not support 24bit
   # true colors
   enable_guicolors = true
   # Disable statusline separator, if you want to use other value, please
   # install nerd fonts
-  statusline_separator = "arrow"
-  statusline_inactive_separator = "arrow"
-  buffer_index_type = 4
+  statusline_separator = "nil"
+  statusline_inactive_separator = "nil"
+
   enable_tabline_filetype_icon = true
   enable_tabline_ft_icon = true
   statusline_inactive_separator = "bar"
@@ -33,14 +41,59 @@
 
   filemanager = "defx"
   autocomplete_method = "coc"
+  #autocomplete_method = "deoplete"
   bootstrap_before = "myspacevim#before"
   bootstrap_after = "myspacevim#after"
 
   vim_help_language = "cn"
   # SPC x g t 翻译
   # enable_googlesuggest = true
+
+  # options for statusline
+  # 设置状态栏上分割符号形状，如果字体安装失败，可以将值设为 "nil" 以禁用分割符号，
+  # 分割符包括以下几种 "arrow", "curve", "slant", "fire", "nil"，默认为箭头 "arrow"
+  # 设置活动窗口状态栏上的分割符号形状
+  statusline_separator = "arrow"
+  # 设置非活动窗口状态栏上的分割符号形状
+  statusline_inactive_separator = "bar"
+
+  # 设置顶部标签列表序号类型，有以下五种类型，分别是 0 - 4
+  buffer_index_type = 0
+  # 0: 1 ➛ ➊
+  # 1: 1 ➛ ➀
+  # 2: 1 ➛ ⓵
+  # 3: 1 ➛ ¹
+  # 4: 1 ➛ 1
+
+  # 是否在状态栏上显示当前模式，默认情况下，不显示 Normal/Insert 等
+  enable_statusline_mode = true
+
+  # 状态栏左端部分的构成
+  statusline_left_sections = ['winnr', 'major mode', 'filename', 'fileformat', 'minor mode lighters', 'version control info', 'search status']
+  # 状态栏右端部分的构成
+  statusline_right_sections = ['cursorpos', 'percentage', 'input method', 'date', 'time']
+  # 列表可以由以下一项或多项组成
+
+  # 'winnr' 当前窗口编号
+  # 'syntax checking'
+  # 'filename' 文件名
+  # 'fileformat' 文件格式
+  # 'major mode'
+  # 'minor mode lighters'
+  # 'cursorpos' 光标位置
+  # 'percentage' 百分比
+  # 'date' 日期
+  # 'time' 时间
+  # 'whitespace' 打开或者保存文件时，如果第 n 行的行尾有空格则显示 trailing[n]，并不能实时显示出行尾有空格的行号。
+  # 'battery status' 电池状态
+  # 'input method' 输入法
+  # 'search status' 搜索状态
+
 [[layers]]
   name = "chinese"
+
+[[layers]]
+  name = "colorscheme"
 
 [[layers]]
   name = "lang#c"
@@ -77,6 +130,9 @@
 
 [[layers]]
   name = 'lang#go'
+
+[[layers]]
+  name = "core#statusline"
 # ----------------------------------------------------------
 # python
 # 1. SPC bf 自动格式化 yapf pip install --user yapf
@@ -172,3 +228,7 @@
 [[custom_plugins]]
   name = 'wellle/tmux-complete.vim'
 
+# 配置自定义主题
+[[custom_plugins]]
+  repo = "altercation/vim-colors-solarized"
+  merged = 0
