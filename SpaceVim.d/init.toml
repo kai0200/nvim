@@ -4,6 +4,8 @@
 # Author: Wang Shidong < wsdjeg at 163.com >
 # URL: https://spacevim.org
 # License: GPLv3
+# https://github.com/fannheyward/coc-pyright  jedi更换coc报错更换coc-pyright 
+# 效果还不明确，不过coc崩溃不出现了
 #=============================================================================
 
 # All SpaceVim option below [option] section
@@ -40,14 +42,22 @@
   #filetree_direction = "left"
 
   filemanager = "defx"
+  #filemanager = "vimfiler"
   autocomplete_method = "coc"
   #autocomplete_method = "deoplete"
   bootstrap_before = "myspacevim#before"
   bootstrap_after = "myspacevim#after"
 
   vim_help_language = "cn"
+  default_indent = 4
+  expand_tab = false
   # SPC x g t 翻译
   # enable_googlesuggest = true
+#[[layers]] 
+#  name = 'lsp'
+# filetypes = [
+#    'python',
+#  ]
 
   # options for statusline
   # 设置状态栏上分割符号形状，如果字体安装失败，可以将值设为 "nil" 以禁用分割符号，
@@ -92,6 +102,14 @@
 [[layers]]
   name = "chinese"
 
+#[[layers]]
+# name = "lang#c"
+# clang_executable = "/usr/bin/clang"
+# [layer.clang_std]
+#   c = "c11"
+#   cpp = "c++1z"
+#   objc = "c11"
+#   objcpp = "c++1z"
 [[layers]]
   name = "colorscheme"
 
@@ -127,6 +145,9 @@
 # <Leader> y 复制到系统剪切板 <Leader> p 从系统剪切版本粘贴
 [[layers]]
   name = "default"
+
+[[layers]]
+  name = 'lang#java'
 
 [[layers]]
   name = 'lang#go'
@@ -166,8 +187,35 @@
   name = "format"
 
 [[layers]]
-   name = "debug"
+  name = "debug"
 
+# C/C++
+# 需要在项目根目录添加工程文件 .project_alt.json：
+# {
+#  "*.c": {"alternate": "{}.h"},
+#  "*.h": {"alternate": "{}.c"}
+# }
+
+[[layers]]
+    name = 'lang#c'
+#    enable_clang_syntax_highlight = true
+#
+#[[layers]]
+#  name = "lsp"
+#  filetypes = [
+#    "c",
+#    "cpp"
+#  ]
+#  [layers.override_cmd]
+#    c = ["clangd"]
+# 与此同时，你也可以在项目根目录新建一个 .clang 文件，在其内逐行写入 C/C++ 编译的参数， 比如：
+# -I/home/test
+# -I/user/std/include
+#
+#[[layers]]
+#name = "lang#c"
+#[layer.clang_std]
+#cpp = "c11"
 
 # markdown
 # SPC b f	Normal	格式化当前文件
@@ -176,6 +224,7 @@
 # SPC l p	Normal	通过浏览器实时预览当前文件
 [[layers]]
   name = "lang#markdown"
+
 
 #  插件
 # <Leader> f <Space>	模糊查找快捷键，并执行该快捷键
@@ -217,6 +266,7 @@
 # 以悬浮窗口的形式打开终端
 [[custom_plugins]]
   name = 'voldikss/vim-floaterm'
+
 # coc.nvim 核心配置，不要删除
 [[custom_plugins]]
   name = 'neoclide/coc.nvim'
@@ -227,7 +277,17 @@
 # tmux 兼容插件
 [[custom_plugins]]
   name = 'wellle/tmux-complete.vim'
+# gdb
+[[custom_plugins]]
+  name = 'Shougo/vimproc.vim'
+[[custom_plugins]]
+  name = 'idanarye/vim-vebugger'
+# 定义函数跳转
+#[[custom_plugins]]
+#  name = 'davidhalter/jedi-vim'
 
+[[custom_plugins]]
+  name = 'aben20807/vim-runner'
 # 配置自定义主题
 [[custom_plugins]]
   repo = "altercation/vim-colors-solarized"
