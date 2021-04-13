@@ -1,6 +1,8 @@
-# Install
+#
 
-'''bash
+## Install
+
+```sh
 curl https://sh.rustup.rs -sSf | sh
 export PATH="$HOME/.cargo/bin:$PATH"
 rustup override set stable
@@ -10,12 +12,14 @@ cd alacritty
 make app
 
 cp -r target/release/osx/Alacritty.app /Applications/
-'''
-# 字体安装
-'''
+```
+
+## 字体安装
+
+```
 brew tap homebrew/cask-fonts
 brew cask install font-sourcecodepro-nerd-font-mono -v
-'''
+```
 
 
 # Alacritty and Spacevim 配色
@@ -38,7 +42,7 @@ http://xfyuan.github.io/2020/07/patch-sf-mono-to-nerd-font/  # 字体整合 TODO
 
 # Spacevim
 
-'''
+```
 # ~/.SpaceVim.d/init.toml
 colorscheme = "gruvbox"
 #colorscheme = "solarized"
@@ -47,12 +51,12 @@ colorscheme = "gruvbox"
 # Disable guicolors in basic mode, many terminal do not support 24bit
 # true colors
 enable_guicolors = true
-'''
+```
 
 
 # Alacritty
 
-'''
+```
 # ~/.config/alacritty/alacritty.yml
 # Colors (Gruvbox Dark)
 colors:
@@ -83,26 +87,4 @@ colors:
   selection:
     background: '#e6d4a3'
     text: '#534a42'
-'''
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+```
