@@ -9,11 +9,6 @@
     "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
     "typescript.preferences.quoteStyle": "double",
     "typescript.referencesCodeLens.enable": false,
-    "pyright.enable": true,
-    "python.analysis.autoImportCompletions": true,
-    "python.analysis.autoSearchPaths": true,
-    "python.analysis.diagnosticMode": "openFilesOnly",
-    "python.analysis.useLibraryCodeForTypes": true,
     "coc.preferences.extensionUpdateCheck": "daily",
     "coc.preferences.formatOnType": true,
     "coc.preferences.willSaveHandlerTimeout": 1000,
@@ -24,21 +19,10 @@
         "python",
         "typescript",
         "json",
-        "jsonc",
-        "markdown"
+        "jsonc"
     ],
-    "markdownlint.config": {
-        "default": false,
-        "markdownlint.onOpen": false,
-        "markdownlint.onChange": false,
-        "markdownlint.onSave": false
-    },
     "coc.source.around.firstMatch": false,
     "coc.source.file.ignoreHidden": false,
-    "clangd.arguments": [
-        "--query-driver=/usr/bin/clang++",
-        "--background-index"
-    ],
     "diagnostic.format": "%message [%source]",
     "diagnostic.virtualText": true,
     "diagnostic.checkCurrentLine": true,
@@ -48,9 +32,6 @@
     },
     "list.insertMappings": {
         "<C-c>": "do:exit"
-    },
-    "python.formatting.blackdHTTPHeaders": {
-        "X-Fast-Or-Safe": "fast"
     },
     "python.linting.enabled": false,
     "signature.target": "echo",

@@ -6,9 +6,15 @@ func! myspacevim#before() abort
   "let g:python3_host_prog = '/usr/bin/python3'
   "let g:python_host_prog = '/opt/sohu/bin/python'
   let g:loaded_python_provider = 0
+  " markdown 语法隐藏禁用 plasticboy/vim-markdown(折行、语法隐藏、高亮等)
+  let g:vim_markdown_conceal = 0
+  " yaml 语法加亮
+  let g:vim_markdown_frontmatter = 1
+  let g:vim_markdown_toml_frontmatter = 1
+  let g:vim_markdown_json_frontmatter = 1
 
-  " 重新映射 leader 键
-  let g:mapleader = ','
+  "" 重新映射 leader 键
+  "let g:mapleader = ','
 
   
   " 打开光标下文件
@@ -232,8 +238,9 @@ func! myspacevim#after() abort
   " syntax    使用语法定义折叠
   " diff      对没有更改的文本进行折叠
   " marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
-  set foldmethod=indent
-  set foldlevel=99
+  "set foldmethod=indent
+  "set foldlevel=99
+  set foldlevel=4
 
   " 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
   " 好处：误删什么的，如果以前屏幕打开，可以找回

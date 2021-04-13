@@ -178,13 +178,13 @@
    name = "debug"
 
 
+[[layers]]
+  name = "lang#markdown"
 # markdown
 # SPC b f	Normal	格式化当前文件
 # SPC l k	Normal/Visual	为光标下的单词或者选中文本增加 URL 链接
 # SPC l K	Normal/Visual	为光标下的单词或者选中文本增加图片链接
 # SPC l p	Normal	通过浏览器实时预览当前文件
-[[layers]]
-  name = "lang#markdown"
 
 #  插件
 # <Leader> f <Space>	模糊查找快捷键，并执行该快捷键
@@ -248,10 +248,8 @@
 [[custom_plugins]]
   name = 'sei40kr/SpaceVim-onedark'
 
-# For markdown
+# custom_plugins for markdown
 [[custom_plugins]]
   name = 'godlygeek/tabular'
 [[custom_plugins]]
   name = 'plasticboy/vim-markdown'
-[[custom_plugins]]
-  name = 'mzlogin/vim-markdown-toc'
