@@ -19,6 +19,7 @@ endfunction
 - spacevim 自动定义快捷键不生效问题
 需要修改的文件基本在 ~/.SpaceVim.d/autoload/myspacevim.vim 这个文件里,按vim默认方式替换即可.
 还有一种情况是被系统其他插件占用,如 
+
 ```
 <leader>+n :call jedi#usages() 
 ```
@@ -335,5 +336,23 @@ endfunction
   "typescript.referencesCodeLens.enable": false,
   "git.enableGutters": false
 }
+
+```
+# coc-vim python 配置
+
+```
+# coc-vim 需要安装服务
+# 配置 ~/.SpaceVim/coc-settings.json
+url https://github.com/neoclide/coc.nvim/wiki/Language-servers#python  
+
+url  https://github.com/palantir/python-language-server
+
+pip3.9 install 'python-language-server[yapf]'
+pip3.9 install 'python-language-server[all]'
+pip3.9 install -U setuptools
+
+other plugins
+pyls-mypy pyls-isort pyls-black
+
 
 ```

@@ -2,6 +2,33 @@ func! myspacevim#before() abort
 
   " ------------------- START  -----------------------
   "
+  let g:python_host_prog = '/usr/bin/python2'
+  let g:python3_host_prog = '/usr/bin/python3'
+  "let g:python3_host_prog  = '/usr/local/Cellar/python3/3.5.1/bin/python3'
+  "let g:python_host_prog = '/opt/sohu/bin/python'
+  "coc config
+  let g:coc_global_extensions = [
+             \ "coc-explorer",
+             \ "coc-lists",
+             \ "coc-vimlsp",
+             \ "coc-python",
+			 \ "coc-go",
+             \ "coc-json",
+             \ "coc-tasks",
+             \ "coc-yank",
+             \ "coc-vimtex",
+			 \ "coc-markdownlint",
+             \ "coc-snippets",
+			 \ "coc-highlight",
+             \ "coc-css",
+             \ "coc-html",
+             \ "coc-java",
+             \ "coc-tsserver",
+			 \ "coc-pairs",
+             \ "coc-css",
+             \ "coc-tsserver"]
+  " :CocInstall coc-markdownlint coc-snippets coc-json coc-highlight coc-css coc-html coc-java coc-python coc-tsserver coc-pairs coc-lists coc-go
+  
   let g:python_host_prog = '/usr/local/bin/python2.7'
   let g:python3_host_prog = '/usr/local/bin/python3'
   let g:loaded_python_provider = 0
@@ -77,14 +104,15 @@ func! myspacevim#before() abort
   "" 设置映射规则，和 spacevim 保持一致
   "call SpaceVim#custom#SPC('nnoremap', ['g', 'm'], 'GitMessenger', 'show commit message in popup window', 1)
   "call SpaceVim#custom#SPC('nnoremap', ['g', 'l'], 'FloatermNew lazygit', 'open lazygit in floaterm', 1)
+  call SpaceVim#custom#SPC('nnoremap', ['g', 'f'], 'FloatermNew ranger', 'open directory in floaterm', 1)
 
   " 设置默认的pdf阅览工具
   " let g:vimtex_view_method = 'zathura'
 
 
   " 保证在插入模式<F4>可以 toggle floaterm
-  inoremap  <silent>   <F4>   :FloatermToggle!<CR>
-  nnoremap  <silent>   <F4>   :FloatermToggle!<CR>
+  inoremap  <silent>   <F4>   :FloatermNew ranger<CR>
+  nnoremap  <silent>   <F4>   :FloatermNew ranger<CR>
   tnoremap  <silent>   <F4>   <C-\><C-n>:FloatermToggle!<CR>
 
 
@@ -226,8 +254,8 @@ func! myspacevim#after() abort
 " F3 显示可打印字符开关
 "nnoremap <F3> :set signcolumn! signcolumn?<CR>
 " set signcolumn=no
-" F4 换行开关
-nnoremap <F4> :set wrap! wrap?<CR>
+" F6 换行开关
+nnoremap <F6> :set wrap! wrap?<CR>
 
 " F6 语法开关，关闭语法可以加快大文件的展示
 nnoremap <F6> :set signcolumn! signcolumn?<CR>
@@ -264,8 +292,57 @@ noremap <silent><leader>/ :nohls<CR>
 
 " F10 run
 "map <F10> :call SpaceVim#plugins#runner#open()<CR>
-noremap <F10> :call SpaceVim#plugins#runner#open()<CR>
+"noremap <F10> :call SpaceVim#plugins#runner#open()<CR>
+" F5 runner
+" Use key mappings setting from this plugin by default.
+let g:runner_use_default_mapping = 1
 
+" Save file first before compile and run by default.
+let g:runner_is_save_first = 1
+
+" Print a timestamp on the top of output by default.
+let g:runner_print_timestamp = 1
+
+" Print time usage of do all actions by default.
+let g:runner_print_time_usage = 1
+
+" Show the comment information by default.
+let g:runner_show_info = 1
+
+" Not auto remove tmp file by default.
+let g:runner_auto_remove_tmp = 0
+
+" Use <F5> to compile and run code by default.
+" Feel free to change mapping you like.
+let g:runner_run_key = "<F5>"
+
+" Set tmp dir for output.
+let g:runner_tmp_dir = "/tmp/vim-runner/"
+
+" Section: work with other plugins
+" w0rp/ale
+let g:runner_is_with_ale = 0
+" iamcco/markdown-preview.vim
+let g:runner_is_with_md = 0
+
+" Section: executable settings
+let g:runner_c_executable = "gcc"
+let g:runner_cpp_executable = "g++"
+let g:runner_rust_executable = "cargo"
+let g:runner_python_executable = "python3.9"
+
+" Section: compile options settings
+let g:runner_c_compile_options = "-std=c11 -Wall"
+let g:runner_cpp_compile_options = "-std=c++11 -Wall"
+let g:runner_rust_compile_options = ""
+
+" Section: run options settings
+let g:runner_c_run_options = ""
+let g:runner_cpp_run_options = ""
+let g:runner_rust_run_backtrace = 1
+let g:runner_rust_run_options = ""
+
+let g:clamp_autostart = 1
 " 处理背景不透明问题
 "hi! Normal ctermbg=NONE guibg=NONE
 "hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE
