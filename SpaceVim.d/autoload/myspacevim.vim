@@ -2,33 +2,61 @@ func! myspacevim#before() abort
 
   " ------------------- START  -----------------------
   "
-  let g:python_host_prog = '/usr/bin/python2'
-  let g:python3_host_prog = '/usr/bin/python3'
-  "let g:python3_host_prog  = '/usr/local/Cellar/python3/3.5.1/bin/python3'
+  "let g:python_host_prog = '/usr/bin/python2.7'
+  "let g:python3_host_prog = '/usr/bin/python3'
   "let g:python_host_prog = '/opt/sohu/bin/python'
-  "coc config
-  let g:coc_global_extensions = [
-             \ "coc-explorer",
-             \ "coc-lists",
-             \ "coc-vimlsp",
-             \ "coc-python",
-			 \ "coc-go",
-             \ "coc-json",
-             \ "coc-tasks",
-             \ "coc-yank",
-             \ "coc-vimtex",
-			 \ "coc-markdownlint",
-             \ "coc-snippets",
-			 \ "coc-highlight",
-             \ "coc-css",
-             \ "coc-html",
-             \ "coc-java",
-             \ "coc-tsserver",
-			 \ "coc-pairs",
-             \ "coc-css",
-             \ "coc-tsserver"]
-  " :CocInstall coc-markdownlint coc-snippets coc-json coc-highlight coc-css coc-html coc-java coc-python coc-tsserver coc-pairs coc-lists coc-go
+  let g:loaded_python_provider = 0
+
+  " 重新映射 leader 键
+  let g:mapleader = ','
+
   
+  " 打开光标下文件
+  " gd
+
+  " tab相关变更
+  " 设置Tab键的宽度        [等同的空格个数]
+  set tabstop=4
+  " 每一次缩进对应的空格数
+  set shiftwidth=4
+  " 按退格键时可以一次删掉 4 个空格
+  set softtabstop=4
+  " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
+  set smarttab
+  " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
+  set expandtab
+  " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
+  set shiftround
+  " 取消备份。 视情况自己改
+  set nobackup
+  " 关闭交换文件
+  set noswapfile
+
+  " 增加spacevim 背景透明模式
+  func! s:transparent_background()
+    highlight Normal guibg=NONE ctermbg=NONE
+    highlight NonText guibg=NONE ctermbg=NONE
+  endf
+  autocmd ColorScheme * call s:transparent_background()
+
+  " defx 设置
+  "if has('nvim')
+  "  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
+  "else
+  "  Plug 'Shougo/defx.nvim'
+  "  Plug 'roxma/nvim-yarp'
+  "  Plug 'roxma/vim-hug-neovim-rpc'
+  "endif
+
+  " 具体编辑文件类型的一般设置，比如不要 tab 等
+  autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+  autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+  autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
+  autocmd BufRead,BufNewFile *.part set filetype=html
+  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+  " for # indent, python文件中输入新行时#号注释不切回行首
+  autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
   let g:python_host_prog = '/usr/local/bin/python2.7'
   let g:python3_host_prog = '/usr/local/bin/python3'
   let g:loaded_python_provider = 0
@@ -104,27 +132,23 @@ func! myspacevim#before() abort
   "" 设置映射规则，和 spacevim 保持一致
   "call SpaceVim#custom#SPC('nnoremap', ['g', 'm'], 'GitMessenger', 'show commit message in popup window', 1)
   "call SpaceVim#custom#SPC('nnoremap', ['g', 'l'], 'FloatermNew lazygit', 'open lazygit in floaterm', 1)
-  call SpaceVim#custom#SPC('nnoremap', ['g', 'f'], 'FloatermNew ranger', 'open directory in floaterm', 1)
 
   " 设置默认的pdf阅览工具
   " let g:vimtex_view_method = 'zathura'
 
 
+
   " 保证在插入模式<F4>可以 toggle floaterm
-  inoremap  <silent>   <F4>   :FloatermNew ranger<CR>
-  nnoremap  <silent>   <F4>   :FloatermNew ranger<CR>
-  tnoremap  <silent>   <F4>   <C-\><C-n>:FloatermToggle!<CR>
-
-
-  " 重新映射 leader 键
-  let g:mapleader = ','
-
-  "" 关闭所有隐藏设置 浮动窗口
-  let g:tex_conceal = ""
-
+  inoremap  <silent>   <F4>   :FloatermNew bash<CR>
+  nnoremap  <silent>   <F4>   :FloatermNew bash<CR>
+  tnoremap  <silent>   <F4>   <C-\><C-n>:FloatermNew<CR>
+  
   let g:floaterm_keymap_new    = '<C-n>'
   let g:floaterm_keymap_prev   = '<C-h>'
   let g:floaterm_keymap_next   = '<C-l>'
+
+  "" 关闭所有隐藏设置 浮动窗口
+  let g:tex_conceal = ""
 
   "" 修复ctrl+m 多光标操作选择的bug，但是改变了ctrl+v进行字符选中时将包含光标下的字符
   set selection=inclusive
@@ -213,7 +237,7 @@ func! myspacevim#after() abort
 
   " 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
   " 好处：误删什么的，如果以前屏幕打开，可以找回
-  set t_ti= t_te=
+  " set t_ti= t_te=
 
   " F1 废弃这个键,防止调出系统帮助
   " I can type :help on my own, thanks.  Protect your fat fingers from the evils of <F1>
@@ -241,8 +265,6 @@ func! myspacevim#after() abort
   " 复制选中区到系统剪切板中
   vnoremap <leader>y "+y
 
-
-
   " disable showmatch when use > in php
   au BufWinEnter *.php set mps-=<:>
 
@@ -254,8 +276,8 @@ func! myspacevim#after() abort
 " F3 显示可打印字符开关
 "nnoremap <F3> :set signcolumn! signcolumn?<CR>
 " set signcolumn=no
-" F6 换行开关
-nnoremap <F6> :set wrap! wrap?<CR>
+" F4 换行开关
+"nnoremap <F4> :set wrap! wrap?<CR>
 
 " F6 语法开关，关闭语法可以加快大文件的展示
 nnoremap <F6> :set signcolumn! signcolumn?<CR>
@@ -292,57 +314,12 @@ noremap <silent><leader>/ :nohls<CR>
 
 " F10 run
 "map <F10> :call SpaceVim#plugins#runner#open()<CR>
-"noremap <F10> :call SpaceVim#plugins#runner#open()<CR>
-" F5 runner
-" Use key mappings setting from this plugin by default.
-let g:runner_use_default_mapping = 1
+noremap <F10> :call SpaceVim#plugins#runner#open()<CR>
 
-" Save file first before compile and run by default.
-let g:runner_is_save_first = 1
+" autodir
+"let g:spacevim_project_rooter_automatically = 0
 
-" Print a timestamp on the top of output by default.
-let g:runner_print_timestamp = 1
 
-" Print time usage of do all actions by default.
-let g:runner_print_time_usage = 1
-
-" Show the comment information by default.
-let g:runner_show_info = 1
-
-" Not auto remove tmp file by default.
-let g:runner_auto_remove_tmp = 0
-
-" Use <F5> to compile and run code by default.
-" Feel free to change mapping you like.
-let g:runner_run_key = "<F5>"
-
-" Set tmp dir for output.
-let g:runner_tmp_dir = "/tmp/vim-runner/"
-
-" Section: work with other plugins
-" w0rp/ale
-let g:runner_is_with_ale = 0
-" iamcco/markdown-preview.vim
-let g:runner_is_with_md = 0
-
-" Section: executable settings
-let g:runner_c_executable = "gcc"
-let g:runner_cpp_executable = "g++"
-let g:runner_rust_executable = "cargo"
-let g:runner_python_executable = "python3.9"
-
-" Section: compile options settings
-let g:runner_c_compile_options = "-std=c11 -Wall"
-let g:runner_cpp_compile_options = "-std=c++11 -Wall"
-let g:runner_rust_compile_options = ""
-
-" Section: run options settings
-let g:runner_c_run_options = ""
-let g:runner_cpp_run_options = ""
-let g:runner_rust_run_backtrace = 1
-let g:runner_rust_run_options = ""
-
-let g:clamp_autostart = 1
 " 处理背景不透明问题
 "hi! Normal ctermbg=NONE guibg=NONE
 "hi! NonText ctermbg=NONE guibg=NONE guifg=NONE ctermfg=NONE

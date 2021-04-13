@@ -3,24 +3,22 @@
 #
 # 字体
 #
-#font pango:monospace 8
+#font pango:monospace
 #font -misc-fixed-medium-r-normal--13-120-75-75-C-70-iso10646-1
-#font pango:Terminus 11px
 #font pango:DejaVu Sans Mono for Powerline 11
-#font pango:SauceCodePro Nerd Font 11
+font pango:SauceCodePro Nerd Font 11
+font pango:Terminus 11px
 #font pango:DejaVu Sans Mono 8
-font pango:DejaVu Sans Mono for Powerline 11
+#font pango:DejaVu Sans Mono for Powerline 11
 
 #
 # 顶部状态栏
 #
 bar {
-  #font pango:monospace 12
-  font pango:DejaVu Sans Mono for Powerline 11
+  font pango:SauceCodePro Nerd Font 11
   position top
-  #position bottom
-#status_command ~/.config/i3/bumblebee-status/bumblebee-status -m arch-update memory pasink pasource time date battery-upower xrandr -p home.path=/home/caler time.format="%A %H:%M:%S" date.format="%m-%d" memory.format="{used}/{total}" disk.format="{left}" -t dracula-powerline
-status_command ~/.config/i3/bumblebee-status/bumblebee-status -m disk:home pasink pasource battery-upower xrandr time -p home.path=/home/caler time.format="%A %H:%M:%S" date.format="%Y-%m-%d" memory.format="{used}/{total}" -t dracula-powerline
+status_command ~/.config/i3/bumblebee-status/bumblebee-status -m cpu memory brightness xrandr pasink pasource time battery-upower -p home.path=/home/caler time.format="%A %H:%M:%S" date.format="%Y-%m-%d" memory.format="{used}/{total}" disk.format="{left}" -t dracula-powerline
+#status_command ~/.config/i3/bumblebee-status/bumblebee-status -m xrandr cpu memory disk:home pasink pasource date time battery-upower brightness caffeine -p home.path=/home/caler time.format="%A %H:%M:%S" date.format="%Y-%m-%d" memory.format="{used}/{total}" disk.format="{left}" -t dracula-powerline
 }
 
 set $background #101010
@@ -79,17 +77,13 @@ for_window [class="Skype"] floating enable border normal
 for_window [class="Timeset-gui"] floating enable border normal
 #for_window [class="(?i)virtualbox"] floating enable border normal
 for_window [class="Xfburn"] floating enable
+
 for_window [class="(?i)WeChat.exe"] floating enable border none
-for_window [class="(?i)WeChatApp.exe"] floating enable border none
-for_window [class="(?i)WeChatWeb.exe"] floating enable border none
-for_window [class="WeChatWeb.exe"] floating enable border none
 for_window [class="(?i)QQ.exe"] floating enable border none
-for_window [class="(?i)thunder"] floating enable border none
-#for_window [instance="(?i)TIM.exe"] floating enable border none
+for_window [instance="(?i)TIM.exe"] floating enable border none
 for_window [class="vlc"] floating enable border normal
 for_window [class="systemsettings5"] floating enable
 for_window [class="Xfce4-appfinder"] floating enable
-for_window [class="flameshot"] floating enable
 #for_window [class="Skype"] floating enable border normal
 #for_window [class="Xfburn"] floating enable
 
@@ -98,18 +92,13 @@ focus_follows_mouse no # [是否跟随鼠标改变现在的焦点窗口]
 #bindsym $mod+q kill                                              # [关闭窗口]
 #bindsym $mod+Shift+q kill
 # => 关闭窗口
-bindsym $mod+w kill
-
-# ==> 截屏print键
-bindsym Print --release exec /usr/bin/flameshot gui
+bindsym mod1+F4 kill
 
 bindsym $mod+Ctrl+l exec --no-startup-id i3lock-fancy            # [锁屏]
-#bindsym $mod+l exec --no-startup-id i3lock-fancy            # [锁屏]
 bindsym $mod+Return exec --no-startup-id alacritty               # [终端]
-#bindsym $mod+Return exec --no-startup-id kitty               # [终端]
 bindsym $mod+m      exec --no-startup-id konsole
 #bindsym $mod+Return exec --no-startup-id konsole              # [终端]
-bindsym $mod+g exec --no-startup-id chromium                     # [chromium]
+bindsym $mod+c exec --no-startup-id chromium                     # [chromium]
 bindsym $mod+Shift+a exec --no-startup-id deepin-screenshot      # [截图]
 bindsym $mod+d exec --no-startup-id rofi -show drun              # [快速搜索]
 bindsym mod1+F3 exec --no-startup-id xfce4-appfinder            # Alt+F2 程序搜索
@@ -129,24 +118,19 @@ bindsym $mod+Up focus up
 bindsym $mod+Right focus right
 
 # change container layout (stacked, tabbed, toggle split)
-# [堆积]
-# [标签]
-# [切换差分]
-bindsym $mod+s layout stacking    
-bindsym $mod+t layout tabbed      
-bindsym $mod+e layout toggle split
-#bindsym $mod+n layout tabbed 
-# [标签] 
+bindsym $mod+s layout stacking               # [堆积]
+bindsym $mod+w layout tabbed                 # [标签] 
+bindsym $mod+e layout toggle split           # [切换差分]
 
 # toggle tiling / floating
 #bindsym $mod+Shift+space floating toggl      
 bindsym $mod+Shift+space floating toggle
 
 # split in horizontal orientation            # 竖分屏
-bindsym $mod+| split h
+bindsym $mod+g split h
 
 # split in vertical orientation              # 横分屏
-bindsym $mod+- split v
+bindsym $mod+v split v
 
 # enter fullscreen mode for the focused container  # 全屏
 bindsym $mod+f fullscreen toggle
@@ -157,15 +141,14 @@ bindsym $mod+f fullscreen toggle
 set $mod Mod4
 set $WS1  1:
 set $WS2  2:
-set $WS3  3:
-set $WS4  4:
+set $WS3  3:
+set $WS4  4:
 set $WS5  5:
 set $WS6  6:
 set $WS7  7:
 set $WS8  8:
 set $WS9  9:
 set $WS0 10:
-#set $WS4  4:
 
 # switch to workspace
 bindsym $mod+1 workspace $ws1
@@ -267,14 +250,12 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 bindsym Mod1+Tab workspace next
-bindsym $mod+n workspace next
-bindsym $mod+p workspace prev
 bindsym Mod1+Shift+Tab workspace prev
 bindsym Mod1+space exec --no-startup-id krunner  # 运行krunner
 #bindsym Mod1+f exec --no-startup-id thunar       # 好用的文件管理器
 
 # 设置截图快捷键 ,先安装mate-utils, sudo pacman -S mate-utils
-#bindsym Mod1+s  exec  mate-screenshot -i
+bindsym $mod+p  exec  mate-screenshot -i
 
 #
 # 加载项
@@ -295,12 +276,9 @@ exec --no-startup-id klipper
 exec_always --no-startup-id autotiling
 
 # 透明
-#exec --no-startup-id compton --conf ~/.conf/compton.conf -b
 exec --no-startup-id compton -b
-
-# 音量控制
 exec --no-startup-id volumeicon
-exec_always --no-startup-id picom
+#exec_always --no-startup-id picom
 
 # 网络连接图标
 exec_always --no-startup-id nm-applet

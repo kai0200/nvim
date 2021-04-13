@@ -1,4 +1,18 @@
 # SpaceVim
+```
+:h SpaceVim
+:SPUpdate
+:SPUpdate startuptime.vim
+:SPUpdate SpaceVim
+:SPDebugInfo!   # 查看运行时日志 SPC h I 打开问题面板
+
+<space> - <key>
+key:
+[1-9] - Window
+b - buffer
+p - project
+
+```
 
 ## 备份 ##
 | Keys               | 快捷键说明                       |
@@ -19,7 +33,6 @@ endfunction
 - spacevim 自动定义快捷键不生效问题
 需要修改的文件基本在 ~/.SpaceVim.d/autoload/myspacevim.vim 这个文件里,按vim默认方式替换即可.
 还有一种情况是被系统其他插件占用,如 
-
 ```
 <leader>+n :call jedi#usages() 
 ```
@@ -123,7 +136,7 @@ endfunction
   <leader> q r:	原生 q : 快捷键，打开命令行窗口
   ```
 
-### 导航键 [SPC] s , g z ###
+### 导航键 [SPC] s "\"(默认的leader), g z ###
   - s 文件关闭打开等
     ```
     新建：s-t
@@ -338,21 +351,17 @@ endfunction
 }
 
 ```
-# coc-vim python 配置
-
+###
 ```
-# coc-vim 需要安装服务
-# 配置 ~/.SpaceVim/coc-settings.json
-url https://github.com/neoclide/coc.nvim/wiki/Language-servers#python  
+" 保证在插入模式<F4>可以 toggle floaterm
+inoremap  <silent>   <F4>   :FloatermNew ipython<CR>
+nnoremap  <silent>   <F4>   :FloatermNew ipython<CR>
+tnoremap  <silent>   <F4>   <C-\><C-n>:FloatermNew<CR>
 
-url  https://github.com/palantir/python-language-server
+"" 关闭所有隐藏设置 浮动窗口
+let g:tex_conceal = ""
 
-pip3.9 install 'python-language-server[yapf]'
-pip3.9 install 'python-language-server[all]'
-pip3.9 install -U setuptools
-
-other plugins
-pyls-mypy pyls-isort pyls-black
-
-
+let g:floaterm_keymap_new    = '<C-n>'
+let g:floaterm_keymap_prev   = '<C-h>'
+let g:floaterm_keymap_next   = '<C-l>'
 ```

@@ -1,0 +1,7 @@
+#Xft.dpi: 165
+URxvt.font: xft:Source Code Pro:antialias=True:pixelsize=18,xft:WenQuanYi Zen Hei:pixelsize=18
+URxvt.boldfont: xft:Source Code Pro:antialias=True:pixelsize=18,xft:WenQuanYi Zen Hei:pixelsize=18
+Xft.antialias:          1
+Xft.hinting:            1
+Xft.rgba:               none
+ft.hintstyle:          hintfull

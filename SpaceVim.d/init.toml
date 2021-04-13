@@ -3,9 +3,7 @@
 # Copyright (c) 2016-2017 Wang Shidong & Contributors
 # Author: Wang Shidong < wsdjeg at 163.com >
 # URL: https://spacevim.org
-# License: GPLv3
-# https://github.com/fannheyward/coc-pyright  jedi更换coc报错更换coc-pyright 
-# 效果还不明确，不过coc崩溃不出现了
+# License: GPLv3  使用vim， nvim 还是有问题有些插件莫名其妙的矿山光标放弃
 #=============================================================================
 
 # All SpaceVim option below [option] section
@@ -14,34 +12,35 @@
   # if you want to use more colorscheme, please load the colorscheme
   # layer
   # 自动更新
-  automatic_update = true
+  #automatic_update = true
 
   default_indent = 4
   expand_tab = true
 
-  colorscheme = "gruvbox"
-  #colorscheme = "solarized"
-  #colorscheme = "NeoSolarized"
+  #colorscheme = "gruvbox"
+  colorscheme = "onedark"
   colorscheme_bg = "dark"
   # Disable guicolors in basic mode, many terminal do not support 24bit
   # true colors
   enable_guicolors = true
   # Disable statusline separator, if you want to use other value, please
   # install nerd fonts
-  statusline_separator = "nil"
-  statusline_inactive_separator = "nil"
-
-  enable_tabline_filetype_icon = true
-  enable_tabline_ft_icon = true
-  statusline_inactive_separator = "bar"
-
-  # 显示输入状态
-  enable_statusline_mode = true
+  buffer_index_type = 4
 
   # 目录显示默认显示在左边
   #filetree_direction = "left"
+  # 禁用插件
+  #disabled_plugins = [""]
+
+  # 取消项目根目录
+  # 0: disable autochdir
+  # 1: change to project root automatically
+  # 2: change to directory of current file automatically
+  project_rooter_automatically = 2
+  change_directory_automatically = 2
 
   filemanager = "defx"
+  enable_vimfiler_gitstatus = true
   #filemanager = "vimfiler"
   autocomplete_method = "coc"
   #autocomplete_method = "deoplete"
@@ -49,23 +48,17 @@
   bootstrap_after = "myspacevim#after"
 
   vim_help_language = "cn"
-  default_indent = 4
-  expand_tab = false
   # SPC x g t 翻译
   # enable_googlesuggest = true
-#[[layers]] 
-#  name = 'lsp'
-# filetypes = [
-#    'python',
-#  ]
 
   # options for statusline
   # 设置状态栏上分割符号形状，如果字体安装失败，可以将值设为 "nil" 以禁用分割符号，
   # 分割符包括以下几种 "arrow", "curve", "slant", "fire", "nil"，默认为箭头 "arrow"
   # 设置活动窗口状态栏上的分割符号形状
-  statusline_separator = "arrow"
+  statusline_separator = "fire"
   # 设置非活动窗口状态栏上的分割符号形状
-  statusline_inactive_separator = "bar"
+  #statusline_inactive_separator = "bar"
+  #statusline_inactive_separator = "arrow"
 
   # 设置顶部标签列表序号类型，有以下五种类型，分别是 0 - 4
   buffer_index_type = 0
@@ -98,18 +91,13 @@
   # 'battery status' 电池状态
   # 'input method' 输入法
   # 'search status' 搜索状态
+[[layers]]
+  name = "checkers"
+#show_cursor_error = false
 
 [[layers]]
   name = "chinese"
 
-#[[layers]]
-# name = "lang#c"
-# clang_executable = "/usr/bin/clang"
-# [layer.clang_std]
-#   c = "c11"
-#   cpp = "c++1z"
-#   objc = "c11"
-#   objcpp = "c++1z"
 [[layers]]
   name = "colorscheme"
 
@@ -129,9 +117,10 @@
   auto_completion_tab_key_behavior = "smart"
 
 [[layers]]
-  name = 'shell'
-  default_position = 'top'
-  default_height = 30
+    name = 'shell'
+    default_position = 'float'
+    #default_position = 'top'
+    default_height = 35
 
 [[layers]]
   name = 'Shougo/vimproc.vim'
@@ -147,11 +136,10 @@
   name = "default"
 
 [[layers]]
-  name = 'lang#java'
-
-[[layers]]
   name = 'lang#go'
 
+#[[layers]]
+#  name = "core#statusline"
 [[layers]]
   name = "core#statusline"
 # ----------------------------------------------------------
@@ -187,35 +175,8 @@
   name = "format"
 
 [[layers]]
-  name = "debug"
+   name = "debug"
 
-# C/C++
-# 需要在项目根目录添加工程文件 .project_alt.json：
-# {
-#  "*.c": {"alternate": "{}.h"},
-#  "*.h": {"alternate": "{}.c"}
-# }
-
-[[layers]]
-    name = 'lang#c'
-#    enable_clang_syntax_highlight = true
-#
-#[[layers]]
-#  name = "lsp"
-#  filetypes = [
-#    "c",
-#    "cpp"
-#  ]
-#  [layers.override_cmd]
-#    c = ["clangd"]
-# 与此同时，你也可以在项目根目录新建一个 .clang 文件，在其内逐行写入 C/C++ 编译的参数， 比如：
-# -I/home/test
-# -I/user/std/include
-#
-#[[layers]]
-#name = "lang#c"
-#[layer.clang_std]
-#cpp = "c11"
 
 # markdown
 # SPC b f	Normal	格式化当前文件
@@ -224,7 +185,6 @@
 # SPC l p	Normal	通过浏览器实时预览当前文件
 [[layers]]
   name = "lang#markdown"
-
 
 #  插件
 # <Leader> f <Space>	模糊查找快捷键，并执行该快捷键
@@ -237,8 +197,8 @@
 # <Leader> f t	模糊搜索全局函数列表
 # <Leader> f q	模糊搜索 quickfix list
 # <Leader> f r	重置上次搜索窗口
-[[layers]]
-  name = "unite"
+#[[layers]]
+#  name = "unite"
 
 # m 标签栏目
 # 快捷键	功能描述
@@ -250,13 +210,16 @@
 [[layers]]
     name = "tools"
 
+[[layers]]
+  name = "core#statusline"
+
 # =======
 # ================= Custom_plugins =================================================
 # =======
 
 # 多光标操作
-[[custom_plugins]]
-  name = 'terryma/vim-multiple-cursors'
+#[[custom_plugins]]
+#  name = 'terryma/vim-multiple-cursors'
 
 # markdown 表格和预览
 [[custom_plugins]]
@@ -273,22 +236,22 @@
   merge = 0
   build =  'yarn install --frozen-lockfile'
 
-# Test 插件 =============================
 # tmux 兼容插件
-[[custom_plugins]]
-  name = 'wellle/tmux-complete.vim'
-# gdb
-[[custom_plugins]]
-  name = 'Shougo/vimproc.vim'
-[[custom_plugins]]
-  name = 'idanarye/vim-vebugger'
-# 定义函数跳转
 #[[custom_plugins]]
-#  name = 'davidhalter/jedi-vim'
+#  name = 'wellle/tmux-complete.vim'
 
+# For defx
 [[custom_plugins]]
-  name = 'aben20807/vim-runner'
-# 配置自定义主题
+  name = 'roxma/nvim-yarp'
 [[custom_plugins]]
-  repo = "altercation/vim-colors-solarized"
-  merged = 0
+  name = 'roxma/vim-hug-neovim-rpc'
+[[custom_plugins]]
+  name = 'sei40kr/SpaceVim-onedark'
+
+# For markdown
+[[custom_plugins]]
+  name = 'godlygeek/tabular'
+[[custom_plugins]]
+  name = 'plasticboy/vim-markdown'
+[[custom_plugins]]
+  name = 'mzlogin/vim-markdown-toc'

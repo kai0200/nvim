@@ -2,33 +2,20 @@
 inoremap <silent><expr> <c-space> coc#refresh()
 
 " 使用 Microsoft Python Language Server 不然 coc.nvim 会警告
-"call coc#config("python.jediEnabled", v:false)
+call coc#config("python.jediEnabled", v:false)
 " 
 "call coc#config("diagnostic.hintSignColumn", v:false)
 call coc#config("diagnostic.enableHintSign", v:false)
 
 " c/c++ golang 和 bash 的 language server 设置
-call coc#config("languageserver", {
-      \"bash": {
-      \  "command": "bash-language-server",
-      \  "args": ["start"],
-      \  "filetypes": ["sh"],
-      \  "ignoredRootPaths": ["~"]
-      \},
-      \"python": {
-      \ "command": "python3.9",
-      \ "args": [
-      \   "-mpyls",
-      \   "-vv",
-      \   "--log-file",
-      \   "/tmp/lsp_python.log"
-      \ ],
-      \ "trace.server": "verbose",
-      \ "filetypes": [
-      \   "python"
-      \ ],
-      \},
-      \})
+"call coc#config("languageserver", {
+"      \"bash": {
+"      \  "command": "bash-language-server",
+"      \  "args": ["start"],
+"      \  "filetypes": ["sh"],
+"      \  "ignoredRootPaths": ["~"]
+"      \},
+"      \})
 
       "去掉了报错配置bash  "ignoredRootPaths": ["~"]
       "
@@ -39,19 +26,20 @@ let s:coc_extensions = [
       \ 'coc-css',
       \ 'coc-dictionary',
       \ 'coc-html',
-      \ 'coc-java',
 	  \ 'coc-json',
+      \ 'coc-python',
       \ 'coc-rust-analyzer',
-      \ 'coc-sh',
       \ 'coc-snippets',
       \ 'coc-syntax',
       \ 'coc-tasks',
       \ 'coc-todolist',
       \ 'coc-translator',
+      \ 'coc-todolist',
       \ 'coc-tsserver',
+      \ 'coc-word',
       \ 'coc-vimlsp',
       \ 'coc-vimtex',
-      \ 'coc-word',
+      \ 'coc-vimlsp',
       \ 'coc-yaml',
       \ 'coc-yank',
       \]
