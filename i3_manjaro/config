@@ -15,12 +15,14 @@ font pango:DejaVu Sans Mono for Powerline 11
 # 顶部状态栏
 #
 bar {
-  #font pango:monospace 12
+  font pango:monospace 12
   font pango:DejaVu Sans Mono for Powerline 11
   position top
   #position bottom
-#status_command ~/.config/i3/bumblebee-status/bumblebee-status -m arch-update memory pasink pasource time date battery-upower xrandr -p home.path=/home/caler time.format="%A %H:%M:%S" date.format="%m-%d" memory.format="{used}/{total}" disk.format="{left}" -t dracula-powerline
-status_command ~/.config/i3/bumblebee-status/bumblebee-status -m disk:home pasink pasource battery-upower xrandr time -p home.path=/home/caler time.format="%A %H:%M:%S" date.format="%Y-%m-%d" memory.format="{used}/{total}" -t dracula-powerline
+  status_command ~/.local/bin/bumblebee-status -m\
+  disk:home pasink pasource battery-upower xrandr time -p\
+  home.path=/home/caler time.format="%A %H:%M:%S"\
+  date.format="%Y-%m-%d" memory.format="{used}/{total}" -t dracula-powerline
 }
 
 set $background #101010
