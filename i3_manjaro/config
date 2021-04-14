@@ -217,18 +217,18 @@ bindsym $mod+Shift+Down move down
 bindsym $mod+Shift+Up move up
 bindsym $mod+Shift+Right move right
 
-#set $monitor1 HDMI1
-#set $monitor2 eDP1
-#workspace 0 output $monitor1
-#workspace 1 output $monitor1
-#workspace 2 output $monitor1
-#workspace 3 output $monitor1
-#workspace 4 output $monitor1
-#workspace 5 output $monitor1
-#workspace 6 output $monitor1
-#workspace 7 output $monitor1
-#workspace 8 output $monitor2
-#workspace 9 output $monitor2
+set $monitor1 eDP1
+set $monitor2 HDMI1
+workspace 0 output $monitor1
+workspace 1 output $monitor1
+workspace 2 output $monitor1
+workspace 3 output $monitor1
+workspace 4 output $monitor1
+workspace 5 output $monitor1
+workspace 6 output $monitor1
+workspace 7 output $monitor1
+workspace 8 output $monitor2
+workspace 9 output $monitor2
 # reload the configuration file
 
 
@@ -326,7 +326,7 @@ gaps outer -2
 #exec xrandr --newmode "3840x2160_30.00"  712.75  3840 4160 4576 5312  2160 2163 2168 2237 -hsync +vsync
 #exec xrandr --addmode HDMI1 3840x2160_30.00
 #exec xrandr --output HDMI1 --mode 3840x2160_30.00
-#exec xrandr --dpi 150 --output HDMI1 -s  3840x2160
+#exec xrandr --dpi 120 --output HDMI1 -s  3840x2160
 
 
 #exec xrandr --output eDP1 --off --output DP1 --off --output HDMI1 --primary --mode 3840x2160 --pos 0x0 --rotate normal --output HDMI2 --off --output VIRTUAL1 --off

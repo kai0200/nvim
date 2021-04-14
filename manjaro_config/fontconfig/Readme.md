@@ -37,5 +37,3 @@
  </match>
  <dir>/usr/share/fonts</dir>
 </fontconfig>
-```
-
