@@ -21,10 +21,11 @@ bar {
     font pango:monospace 10
     position top
     #status_command ~/.config/i3/bumblebee-status/bumblebee-status  -m cpu
-	status_command ~/.config/i3/bumblebee-status/bumblebee-status -m memory \
-    disk:home pasink pasource arch-update battery-upower xrandr time -p home.path=/home/caler\
-    time.format="%A %H:%M" date.format="%Y-%m-%d" memory.format="{used}/{total}" \
-    disk.format="{left}" -t dracula-powerline
+	status_command ~/.config/bumblebee-status/bumblebee-status \
+            -m memory disk:home pasink pasource arch-update battery-upower xrandr time \
+            -p home.path=/home/caler time.format="%A %H:%M" date.format="%Y-%m-%d" \
+               memory.format="{used}/{total}" disk.format="{left}"\
+            -t dracula-powerline
 }
 
 # set $background #101010

@@ -12,7 +12,6 @@
     "coc.preferences.extensionUpdateCheck": "daily",
     "coc.preferences.formatOnType": true,
     "coc.preferences.willSaveHandlerTimeout": 1000,
-    "python.jediEnabled": false,
     "coc.preferences.formatOnSaveFiletypes": [
         "c",
         "go",
@@ -33,7 +32,6 @@
     "list.insertMappings": {
         "<C-c>": "do:exit"
     },
-    "python.linting.enabled": false,
     "signature.target": "echo",
     "suggest.timeout": 5000,
     "suggest.defaultSortMethod": "none",
@@ -65,7 +63,7 @@
             ],
             "settings": {
                 "pyls": {
-                    "enable": true,
+                    "enable": false,
                     "trace": {
                         "server": "verbose"
                     },

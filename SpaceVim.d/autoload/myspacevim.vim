@@ -2,9 +2,10 @@ func! myspacevim#before() abort
 
   " ------------------- START  -----------------------
   "
-  "let g:python_host_prog = '/usr/bin/python2.7'
-  "let g:python3_host_prog = '/usr/bin/python3'
-  "let g:python_host_prog = '/opt/sohu/bin/python'
+  let g:python_host_prog = '/usr/local/bin/python2.7'
+  let g:python3_host_prog = '/usr/local/bin/python3'
+  let g:loaded_python_provider = 0
+  "let g:loaded_python3_provider = 0
   let g:loaded_python_provider = 0
   " markdown 语法隐藏禁用 plasticboy/vim-markdown(折行、语法隐藏、高亮等)
   let g:vim_markdown_conceal = 0
@@ -54,19 +55,6 @@ func! myspacevim#before() abort
   "  Plug 'roxma/vim-hug-neovim-rpc'
   "endif
 
-  " 具体编辑文件类型的一般设置，比如不要 tab 等
-  autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
-  autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-  autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
-  autocmd BufRead,BufNewFile *.part set filetype=html
-  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
-  " for # indent, python文件中输入新行时#号注释不切回行首
-  autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
-  let g:python_host_prog = '/usr/local/bin/python2.7'
-  let g:python3_host_prog = '/usr/local/bin/python3'
-  let g:loaded_python_provider = 0
-  "let g:loaded_python3_provider = 0
 
   " 打开光标下文件
   " gd
@@ -238,9 +226,11 @@ func! myspacevim#after() abort
   " syntax    使用语法定义折叠
   " diff      对没有更改的文本进行折叠
   " marker    使用标记进行折叠, 默认标记是 {{{ 和 }}}
-  "set foldmethod=indent
-  "set foldlevel=99
-  set foldlevel=4
+  set foldmethod=indent
+  set foldlevel=99
+  "set foldlevel=4
+  autocmd FileType markdown set foldmethod=expr foldlevel=99
+  autocmd BufNewFile,BufRead *.md set foldmethod=expr foldlevel=99
 
   " 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
   " 好处：误删什么的，如果以前屏幕打开，可以找回
@@ -333,6 +323,28 @@ noremap <F10> :call SpaceVim#plugins#runner#open()<CR>
 
 set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
+
+" 具体编辑文件类型的一般设置，比如不要 tab 等
+autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
+autocmd BufRead,BufNewFile *.part set filetype=html
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
+autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+" for # indent, python文件中输入新行时#号注释不切回行首
+autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
+
+au FileType markdown set foldmethod=expr foldlevel=99
+au BufNewFile,BufRead *.md set foldmethod=expr foldlevel=99
+
+"autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+au FileType python set foldmethod=indent foldlevel=99
+au BufNewFile,BufRead *.py set foldmethod=indent foldlevel=99
+au BufNewFile,BufRead *.py
+    \ set expandtab       |" replace tabs with spaces
+    \ set autoindent      |" copy indent when starting a new line
+    \ set tabstop=4
+    \ set softtabstop=4
+    \ set shiftwidth=4
 
   " ------------------- END -----------------------
 endf
