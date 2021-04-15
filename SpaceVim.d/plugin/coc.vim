@@ -52,6 +52,9 @@ let s:coc_extensions = [
       \ 'coc-word',
       \ 'coc-yaml',
       \ 'coc-yank',
+      \ 'coc-go',
+      \ 'coc-pairs',
+      \ 'coc-sh',
       \]
 for extension in s:coc_extensions
 	call coc#add_extension(extension)

@@ -277,5 +277,14 @@ autocmd BufNewFile,BufRead *.py
     \ set foldmethod=indent
     \ set foldlevel=99
 
+" 保存python文件时删除多余空格
+fun! <SID>StripTrailingWhitespaces()
+    let l = line(".")
+    let c = col(".")
+    %s/\s\+$//e
+    call cursor(l, c)
+endfun
+autocmd FileType c,cpp,java,go,php,javascript,puppet,python,rust,twig,xml,yml,perl autocmd BufWritePre <buffer> :call <SID>StripTrailingWhitespaces()
+
   " ------------------- END -----------------------
 endf
