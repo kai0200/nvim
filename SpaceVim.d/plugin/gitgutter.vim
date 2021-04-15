@@ -5,6 +5,8 @@ let g:gitgutter_preview_win_floating = 1
 let g:gitgutter_sign_added = '✚'
 let g:gitgutter_sign_modified = '✹'
 let g:gitgutter_sign_removed = '✖'
+let g:gitgutter_sign_removed_first_line='◥'
+let g:gitgutter_sign_modified_removed='◢'
 "let g:gitgutter_sign_removed_first_line = '▔'
 "let g:gitgutter_sign_modified_removed = '▒'
 " autocmd BufWritePost * GitGutter
@@ -12,13 +14,3 @@ let g:gitgutter_sign_removed = '✖'
 "nnoremap H :GitGutterPreviewHunk<CR>
 "nnoremap <LEADER>g- :GitGutterPrevHunk<CR>
 "nnoremap <LEADER>g= :GitGutterNextHunk<CR>
-"call defx#custom#column('git', 'indicators', {
-"  \ 'Modified'  : '',
-"  \ 'Staged'    : '',
-"  \ 'Untracked' : '✭',
-"  \ 'Renamed'   : '➜',
-"  \ 'Unmerged'  : '═',
-"  \ 'Ignored'   : '☒',
-"  \ 'Deleted'   : '',
-"  \ 'Unknown'   : '?'
-"  \ })

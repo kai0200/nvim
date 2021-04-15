@@ -6,38 +6,16 @@ func! myspacevim#before() abort
   let g:python3_host_prog = '/usr/local/bin/python3'
   let g:loaded_python_provider = 0
   "let g:loaded_python3_provider = 0
-  let g:loaded_python_provider = 0
   " markdown 语法隐藏禁用 plasticboy/vim-markdown(折行、语法隐藏、高亮等)
-  let g:vim_markdown_conceal = 0
+  let g:vim_markdown_conceal = 1
+  "let g:vim_markdown_folding_disabled = 0
   " yaml 语法加亮
   let g:vim_markdown_frontmatter = 1
   let g:vim_markdown_toml_frontmatter = 1
   let g:vim_markdown_json_frontmatter = 1
 
   "" 重新映射 leader 键
-  "let g:mapleader = ','
-
-  
-  " 打开光标下文件
-  " gd
-
-  " tab相关变更
-  " 设置Tab键的宽度        [等同的空格个数]
-  set tabstop=4
-  " 每一次缩进对应的空格数
-  set shiftwidth=4
-  " 按退格键时可以一次删掉 4 个空格
-  set softtabstop=4
-  " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
-  set smarttab
-  " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
-  set expandtab
-  " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
-  set shiftround
-  " 取消备份。 视情况自己改
-  set nobackup
-  " 关闭交换文件
-  set noswapfile
+  let g:mapleader = ','
 
   " 增加spacevim 背景透明模式
   func! s:transparent_background()
@@ -45,60 +23,6 @@ func! myspacevim#before() abort
     highlight NonText guibg=NONE ctermbg=NONE
   endf
   autocmd ColorScheme * call s:transparent_background()
-
-  " defx 设置
-  "if has('nvim')
-  "  Plug 'Shougo/defx.nvim', { 'do': ':UpdateRemotePlugins' }
-  "else
-  "  Plug 'Shougo/defx.nvim'
-  "  Plug 'roxma/nvim-yarp'
-  "  Plug 'roxma/vim-hug-neovim-rpc'
-  "endif
-
-
-  " 打开光标下文件
-  " gd
-
-"  " 设置Tab键的宽度        [等同的空格个数]
-"  set tabstop=4
-"  " 每一次缩进对应的空格数
-"  set shiftwidth=4
-"  " 按退格键时可以一次删掉 4 个空格
-"  set softtabstop=4
-"  " insert tabs on the start of a line according to shiftwidth, not tabstop 按退格键时可以一次删掉 4 个空格
-"  set smarttab
-"  " 将Tab自动转化成空格[需要输入真正的Tab键时，使用 Ctrl+V + Tab]
-"  set expandtab
-"  " 缩进时，取整 use multiple of shiftwidth when indenting with '<' and '>'
-"  set shiftround
-"  " 取消备份。 视情况自己改
-"  set nobackup
-"  " 关闭交换文件
-"  set noswapfile
-"
-"  " 增加spacevim 背景透明模式
-"  func! s:transparent_background()
-"    highlight Normal guibg=NONE ctermbg=NONE
-"    highlight NonText guibg=NONE ctermbg=NONE
-"  endf
-"  autocmd ColorScheme * call s:transparent_background()
-"
-"  " 具体编辑文件类型的一般设置，比如不要 tab 等
-"  autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
-"  autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-"  autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
-"  autocmd BufRead,BufNewFile *.part set filetype=html
-"  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-"  autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
-"  " for # indent, python文件中输入新行时#号注释不切回行首
-"  autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
-
-  " 自定义自己的spc快捷键
-  " -------------------------
-  "
-  " vim-table-mode  Markdown 文件自动制表
-  call SpaceVim#custom#SPCGroupName(['k'], '+快速')
-  call SpaceVim#custom#SPC('nore', ['k', 't'], 'TableModeToggle', 'MarkDown Tables', 1)
 
   "  设置自动屏幕边缘自动折行
   " -------------------------
@@ -136,7 +60,7 @@ func! myspacevim#before() abort
   inoremap  <silent>   <F4>   :FloatermNew bash<CR>
   nnoremap  <silent>   <F4>   :FloatermNew bash<CR>
   tnoremap  <silent>   <F4>   <C-\><C-n>:FloatermNew<CR>
-  
+
   let g:floaterm_keymap_new    = '<C-n>'
   let g:floaterm_keymap_prev   = '<C-h>'
   let g:floaterm_keymap_next   = '<C-l>'
@@ -159,8 +83,8 @@ func! myspacevim#before() abort
   "
   " 焦点消失的时候自动保存
   "
-  au FocusLost * :wa
-  au FocusGained,BufEnter * :checktime
+  autocmd FocusLost * :wa
+  autocmd FocusGained,BufEnter * :checktime
 
   " 设置可以高亮的关键字
   if has("autocmd")
@@ -171,13 +95,13 @@ func! myspacevim#before() abort
     endif
   endif
 
-  " <leader>n "  jedi 占用了,n 查jedi git 配置修改到plugin/jedi.vim 生效了
-  " ~/.SpaceVim.d/plugin/jedi.vim
-  " 在此处加入的可能被其他插件覆盖,去plugin里添加一个修改掉就可以了
-  map <leader>n :Defx<cr>
-
+  " 自定义自己的spc快捷键
+  " -------------------------
+  " vim-table-mode  Markdown 文件自动制表
+  call SpaceVim#custom#SPCGroupName(['k'], '+快速')
+  call SpaceVim#custom#SPC('nore', ['k', 't'], 'TableModeToggle', 'MarkDown Tables', 1)
   " markdown table
-  map <leader>mt :TableModeToggle<cr>
+  " map <leader>mt :TableModeToggle<cr>
   " 配置markdown快速编辑键 {{{
   autocmd Filetype markdown map <leader>w yiWi[<esc>Ea](<esc>pa)
   autocmd Filetype markdown inoremap <buffer> <leader>f <Esc>/<++><CR>:nohlsearch<CR>"_c4l
@@ -200,7 +124,6 @@ func! myspacevim#before() abort
   autocmd Filetype markdown inoremap <buffer> <leader>p4 ####<Space> <++> - 项目组合 ####F[a
   "}}}
 
-  set termguicolors
   " ------------------- END -----------------------
   "
 endf
@@ -217,8 +140,17 @@ func! myspacevim#after() abort
   " 去掉搜索高亮
   noremap <silent><leader>/ :nohls<CR>
 
+  " vim 配合tmux 真彩色
+  if has("termguicolors")
+    " fix bug for vim
+    "set t_8f=^[[38;2;%lu;%lu;%lum
+    "set t_8b=^[[48;2;%lu;%lu;%lum
+    "
+    " enable true color
+    set termguicolors
+  endif
+
   " 代码折叠
-  set foldenable
   " 折叠方法
   " manual    手工折叠
   " indent    使用缩进表示折叠
@@ -229,8 +161,6 @@ func! myspacevim#after() abort
   set foldmethod=indent
   set foldlevel=99
   "set foldlevel=4
-  autocmd FileType markdown set foldmethod=expr foldlevel=99
-  autocmd BufNewFile,BufRead *.md set foldmethod=expr foldlevel=99
 
   " 设置 退出vim后，内容显示在终端屏幕, 可以用于查看和复制, 不需要可以去掉
   " 好处：误删什么的，如果以前屏幕打开，可以找回
@@ -263,11 +193,8 @@ func! myspacevim#after() abort
   vnoremap <leader>y "+y
 
   " disable showmatch when use > in php
-  au BufWinEnter *.php set mps-=<:>
+  autocmd BufWinEnter *.php set mps-=<:>
 
-  "set ts=4
-  "set tabstop=4
-  "set shiftwidth=4
   set expandtab  " 展开tab
 
 " F3 显示可打印字符开关
@@ -325,26 +252,30 @@ set t_8f=^[[38;2;%lu;%lu;%lum
 set t_8b=^[[48;2;%lu;%lu;%lum
 
 " 具体编辑文件类型的一般设置，比如不要 tab 等
+" Disable syntax for md
+autocmd BufRead,BufNewFile {*.markdown,*.mdown,*.mkdn,*.md,*.mkd,*.mdwn,*.mdtxt,*.mdtext,*.text} set filetype=markdown
+    \ set expandtab
+    \ set foldmethod=expr
+    \ set foldlevel=99
+autocmd FileType markdown setlocal syntax=off spell
+
+" Other autocmd
 autocmd FileType ruby,javascript,html,css,xml,markdown set tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
-autocmd BufRead,BufNewFile *.md,*.mkd,*.markdown set filetype=markdown.mkd
 autocmd BufRead,BufNewFile *.part set filetype=html
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=2 shiftwidth=2 softtabstop=2 expandtab ai
 autocmd BufRead,BufNewFile *.vue setlocal filetype=vue.html.javascript tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
+
 " for # indent, python文件中输入新行时#号注释不切回行首
 autocmd BufNewFile,BufRead *.py inoremap # X<c-h>#
 
-au FileType markdown set foldmethod=expr foldlevel=99
-au BufNewFile,BufRead *.md set foldmethod=expr foldlevel=99
-
-"autocmd FileType py set tabstop=4 shiftwidth=4 softtabstop=4 expandtab ai
-au FileType python set foldmethod=indent foldlevel=99
-au BufNewFile,BufRead *.py set foldmethod=indent foldlevel=99
-au BufNewFile,BufRead *.py
+autocmd BufNewFile,BufRead *.py
     \ set expandtab       |" replace tabs with spaces
     \ set autoindent      |" copy indent when starting a new line
     \ set tabstop=4
     \ set softtabstop=4
     \ set shiftwidth=4
+    \ set foldmethod=indent
+    \ set foldlevel=99
 
   " ------------------- END -----------------------
 endf

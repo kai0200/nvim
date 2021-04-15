@@ -3,7 +3,7 @@ inoremap <silent><expr> <c-space> coc#refresh()
 
 " 使用 Microsoft Python Language Server 不然 coc.nvim 会警告
 call coc#config("python.jediEnabled", v:false)
-" 
+"
 "call coc#config("diagnostic.hintSignColumn", v:false)
 call coc#config("diagnostic.enableHintSign", v:false)
 
@@ -21,25 +21,34 @@ call coc#config("diagnostic.enableHintSign", v:false)
       "
 " coc.nvim 插件，用于支持 python java 等语言
 let s:coc_extensions = [
+      \ 'coc-actions',
       \ 'coc-ci',
+      \ 'coc-clangd',
       \ 'coc-cmake',
       \ 'coc-css',
       \ 'coc-dictionary',
+      \ 'coc-eslint',
+      \ 'coc-explorer',
+      \ 'coc-flutter',
       \ 'coc-html',
+      \ 'coc-java',
 	  \ 'coc-json',
+	  \ 'coc-lists',
+	  \ 'coc-powershell',
       \ 'coc-python',
       \ 'coc-rust-analyzer',
       \ 'coc-snippets',
+      \ 'coc-sourcekit',
+      \ 'coc-stylelint',
       \ 'coc-syntax',
       \ 'coc-tasks',
       \ 'coc-todolist',
       \ 'coc-translator',
-      \ 'coc-todolist',
+      \ 'coc-tslint',
       \ 'coc-tsserver',
-      \ 'coc-word',
       \ 'coc-vimlsp',
       \ 'coc-vimtex',
-      \ 'coc-vimlsp',
+      \ 'coc-word',
       \ 'coc-yaml',
       \ 'coc-yank',
       \]

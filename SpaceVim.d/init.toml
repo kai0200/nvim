@@ -178,9 +178,9 @@
 [[layers]]
    name = "debug"
 
+#[[layers]]  # 由于使用了vim-markdown 禁用此配置
+#  name = "lang#markdown"
 
-[[layers]]
-  name = "lang#markdown"
 # markdown
 # SPC b f	Normal	格式化当前文件
 # SPC l k	Normal/Visual	为光标下的单词或者选中文本增加 URL 链接
@@ -222,10 +222,6 @@
 #[[custom_plugins]]
 #  name = 'terryma/vim-multiple-cursors'
 
-# markdown 表格和预览
-[[custom_plugins]]
-  name = 'dhruvasagar/vim-table-mode'
-  on = 'TableModeToggle'
 
 # 以悬浮窗口的形式打开终端
 [[custom_plugins]]
@@ -249,7 +245,12 @@
 [[custom_plugins]]
   name = 'sei40kr/SpaceVim-onedark'
 
-# custom_plugins for markdown
+# markdown 表格和预览 等
+[[custom_plugins]]
+  name = 'iamcco/markdown-preview.nvim'
+[[custom_plugins]]
+  name = 'dhruvasagar/vim-table-mode'
+  on = 'TableModeToggle'
 [[custom_plugins]]
   name = 'godlygeek/tabular'
 [[custom_plugins]]
