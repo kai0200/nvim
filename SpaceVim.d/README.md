@@ -24,7 +24,7 @@ p - project
 
 ## 自定义快捷键
 
-- <SPC> 快捷键
+- \<SPC\> 快捷键
 
 ```vim
 function! myspacevim#before() abort
@@ -90,10 +90,10 @@ q 恢复vim 模式
 ```
 
 ### 命令行方向键
-    Ctrl-a Ctrl-b Ctrl-f
+  Ctrl-a Ctrl-b Ctrl-f
 
 ### 恢复vim 所有默认快捷键
-    vimcompatible = true
+  vimcompatible = true
 
 ### 添加本地克隆版本插件
   ```
@@ -102,7 +102,7 @@ q 恢复vim 模式
   endfunction
   ```
 ### 随机下一个主题
-    SPC T n
+  SPC T n
 
 ### 状态栏显示
 
@@ -125,21 +125,21 @@ q 恢复vim 模式
 
 
 ### FileTree
-    新建文件: N
-    显示隐藏: .
-    预览: p
-    快速查看: v
-    使用相关程序执行: gx
-    刷新: Ctrl+r
-    切换窗口文件: Ctrl+x
+  新建文件: N
+  显示隐藏: .
+  预览: p
+  快速查看: v
+  使用相关程序执行: gx
+  刷新: Ctrl+r
+  切换窗口文件: Ctrl+x
 
 ### q 宏
-  ```
-  <leader> q r	原生 q 快捷键
-  <leader> q r/	原生 q / 快捷键，打开命令行窗口
-  <leader> q r?	原生 q ? 快捷键，打开命令行窗口
-  <leader> q r:	原生 q : 快捷键，打开命令行窗口
-  ```
+```
+<leader> q r  原生 q 快捷键
+<leader> q r/  原生 q / 快捷键，打开命令行窗口
+<leader> q r?  原生 q ? 快捷键，打开命令行窗口
+<leader> q r:  原生 q : 快捷键，打开命令行窗口
+```
 
 ### 导航键 [SPC] s "\"(默认的leader), g z
   - s 文件关闭打开等
@@ -200,7 +200,7 @@ q 恢复vim 模式
   [SPC] w .
 
 ### 缓冲区清理
-  [SPC] b . 缓冲区清理  SPC b C-d	删除其它所有缓冲区
+  [SPC] b . 缓冲区清理  SPC b C-d  删除其它所有缓冲区
 
 ### 打开初始页面
   [SPC] b h
@@ -232,21 +232,21 @@ q 恢复vim 模式
 | SPC h m   | 使用 Unite 浏览所有 man 文档                       |
 
 ### 常用的成对快捷键
-  [ q	跳至前一个错误
-  ] q	跳至下一个错误
-  [ t	跳至前一个标签页
-  ] t	跳至下一个标签页
-  [ w	跳至前一个窗口
-  ] w	跳至下一个窗口
+  [ q  跳至前一个错误
+  ] q  跳至下一个错误
+  [ t  跳至前一个标签页
+  ] t  跳至下一个标签页
+  [ w  跳至前一个窗口
+  ] w  跳至下一个窗口
 
 ### 以 g 为前缀的快捷键
-  g '	跳至标签
-  g *	正向搜索光标下的词
+  g '  跳至标签
+  g *  正向搜索光标下的词
 
 ### yw /(Ctrl+R0)
   让光标停留在单词的第一个字母上， 然后输入yw拷贝该单词， 然后输入 / (Ctrl + R) 0 （即 /”0），回车， 就查找到了第一个匹配的单词， 并且可以通过 n  或  N 进行上一个或下一个的匹配
 
-### v 选中要复制的文字,
+### v 选中要复制的文字
   <leader>c (实际操作为 "+y) 拷贝,
 
 ### 多光标
@@ -267,7 +267,7 @@ q 恢复vim 模式
 | SPC e . | 错误暂态（error transient state)                                            |
 
 
-### quickfix 列表移动：
+### quickfix 列表移动
 
 | 快捷键       | 功能描述                       |
 |--------------|--------------------------------|
@@ -298,9 +298,9 @@ q 恢复vim 模式
 :let  <tab>         # 可查看所有let 参数
 ```
 
-- 办法  [参考]()https://www.reddit.com/r/vim/comments/do98do/how_do_i_get_the_pretty_icons_for_diagnostic/
+- [办法  [参考]()https://www.reddit.com/r/vim/comments/do98do/how_do_i_get_the_pretty_icons_for_diagnostic/
 增加~/.SpaceVim/coc-settings.json
-生效代码应该是 ```"git.enableGutters": false``` ,这样就是用gitgutter插件的git提醒,错误检查和报警使用coc.nvim的
+生效代码应该是 "git.enableGutters": false,这样就是用gitgutter插件的git提醒,错误检查和报警使用coc.nvim的
 
 ```json
 # ln -s ~/.SpaceVim.d/coc-settings.json  ~/.SpaceVim/
@@ -356,7 +356,9 @@ q 恢复vim 模式
 }
 
 ```
-###
+
+### F4 - key
+
 ```
 " 保证在插入模式<F4>可以 toggle floaterm
 inoremap  <silent>   <F4>   :FloatermNew ipython<CR>
@@ -369,4 +371,16 @@ let g:tex_conceal = ""
 let g:floaterm_keymap_new    = '<C-n>'
 let g:floaterm_keymap_prev   = '<C-h>'
 let g:floaterm_keymap_next   = '<C-l>'
+```
+
+### Log
+
+```
+-  2021年 04月 15日 星期四 18:30:55 CST
+  # 调试Vim
+  nvim -V10/tmp/1.log README.md 
+
+  # 解决py  md fold问题
+  coc 冲突造成、禁用了spacevim自己的markdown 模块
+  .markdownlintrc 文件禁用coc-markdownlint相关警告等
 ```

@@ -29,6 +29,7 @@ let s:coc_extensions = [
       \ 'coc-dictionary',
       \ 'coc-eslint',
       \ 'coc-explorer',
+      \ 'coc-markdownlint',
       \ 'coc-flutter',
       \ 'coc-html',
       \ 'coc-java',

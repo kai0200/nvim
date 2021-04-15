@@ -3,7 +3,7 @@ func! myspacevim#before() abort
   " ------------------- START  -----------------------
   "
   let g:python_host_prog = '/usr/local/bin/python2.7'
-  let g:python3_host_prog = '/usr/local/bin/python3'
+  "let g:python3_host_prog = '/usr/local/bin/python3'
   let g:loaded_python_provider = 0
   "let g:loaded_python3_provider = 0
   " markdown 语法隐藏禁用 plasticboy/vim-markdown(折行、语法隐藏、高亮等)
