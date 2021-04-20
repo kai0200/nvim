@@ -18,7 +18,12 @@ bar {
   #font pango:monospace 12
   font pango:DejaVu Sans Mono for Powerline 11
   position top
-  status_command /home/caler/.config/bumblebee-status/bumblebee-status -m memory disk:home pasink pasource arch-update battery-upower xrandr time -p home.path=/home/caler time.format="%A %H:%M" date.format="%Y-%m-%d" memory.format="{used}/{total}" disk.format="{left}" -t dracula-powerline
+  #position bottom
+  status_command /home/caler/.config/i3/bumblebee-status/bumblebee-status \
+    ┊   -m memory disk:home pasink pasource arch-update battery-upower xrandr time \
+    ┊   -p home.path=/home/caler time.format="%A %H:%M" date.format="%Y-%m-%d" \
+    ┊   memory.format="{used}/{total}" disk.format="{left}"\
+    ┊   -t dracula-powerline
 }
 
 set $background #101010
@@ -246,10 +251,9 @@ mode "resize" {
         # Pressing right will grow the window’s width.
         # Pressing up will shrink the window’s height.
         # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym l resize grow width 10 px or 10 ppt
+        bindsym j resize shrink width 10 px or 10 ppt
+        bindsym k resize grow height 10 px or 10 ppt
+        bindsym l resize shrink height 10 px or 10 ppt
         bindsym semicolon resize grow width 10 px or 10 ppt
 
         # same bindings, but for the arrow keys

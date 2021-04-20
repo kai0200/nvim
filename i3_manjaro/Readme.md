@@ -8,4 +8,4 @@ xmodmap  能看到控制键配置
 
 xmodmap -pke > ~/.tmpkeys
 
-
+- bumblebee-status -> /home/username/.config/bumblebee-status
