@@ -1,11 +1,15 @@
 remove lock = Caps_Lock
-remove control = Control_L
+!remove control = Control_L 
+clear control
 
 ! Caps_Lock 更换为Ctrl
 keycode  66 = Control_L NoSymbol Control_L
 
 ! Alt_R 更换为Caps_lock
 keycode 108 = Caps_Lock NoSymbol Caps_Lock
+
+! Control_R 改 Escape
+keycode 105 = Escape NoSymbol Escape
 
 ! 改键以后还需要把改好的Control_L 重新加入contrl组
 add control = Control_L
@@ -21,6 +25,18 @@ keysym u = u U Prior
 keysym i = i I Home
 keysym o = o O End
 keysym p = p P Next
+keysym 1 = 1 exclam F1
+keysym 2 = 2 at F2
+keysym 3 = 3 numbersign F3 numbersign
+keysym 4 = 4 dollar F4 dollar
+keysym 5 = 5 percent F5 percent
+keysym 6 = 6 asciicircum F6 asciicircum
+keysym 7 = 7 ampersand F7 ampersand
+keysym 8 = 8 asterisk F8 asterisk
+keysym 9 = 9 parenleft F9 parenleft
+keysym 0 = 0 parenright F10 parenright
+keysym minus = minus underscore F11
+keysym equal = equal plus F12
 
 !add mod4 = Super_L
 !add mod4 = Mode_switch 
