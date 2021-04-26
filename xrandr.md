@@ -1,4 +1,7 @@
-方案二（永久性，重启也不失效）：
+#
+
+## 方案二（永久性，重启也不失效）
+
 添加 /etc/X11/xorg.conf 文件，将此模式保存为默认分辨率。
 $ sudo vim /etc/X11/xorg.conf
 （如果没有安装vim，可以使用“sudo gedit /etc/X11/xorg.conf”）
