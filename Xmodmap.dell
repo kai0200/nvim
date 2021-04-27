@@ -1,6 +1,6 @@
 remove lock = Caps_Lock
 !remove control = Control_L 
-clear control
+remove control = Control_L
 
 ! Caps_Lock 更换为Ctrl
 keycode  66 = Control_L NoSymbol Control_L
@@ -13,6 +13,10 @@ keycode 105 = Escape NoSymbol Escape
 
 ! 改键以后还需要把改好的Control_L 重新加入contrl组
 add control = Control_L
+
+! '\' 更换 <-
+!keycode  51 = BackSpace BackSpace BackSpace BackSpace1
+!keycode  22 = backslash bar backslash bar
 
 ! Control_L+hjkluiop  
 !keycode 9 = Mode_switch Escape
