@@ -12,15 +12,14 @@
 # environment variables. Some entries may override variables
 # set by alacritty itself.
 #env:
-  # TERM variable
-  #
-  # This value is used to set the `$TERM` environment variable for
-  # each instance of Alacritty. If it is not present, alacritty will
-  # check the local terminfo database and use `alacritty` if it is
-  # available, otherwise `xterm-256color` is used.
-  #TERM: alacritty
+# TERM variable
+#
+# This value is used to set the `$TERM` environment variable for
+# each instance of Alacritty. If it is not present, alacritty will
+# check the local terminfo database and use `alacritty` if it is
+# available, otherwise `xterm-256color` is used.
+#TERM: alacritty
 hide_cursor_when_typing: true
-
 
 window:
   # Window dimensions (changes require restart)
@@ -76,17 +75,14 @@ window:
 
   # Window title
   #title: Alacritty
-
   # Allow terminal applications to change Alacritty's window title.
   #dynamic_title: true
-
   # Window class (Linux/BSD only):
   #class:
-    # Application instance name
-    #instance: Alacritty
-    # General application class
-    #general: Alacritty
-
+  # Application instance name
+  #instance: Alacritty
+  # General application class
+  #general: Alacritty
   # GTK theme variant (Linux/BSD only)
   #
   # Override the variant of the GTK theme. Commonly supported values are `dark` and `light`.
@@ -94,12 +90,12 @@ window:
   #gtk_theme_variant: None
 
 #scrolling:
-  # Maximum number of lines in the scrollback buffer.
-  # Specifying '0' will disable scrolling.
-  #history: 10000
+# Maximum number of lines in the scrollback buffer.
+# Specifying '0' will disable scrolling.
+#history: 10000
 
-  # Scrolling distance multiplier.
-  #multiplier: 3
+# Scrolling distance multiplier.
+#multiplier: 3
 
 # Font configuration
 font:
@@ -138,7 +134,6 @@ font:
     #family: Roboto Mono Medium for Powerline
     style: Bold
     #family: Source Code Pro
-
     # The `style` can be specified to pick a specific face.
     #style: Bold
 
@@ -201,8 +196,8 @@ draw_bold_text_with_bright_colors: true
 colors:
   # {{{Default colors
   primary:
-    background: '0x1e2127'
-    foreground: '0xabb2bf'
+    background: "0x1e2127"
+    foreground: "0xabb2bf"
 
     # Bright and dim foreground colors
     #
@@ -210,7 +205,7 @@ colors:
     # If the bright foreground color is not set, or `draw_bold_text_with_bright_colors`
     # is `false`, the normal foreground color will be used.
     #dim_foreground: '0x9a9a9a'
-    bright_foreground: '0xe6efff'
+    bright_foreground: "0xe6efff"
 
   # Cursor colors
   #
@@ -222,39 +217,39 @@ colors:
 
   # Normal colors
   normal:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0x828791'
+    black: "0x1e2127"
+    red: "0xe06c75"
+    green: "0x98c379"
+    yellow: "0xd19a66"
+    blue: "0x61afef"
+    magenta: "0xc678dd"
+    cyan: "0x56b6c2"
+    white: "0x828791"
 
   # Bright colors
   bright:
-    black:   '0x5c6370'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0xe6efff'
+    black: "0x5c6370"
+    red: "0xe06c75"
+    green: "0x98c379"
+    yellow: "0xd19a66"
+    blue: "0x61afef"
+    magenta: "0xc678dd"
+    cyan: "0x56b6c2"
+    white: "0xe6efff"
 
   # Dim colors
   #
   # If the dim colors are not set, they will be calculated automatically based
   # on the `normal` colors.
   dim:
-    black:   '0x1e2127'
-    red:     '0xe06c75'
-    green:   '0x98c379'
-    yellow:  '0xd19a66'
-    blue:    '0x61afef'
-    magenta: '0xc678dd'
-    cyan:    '0x56b6c2'
-    white:   '0x828791'
+    black: "0x1e2127"
+    red: "0xe06c75"
+    green: "0x98c379"
+    yellow: "0xd19a66"
+    blue: "0x61afef"
+    magenta: "0xc678dd"
+    cyan: "0x56b6c2"
+    white: "0x828791"
 
   # Indexed Colors
   #
@@ -324,60 +319,60 @@ colors:
 #    background: '#e6d4a3'
 #    text: '#534a42'
 
-  # Dim colors
-  #
-  # If the dim colors are not set, they will be calculated automatically based
-  # on the `normal` colors.
-  #dim:
-  #  black:   '0x14151b'
-  #  red:     '0xff2222'
-  #  green:   '0x1ef956'
-  #  yellow:  '0xebf85b'
-  #  blue:    '0x4d5b86'
-  #  magenta: '0xff46b0'
-  #  cyan:    '0x59dffc'
-  #  white:   '0xe6e6d1'
+# Dim colors
+#
+# If the dim colors are not set, they will be calculated automatically based
+# on the `normal` colors.
+#dim:
+#  black:   '0x14151b'
+#  red:     '0xff2222'
+#  green:   '0x1ef956'
+#  yellow:  '0xebf85b'
+#  blue:    '0x4d5b86'
+#  magenta: '0xff46b0'
+#  cyan:    '0x59dffc'
+#  white:   '0xe6e6d1'
 
 # Bell
 #
 # The bell is rung every time the BEL control character is received.
 #bell:
-  # Visual Bell Animation
-  #
-  # Animation effect for flashing the screen when the visual bell is rung.
-  #
-  # Values for `animation`:
-  #   - Ease
-  #   - EaseOut
-  #   - EaseOutSine
-  #   - EaseOutQuad
-  #   - EaseOutCubic
-  #   - EaseOutQuart
-  #   - EaseOutQuint
-  #   - EaseOutExpo
-  #   - EaseOutCirc
-  #   - Linear
-  #animation: EaseOutExpo
+# Visual Bell Animation
+#
+# Animation effect for flashing the screen when the visual bell is rung.
+#
+# Values for `animation`:
+#   - Ease
+#   - EaseOut
+#   - EaseOutSine
+#   - EaseOutQuad
+#   - EaseOutCubic
+#   - EaseOutQuart
+#   - EaseOutQuint
+#   - EaseOutExpo
+#   - EaseOutCirc
+#   - Linear
+#animation: EaseOutExpo
 
-  # Duration of the visual bell flash. A `duration` of `0` will disable the
-  # visual bell animation.
-  #duration: 0
+# Duration of the visual bell flash. A `duration` of `0` will disable the
+# visual bell animation.
+#duration: 0
 
-  # Visual bell animation color.
-  #color: '#ffffff'
+# Visual bell animation color.
+#color: '#ffffff'
 
-  # Bell Command
-  #
-  # This program is executed whenever the bell is rung.
-  #
-  # When set to `command: None`, no command will be executed.
-  #
-  # Example:
-  #   command:
-  #     program: notify-send
-  #     args: ["Hello, World!"]
-  #
-  #command: None
+# Bell Command
+#
+# This program is executed whenever the bell is rung.
+#
+# When set to `command: None`, no command will be executed.
+#
+# Example:
+#   command:
+#     program: notify-send
+#     args: ["Hello, World!"]
+#
+#command: None
 
 # Background opacity
 #
@@ -386,36 +381,36 @@ colors:
 background_opacity: 0.98
 
 #selection:
-  # This string contains all characters that are used as separators for "semantic words" in Alacritty.
-  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+# This string contains all characters that are used as separators for "semantic words" in Alacritty.
+#semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
 
-  # When set to `true`, selected text will be copied to the primary clipboard.
-  #save_to_clipboard: false
+# When set to `true`, selected text will be copied to the primary clipboard.
+#save_to_clipboard: false
 
 #cursor:
-  # Cursor style
-  #
-  # Values for `style`:
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
-  #style: Block
+# Cursor style
+#
+# Values for `style`:
+#   - ▇ Block
+#   - _ Underline
+#   - | Beam
+#style: Block
 
-  # Vi mode cursor style
-  #
-  # If the vi mode cursor style is `None` or not specified, it will fall back to
-  # the style of the active value of the normal cursor.
-  #
-  # See `cursor.style` for available options.
-  #vi_mode_style: None
+# Vi mode cursor style
+#
+# If the vi mode cursor style is `None` or not specified, it will fall back to
+# the style of the active value of the normal cursor.
+#
+# See `cursor.style` for available options.
+#vi_mode_style: None
 
-  # If this is `true`, the cursor will be rendered as a hollow box when the
-  # window is not focused.
-  #unfocused_hollow: true
+# If this is `true`, the cursor will be rendered as a hollow box when the
+# window is not focused.
+#unfocused_hollow: true
 
-  # Thickness of the cursor relative to the cell width as floating point number
-  # from `0.0` to `1.0`.
-  #thickness: 0.15
+# Thickness of the cursor relative to the cell width as floating point number
+# from `0.0` to `1.0`.
+#thickness: 0.15
 
 # Live config reload (changes require restart)
 #live_config_reload: true
@@ -454,38 +449,38 @@ shell:
 #alt_send_esc: true
 
 #mouse:
-  # Click settings
-  #
-  # The `double_click` and `triple_click` settings control the time
-  # alacritty should wait for accepting multiple clicks as one double
-  # or triple click.
-  #double_click: { threshold: 300 }
-  #triple_click: { threshold: 300 }
+# Click settings
+#
+# The `double_click` and `triple_click` settings control the time
+# alacritty should wait for accepting multiple clicks as one double
+# or triple click.
+#double_click: { threshold: 300 }
+#triple_click: { threshold: 300 }
 
-  # If this is `true`, the cursor is temporarily hidden when typing.
-  #hide_when_typing: false
+# If this is `true`, the cursor is temporarily hidden when typing.
+#hide_when_typing: false
 
-  #url:
-    # URL launcher
-    #
-    # This program is executed when clicking on a text which is recognized as a URL.
-    # The URL is always added to the command as the last parameter.
-    #
-    # When set to `launcher: None`, URL launching will be disabled completely.
-    #
-    # Default:
-    #   - (macOS) open
-    #   - (Linux/BSD) xdg-open
-    #   - (Windows) explorer
-    #launcher:
-    #  program: xdg-open
-    #  args: []
+#url:
+# URL launcher
+#
+# This program is executed when clicking on a text which is recognized as a URL.
+# The URL is always added to the command as the last parameter.
+#
+# When set to `launcher: None`, URL launching will be disabled completely.
+#
+# Default:
+#   - (macOS) open
+#   - (Linux/BSD) xdg-open
+#   - (Windows) explorer
+#launcher:
+#  program: xdg-open
+#  args: []
 
-    # URL modifiers
-    #
-    # These are the modifiers that need to be held down for opening URLs when clicking
-    # on them. The available modifiers are documented in the key binding section.
-    #modifiers: None
+# URL modifiers
+#
+# These are the modifiers that need to be held down for opening URLs when clicking
+# on them. The available modifiers are documented in the key binding section.
+#modifiers: None
 
 # Mouse bindings
 #
@@ -770,81 +765,81 @@ key_bindings:
   #- { key: Return,   mods: Alt,           action: ToggleFullscreen }
 
   # Fix Alt as Meta in macOS
-  - { key: A,         mods: Option,       chars: "\x1Ba"                       }
-  - { key: B,         mods: Option,       chars: "\x1Bb"                       }
-  - { key: C,         mods: Option,       chars: "\x1Bc"                       }
-  - { key: D,         mods: Option,       chars: "\x1Bd"                       }
-  - { key: E,         mods: Option,       chars: "\x1Be"                       }
-  - { key: F,         mods: Option,       chars: "\x1Bf"                       }
-  - { key: G,         mods: Option,       chars: "\x1Bg"                       }
-  - { key: H,         mods: Option,       chars: "\x1Bh"                       }
-  - { key: I,         mods: Option,       chars: "\x1Bi"                       }
-  - { key: J,         mods: Option,       chars: "\x1Bj"                       }
-  - { key: K,         mods: Option,       chars: "\x1Bk"                       }
-  - { key: L,         mods: Option,       chars: "\x1Bl"                       }
-  - { key: M,         mods: Option,       chars: "\x1Bm"                       }
-  - { key: N,         mods: Option,       chars: "\x1Bn"                       }
-  - { key: O,         mods: Option,       chars: "\x1Bo"                       }
-  - { key: P,         mods: Option,       chars: "\x1Bp"                       }
-  - { key: Q,         mods: Option,       chars: "\x1Bq"                       }
-  - { key: R,         mods: Option,       chars: "\x1Br"                       }
-  - { key: S,         mods: Option,       chars: "\x1Bs"                       }
-  - { key: T,         mods: Option,       chars: "\x1Bt"                       }
-  - { key: U,         mods: Option,       chars: "\x1Bu"                       }
-  - { key: V,         mods: Option,       chars: "\x1Bv"                       }
-  - { key: W,         mods: Option,       chars: "\x1Bw"                       }
-  - { key: X,         mods: Option,       chars: "\x1Bx"                       }
-  - { key: Y,         mods: Option,       chars: "\x1By"                       }
-  - { key: Z,         mods: Option,       chars: "\x1Bz"                       }
-  - { key: A,         mods: Option|Shift, chars: "\x1BA"                       }
-  - { key: B,         mods: Option|Shift, chars: "\x1BB"                       }
-  - { key: C,         mods: Option|Shift, chars: "\x1BC"                       }
-  - { key: D,         mods: Option|Shift, chars: "\x1BD"                       }
-  - { key: E,         mods: Option|Shift, chars: "\x1BE"                       }
-  - { key: F,         mods: Option|Shift, chars: "\x1BF"                       }
-  - { key: G,         mods: Option|Shift, chars: "\x1BG"                       }
-  - { key: H,         mods: Option|Shift, chars: "\x1BH"                       }
-  - { key: I,         mods: Option|Shift, chars: "\x1BI"                       }
-  - { key: J,         mods: Option|Shift, chars: "\x1BJ"                       }
-  - { key: K,         mods: Option|Shift, chars: "\x1BK"                       }
-  - { key: L,         mods: Option|Shift, chars: "\x1BL"                       }
-  - { key: M,         mods: Option|Shift, chars: "\x1BM"                       }
-  - { key: N,         mods: Option|Shift, chars: "\x1BN"                       }
-  - { key: O,         mods: Option|Shift, chars: "\x1BO"                       }
-  - { key: P,         mods: Option|Shift, chars: "\x1BP"                       }
-  - { key: Q,         mods: Option|Shift, chars: "\x1BQ"                       }
-  - { key: R,         mods: Option|Shift, chars: "\x1BR"                       }
-  - { key: S,         mods: Option|Shift, chars: "\x1BS"                       }
-  - { key: T,         mods: Option|Shift, chars: "\x1BT"                       }
-  - { key: U,         mods: Option|Shift, chars: "\x1BU"                       }
-  - { key: V,         mods: Option|Shift, chars: "\x1BV"                       }
-  - { key: W,         mods: Option|Shift, chars: "\x1BW"                       }
-  - { key: X,         mods: Option|Shift, chars: "\x1BX"                       }
-  - { key: Y,         mods: Option|Shift, chars: "\x1BY"                       }
-  - { key: Z,         mods: Option|Shift, chars: "\x1BZ"                       }
-  - { key: Key1,      mods: Option,       chars: "\x1B1"                       }
-  - { key: Key2,      mods: Option,       chars: "\x1B2"                       }
-  - { key: Key3,      mods: Option,       chars: "\x1B3"                       }
-  - { key: Key4,      mods: Option,       chars: "\x1B4"                       }
-  - { key: Key5,      mods: Option,       chars: "\x1B5"                       }
-  - { key: Key6,      mods: Option,       chars: "\x1B6"                       }
-  - { key: Key7,      mods: Option,       chars: "\x1B7"                       }
-  - { key: Key8,      mods: Option,       chars: "\x1B8"                       }
-  - { key: Key9,      mods: Option,       chars: "\x1B9"                       }
-  - { key: Key0,      mods: Option,       chars: "\x1B0"                       }
-  - { key: Space,     mods: Control,      chars: "\x1B"                        } # Ctrl + Space
-  - { key: Grave,     mods: Option,       chars: "\x1B`"                       } # Alt + `
-  - { key: Grave,     mods: Option|Shift, chars: "\x1B~"                       } # Alt + ~
-  - { key: Period,    mods: Option,       chars: "\x1B."                       } # Alt + .
-  - { key: Key8,      mods: Option|Shift, chars: "\x1B*"                       } # Alt + *
-  - { key: Key3,      mods: Option|Shift, chars: "\x1B#"                       } # Alt + #
-  - { key: Period,    mods: Option|Shift, chars: "\x1B>"                       } # Alt + >
-  - { key: Comma,     mods: Option|Shift, chars: "\x1B<"                       } # Alt + <
-  - { key: Minus,     mods: Option|Shift, chars: "\x1B_"                       } # Alt + _
-  - { key: Key5,      mods: Option|Shift, chars: "\x1B%"                       } # Alt + %
-  - { key: Key6,      mods: Option|Shift, chars: "\x1B^"                       } # Alt + ^
-  - { key: Backslash, mods: Option,       chars: "\x1B\\"                      } # Alt + \
-  - { key: Backslash, mods: Option|Shift, chars: "\x1B|"                       } # Alt + |
+  - { key: A, mods: Option, chars: "\x1Ba" }
+  - { key: B, mods: Option, chars: "\x1Bb" }
+  - { key: C, mods: Option, chars: "\x1Bc" }
+  - { key: D, mods: Option, chars: "\x1Bd" }
+  - { key: E, mods: Option, chars: "\x1Be" }
+  - { key: F, mods: Option, chars: "\x1Bf" }
+  - { key: G, mods: Option, chars: "\x1Bg" }
+  - { key: H, mods: Option, chars: "\x1Bh" }
+  - { key: I, mods: Option, chars: "\x1Bi" }
+  - { key: J, mods: Option, chars: "\x1Bj" }
+  - { key: K, mods: Option, chars: "\x1Bk" }
+  - { key: L, mods: Option, chars: "\x1Bl" }
+  - { key: M, mods: Option, chars: "\x1Bm" }
+  - { key: N, mods: Option, chars: "\x1Bn" }
+  - { key: O, mods: Option, chars: "\x1Bo" }
+  - { key: P, mods: Option, chars: "\x1Bp" }
+  - { key: Q, mods: Option, chars: "\x1Bq" }
+  - { key: R, mods: Option, chars: "\x1Br" }
+  - { key: S, mods: Option, chars: "\x1Bs" }
+  - { key: T, mods: Option, chars: "\x1Bt" }
+  - { key: U, mods: Option, chars: "\x1Bu" }
+  - { key: V, mods: Option, chars: "\x1Bv" }
+  - { key: W, mods: Option, chars: "\x1Bw" }
+  - { key: X, mods: Option, chars: "\x1Bx" }
+  - { key: Y, mods: Option, chars: "\x1By" }
+  - { key: Z, mods: Option, chars: "\x1Bz" }
+  - { key: A, mods: Option|Shift, chars: "\x1BA" }
+  - { key: B, mods: Option|Shift, chars: "\x1BB" }
+  - { key: C, mods: Option|Shift, chars: "\x1BC" }
+  - { key: D, mods: Option|Shift, chars: "\x1BD" }
+  - { key: E, mods: Option|Shift, chars: "\x1BE" }
+  - { key: F, mods: Option|Shift, chars: "\x1BF" }
+  - { key: G, mods: Option|Shift, chars: "\x1BG" }
+  - { key: H, mods: Option|Shift, chars: "\x1BH" }
+  - { key: I, mods: Option|Shift, chars: "\x1BI" }
+  - { key: J, mods: Option|Shift, chars: "\x1BJ" }
+  - { key: K, mods: Option|Shift, chars: "\x1BK" }
+  - { key: L, mods: Option|Shift, chars: "\x1BL" }
+  - { key: M, mods: Option|Shift, chars: "\x1BM" }
+  - { key: N, mods: Option|Shift, chars: "\x1BN" }
+  - { key: O, mods: Option|Shift, chars: "\x1BO" }
+  - { key: P, mods: Option|Shift, chars: "\x1BP" }
+  - { key: Q, mods: Option|Shift, chars: "\x1BQ" }
+  - { key: R, mods: Option|Shift, chars: "\x1BR" }
+  - { key: S, mods: Option|Shift, chars: "\x1BS" }
+  - { key: T, mods: Option|Shift, chars: "\x1BT" }
+  - { key: U, mods: Option|Shift, chars: "\x1BU" }
+  - { key: V, mods: Option|Shift, chars: "\x1BV" }
+  - { key: W, mods: Option|Shift, chars: "\x1BW" }
+  - { key: X, mods: Option|Shift, chars: "\x1BX" }
+  - { key: Y, mods: Option|Shift, chars: "\x1BY" }
+  - { key: Z, mods: Option|Shift, chars: "\x1BZ" }
+  - { key: Key1, mods: Option, chars: "\x1B1" }
+  - { key: Key2, mods: Option, chars: "\x1B2" }
+  - { key: Key3, mods: Option, chars: "\x1B3" }
+  - { key: Key4, mods: Option, chars: "\x1B4" }
+  - { key: Key5, mods: Option, chars: "\x1B5" }
+  - { key: Key6, mods: Option, chars: "\x1B6" }
+  - { key: Key7, mods: Option, chars: "\x1B7" }
+  - { key: Key8, mods: Option, chars: "\x1B8" }
+  - { key: Key9, mods: Option, chars: "\x1B9" }
+  - { key: Key0, mods: Option, chars: "\x1B0" }
+  - { key: Space, mods: Control, chars: "\x1B" } # Ctrl + Space
+  - { key: Grave, mods: Option, chars: "\x1B`" } # Alt + `
+  - { key: Grave, mods: Option|Shift, chars: "\x1B~" } # Alt + ~
+  - { key: Period, mods: Option, chars: "\x1B." } # Alt + .
+  - { key: Key8, mods: Option|Shift, chars: "\x1B*" } # Alt + *
+  - { key: Key3, mods: Option|Shift, chars: "\x1B#" } # Alt + #
+  - { key: Period, mods: Option|Shift, chars: "\x1B>" } # Alt + >
+  - { key: Comma, mods: Option|Shift, chars: "\x1B<" } # Alt + <
+  - { key: Minus, mods: Option|Shift, chars: "\x1B_" } # Alt + _
+  - { key: Key5, mods: Option|Shift, chars: "\x1B%" } # Alt + %
+  - { key: Key6, mods: Option|Shift, chars: "\x1B^" } # Alt + ^
+  - { key: Backslash, mods: Option, chars: "\x1B\\" } # Alt + \
+  - { key: Backslash, mods: Option|Shift, chars: "\x1B|" } # Alt + |
 
   # (macOS only)
   #- { key: K,              mods: Command, mode: ~Vi, chars: "\x0c"            }
@@ -866,99 +861,99 @@ key_bindings:
   #- { key: F,              mods: Command|Control,    action: ToggleFullscreen }
   #- { key: F,              mods: Command,            action: SearchForward    }
   #- { key: B,              mods: Command,            action: SearchBackward   }  # (macOS only)
-  - { key: Key0,           mods: Command,            action: ResetFontSize         }
-  - { key: Equals,         mods: Command,            action: IncreaseFontSize      }
-  - { key: Minus,          mods: Command,            action: DecreaseFontSize      }
-  - { key: K,              mods: Command,            action: ClearHistory          }
-  - { key: N,              mods: Command,            action: SpawnNewInstance      } # Command + n 新实例
-  - { key: K,              mods: Command,            chars: "\x0c"                 }
-  - { key: V,              mods: Command,            action: Paste                 }
-  - { key: C,              mods: Command,            action: Copy                  }
-  - { key: H,              mods: Command,            action: Hide                  }
-  - { key: Q,              mods: Command,            action: Quit                  }
-  - { key: W,              mods: Command,            action: Quit                  }
-  - { key: Paste,                                    action: Paste                 }
-  - { key: Copy,                                     action: Copy                  }
-  - { key: L,              mods: Control,            action: ClearLogNotice        }
-  - { key: F,              mods: Command|Shift,      action: ToggleFullscreen      }
-  - { key: L,              mods: Control, chars: "\x0c"                            }
-  - { key: Home,           mods: Alt,     chars: "\x1b[1;3H"                       }
-  - { key: Home,                          chars: "\x1bOH",        mode: AppCursor  }
-  - { key: Home,                          chars: "\x1b[H",        mode: ~AppCursor }
-  - { key: End,            mods: Alt,     chars: "\x1b[1;3F"                       }
-  - { key: End,                           chars: "\x1bOF",        mode: AppCursor  }
-  - { key: End,                           chars: "\x1b[F",        mode: ~AppCursor }
-  - { key: PageUp,         mods: Shift,   action: ScrollPageUp,   mode: ~Alt       }
-  - { key: PageUp,         mods: Shift,   chars: "\x1b[5;2~",     mode: Alt        }
-  - { key: PageUp,         mods: Control, chars: "\x1b[5;5~"                       }
-  - { key: PageUp,         mods: Alt,     chars: "\x1b[5;3~"                       }
-  - { key: PageUp,                        chars: "\x1b[5~"                         }
-  - { key: PageDown,       mods: Shift,   action: ScrollPageDown, mode: ~Alt       }
-  - { key: PageDown,       mods: Shift,   chars: "\x1b[6;2~",     mode: Alt        }
-  - { key: PageDown,       mods: Control, chars: "\x1b[6;5~"                       }
-  - { key: PageDown,       mods: Alt,     chars: "\x1b[6;3~"                       }
-  - { key: PageDown,                      chars: "\x1b[6~"                         }
-  - { key: Tab,            mods: Shift,   chars: "\x1b[Z"                          }
-  - { key: Back,                          chars: "\x7f"                            }
-  - { key: Back,           mods: Alt,     chars: "\x1b\x7f"                        }
-  - { key: Insert,                        chars: "\x1b[2~"                         }
-  - { key: Delete,                        chars: "\x1b[3~"                         }
-  - { key: Left,           mods: Shift,   chars: "\x1b[1;2D"                       }
-  - { key: Left,           mods: Control, chars: "\x1b[1;5D"                       }
-  - { key: Left,           mods: Alt,     chars: "\x1b[1;3D"                       }
-  - { key: Left,                          chars: "\x1b[D",        mode: ~AppCursor }
-  - { key: Left,                          chars: "\x1bOD",        mode: AppCursor  }
-  - { key: Right,          mods: Shift,   chars: "\x1b[1;2C"                       }
-  - { key: Right,          mods: Control, chars: "\x1b[1;5C"                       }
-  - { key: Right,          mods: Alt,     chars: "\x1b[1;3C"                       }
-  - { key: Right,                         chars: "\x1b[C",        mode: ~AppCursor }
-  - { key: Right,                         chars: "\x1bOC",        mode: AppCursor  }
-  - { key: Up,             mods: Shift,   chars: "\x1b[1;2A"                       }
-  - { key: Up,             mods: Control, chars: "\x1b[1;5A"                       }
-  - { key: Up,             mods: Alt,     chars: "\x1b[1;3A"                       }
-  - { key: Up,                            chars: "\x1b[A",        mode: ~AppCursor }
-  - { key: Up,                            chars: "\x1bOA",        mode: AppCursor  }
-  - { key: Down,           mods: Shift,   chars: "\x1b[1;2B"                       }
-  - { key: Down,           mods: Control, chars: "\x1b[1;5B"                       }
-  - { key: Down,           mods: Alt,     chars: "\x1b[1;3B"                       }
-  - { key: Down,                          chars: "\x1b[B",        mode: ~AppCursor }
-  - { key: Down,                          chars: "\x1bOB",        mode: AppCursor  }
-  - { key: F1,                            chars: "\x1bOP"                          }
-  - { key: F2,                            chars: "\x1bOQ"                          }
-  - { key: F3,                            chars: "\x1bOR"                          }
-  - { key: F4,                            chars: "\x1bOS"                          }
-  - { key: F5,                            chars: "\x1b[15~"                        }
-  - { key: F6,                            chars: "\x1b[17~"                        }
-  - { key: F7,                            chars: "\x1b[18~"                        }
-  - { key: F8,                            chars: "\x1b[19~"                        }
-  - { key: F9,                            chars: "\x1b[20~"                        }
-  - { key: F10,                           chars: "\x1b[21~"                        }
-  - { key: F11,                           chars: "\x1b[23~"                        }
-  - { key: F12,                           chars: "\x1b[24~"                        }
-  - { key: F1,             mods: Shift,   chars: "\x1b[1;2P"                       }
-  - { key: F2,             mods: Shift,   chars: "\x1b[1;2Q"                       }
-  - { key: F3,             mods: Shift,   chars: "\x1b[1;2R"                       }
-  - { key: F4,             mods: Shift,   chars: "\x1b[1;2S"                       }
-  - { key: F5,             mods: Shift,   chars: "\x1b[15;2~"                      }
-  - { key: F6,             mods: Shift,   chars: "\x1b[17;2~"                      }
-  - { key: F7,             mods: Shift,   chars: "\x1b[18;2~"                      }
-  - { key: F8,             mods: Shift,   chars: "\x1b[19;2~"                      }
-  - { key: F9,             mods: Shift,   chars: "\x1b[20;2~"                      }
-  - { key: F10,            mods: Shift,   chars: "\x1b[21;2~"                      }
-  - { key: F11,            mods: Shift,   chars: "\x1b[23;2~"                      }
-  - { key: F12,            mods: Shift,   chars: "\x1b[24;2~"                      }
-  - { key: F1,             mods: Control, chars: "\x1b[1;5P"                       }
-  - { key: F2,             mods: Control, chars: "\x1b[1;5Q"                       }
-  - { key: F3,             mods: Control, chars: "\x1b[1;5R"                       }
-  - { key: F4,             mods: Control, chars: "\x1b[1;5S"                       }
-  - { key: F5,             mods: Control, chars: "\x1b[15;5~"                      }
-  - { key: F6,             mods: Control, chars: "\x1b[17;5~"                      }
-  - { key: F7,             mods: Control, chars: "\x1b[18;5~"                      }
-  - { key: F8,             mods: Control, chars: "\x1b[19;5~"                      }
-  - { key: F9,             mods: Control, chars: "\x1b[20;5~"                      }
-  - { key: F10,            mods: Control, chars: "\x1b[21;5~"                      }
-  - { key: F11,            mods: Control, chars: "\x1b[23;5~"                      }
-  - { key: F12,            mods: Control, chars: "\x1b[24;5~"                      }
+  - { key: Key0, mods: Command, action: ResetFontSize }
+  - { key: Equals, mods: Command, action: IncreaseFontSize }
+  - { key: Minus, mods: Command, action: DecreaseFontSize }
+  - { key: K, mods: Command, action: ClearHistory }
+  - { key: N, mods: Command, action: SpawnNewInstance } # Command + n 新实例
+  - { key: K, mods: Command, chars: "\x0c" }
+  - { key: V, mods: Command, action: Paste }
+  - { key: C, mods: Command, action: Copy }
+  - { key: H, mods: Command, action: Hide }
+  - { key: Q, mods: Command, action: Quit }
+  - { key: W, mods: Command, action: Quit }
+  - { key: Paste, action: Paste }
+  - { key: Copy, action: Copy }
+  - { key: L, mods: Control, action: ClearLogNotice }
+  - { key: F, mods: Command|Shift, action: ToggleFullscreen }
+  - { key: L, mods: Control, chars: "\x0c" }
+  - { key: Home, mods: Alt, chars: "\x1b[1;3H" }
+  - { key: Home, chars: "\x1bOH", mode: AppCursor }
+  - { key: Home, chars: "\x1b[H", mode: ~AppCursor }
+  - { key: End, mods: Alt, chars: "\x1b[1;3F" }
+  - { key: End, chars: "\x1bOF", mode: AppCursor }
+  - { key: End, chars: "\x1b[F", mode: ~AppCursor }
+  - { key: PageUp, mods: Shift, action: ScrollPageUp, mode: ~Alt }
+  - { key: PageUp, mods: Shift, chars: "\x1b[5;2~", mode: Alt }
+  - { key: PageUp, mods: Control, chars: "\x1b[5;5~" }
+  - { key: PageUp, mods: Alt, chars: "\x1b[5;3~" }
+  - { key: PageUp, chars: "\x1b[5~" }
+  - { key: PageDown, mods: Shift, action: ScrollPageDown, mode: ~Alt }
+  - { key: PageDown, mods: Shift, chars: "\x1b[6;2~", mode: Alt }
+  - { key: PageDown, mods: Control, chars: "\x1b[6;5~" }
+  - { key: PageDown, mods: Alt, chars: "\x1b[6;3~" }
+  - { key: PageDown, chars: "\x1b[6~" }
+  - { key: Tab, mods: Shift, chars: "\x1b[Z" }
+  - { key: Back, chars: "\x7f" }
+  - { key: Back, mods: Alt, chars: "\x1b\x7f" }
+  - { key: Insert, chars: "\x1b[2~" }
+  - { key: Delete, chars: "\x1b[3~" }
+  - { key: Left, mods: Shift, chars: "\x1b[1;2D" }
+  - { key: Left, mods: Control, chars: "\x1b[1;5D" }
+  - { key: Left, mods: Alt, chars: "\x1b[1;3D" }
+  - { key: Left, chars: "\x1b[D", mode: ~AppCursor }
+  - { key: Left, chars: "\x1bOD", mode: AppCursor }
+  - { key: Right, mods: Shift, chars: "\x1b[1;2C" }
+  - { key: Right, mods: Control, chars: "\x1b[1;5C" }
+  - { key: Right, mods: Alt, chars: "\x1b[1;3C" }
+  - { key: Right, chars: "\x1b[C", mode: ~AppCursor }
+  - { key: Right, chars: "\x1bOC", mode: AppCursor }
+  - { key: Up, mods: Shift, chars: "\x1b[1;2A" }
+  - { key: Up, mods: Control, chars: "\x1b[1;5A" }
+  - { key: Up, mods: Alt, chars: "\x1b[1;3A" }
+  - { key: Up, chars: "\x1b[A", mode: ~AppCursor }
+  - { key: Up, chars: "\x1bOA", mode: AppCursor }
+  - { key: Down, mods: Shift, chars: "\x1b[1;2B" }
+  - { key: Down, mods: Control, chars: "\x1b[1;5B" }
+  - { key: Down, mods: Alt, chars: "\x1b[1;3B" }
+  - { key: Down, chars: "\x1b[B", mode: ~AppCursor }
+  - { key: Down, chars: "\x1bOB", mode: AppCursor }
+  - { key: F1, chars: "\x1bOP" }
+  - { key: F2, chars: "\x1bOQ" }
+  - { key: F3, chars: "\x1bOR" }
+  - { key: F4, chars: "\x1bOS" }
+  - { key: F5, chars: "\x1b[15~" }
+  - { key: F6, chars: "\x1b[17~" }
+  - { key: F7, chars: "\x1b[18~" }
+  - { key: F8, chars: "\x1b[19~" }
+  - { key: F9, chars: "\x1b[20~" }
+  - { key: F10, chars: "\x1b[21~" }
+  - { key: F11, chars: "\x1b[23~" }
+  - { key: F12, chars: "\x1b[24~" }
+  - { key: F1, mods: Shift, chars: "\x1b[1;2P" }
+  - { key: F2, mods: Shift, chars: "\x1b[1;2Q" }
+  - { key: F3, mods: Shift, chars: "\x1b[1;2R" }
+  - { key: F4, mods: Shift, chars: "\x1b[1;2S" }
+  - { key: F5, mods: Shift, chars: "\x1b[15;2~" }
+  - { key: F6, mods: Shift, chars: "\x1b[17;2~" }
+  - { key: F7, mods: Shift, chars: "\x1b[18;2~" }
+  - { key: F8, mods: Shift, chars: "\x1b[19;2~" }
+  - { key: F9, mods: Shift, chars: "\x1b[20;2~" }
+  - { key: F10, mods: Shift, chars: "\x1b[21;2~" }
+  - { key: F11, mods: Shift, chars: "\x1b[23;2~" }
+  - { key: F12, mods: Shift, chars: "\x1b[24;2~" }
+  - { key: F1, mods: Control, chars: "\x1b[1;5P" }
+  - { key: F2, mods: Control, chars: "\x1b[1;5Q" }
+  - { key: F3, mods: Control, chars: "\x1b[1;5R" }
+  - { key: F4, mods: Control, chars: "\x1b[1;5S" }
+  - { key: F5, mods: Control, chars: "\x1b[15;5~" }
+  - { key: F6, mods: Control, chars: "\x1b[17;5~" }
+  - { key: F7, mods: Control, chars: "\x1b[18;5~" }
+  - { key: F8, mods: Control, chars: "\x1b[19;5~" }
+  - { key: F9, mods: Control, chars: "\x1b[20;5~" }
+  - { key: F10, mods: Control, chars: "\x1b[21;5~" }
+  - { key: F11, mods: Control, chars: "\x1b[23;5~" }
+  - { key: F12, mods: Control, chars: "\x1b[24;5~" }
 debug:
   # Display the time it takes to redraw each frame.
   render_timer: false

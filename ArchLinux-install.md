@@ -1,60 +1,67 @@
 # archlinux 相关配置
 
-## 开机常用
+## U盘引导后
+
 ```sh
 # 终端模式设置大字体
-setfont /usr/share/kbd/consolefonts/LatArCyrHeb-14.psfu.gz
+> setfont /usr/share/kbd/consolefonts/LatArCyrHeb-14.psfu.gz
 
 # 更改键盘布局
-locadkeys colemark
+> locadkeys colemark
 
 # 更改大写和esc键盘，编辑文件
-vim keys.conf
+> vim keys.conf
 keycode 1 = Caps_Lock
 keycode 58 = Escape
 
 # 更改键位命令
-$ loadkeys keys.conf 
+> loadkeys keys.conf 
 ```
+
 ## 简单vimrc
+
 ```sh
+> vim ~/.vimrc
 syntax on
-noremap U 5k
-noremap E 5j
+noremap K 5k
+noremap J 5j
 noremap S :w<CR>
 noremap Q :q<CR>
 ```
 
 ## Search link
+
 ```sh
 # 查看连接
-ip link
+> ip link
 
 # 启动网卡
-ip link set wlan0 up
+> ip link set wlan0 up
 
 # 查看都有什么wifi
-iwlist wlan0 scan | grep ESSID
+> iwlist wlan0 scan | grep ESSID
 
 # 生成连接互联网账户名密码
-wpa_passphrase 网络 密码 > 文件名
-wpa_passphrase Swift 1111aaaa > internet.conf
-wpa_supplicant  -c internet.conf  -i wlp2s0 &
-ping www.baidu.com
-dhcpcd& # 动态分配一个IP地址
-ping www.baidu.com
+> wpa_passphrase 网络 密码 > 文件名
+> wpa_passphrase Swift 1111aaaa > internet.conf
+> wpa_supplicant  -c internet.conf  -i wlp2s0 &
+> ping www.baidu.com
+> dhcpcd& # 动态分配一个IP地址
+> ping www.baidu.com
 ```
 
 ## 同步系统时间
+
 ```sh
-timedatectl  set-ntp  true
+> timedatectl  set-ntp  true
 ```
 
 ## 分区
-```sh
-fdisk -l
 
-fdisk /dev/sda
+```sh
+> fdisk -l
+
+> fdisk /dev/sda
 m - help
 p - print
 g - 创建新分区清理掉原有分区表
@@ -81,30 +88,32 @@ p 确认分区
 w 写入分区
 
 # 修改分区格式
-mkfs.fat -F32 /dev/sda1
-mkfs.ext4 /dev/sda2
-mkswap /dev/sda3
-swapon /dev/sda3
-注：这里的顺序是1、引导分区，2、交换分区，3主分区
+> mkfs.fat -F32 /dev/sda1
+> mkfs.ext4 /dev/sda2
+> mkswap /dev/sda3
+> swapon /dev/sda3
+# 注：这里的顺序是1、引导分区，2、交换分区，3主分区
 ```
 
-BIOS 支持MBR
-| /mnt   | /dev/sdX1 | Linux       | Remainder of the device |
-| [SWAP] | /dev/sdX2 | Linux swarp | More than 512 MiB       |
-
-UEFI with GPT
+| BIOS 支持MBR          |           |             |                         |
+| --------------------- | --------- | ----------- | ----------------------- |
+| /mnt                  | /dev/sdX1 | Linux       | Remainder of the device |
+| [SWAP]                | /dev/sdX2 | Linux swarp | More than 512 MiB       |
+| **UEFI with GPT**     |           |             |                         |
 | /mnt/boot or /mnt/efi | /dev/sdX1 | EFI system  | 260-512 MiB             |
 | /mnt                  | /dev/sdX2 | Linux       | Remainder of the device |
 | [SWAP]                | /dev/sdX3 | Linux swarp | More than 512 MiB       |
 
 ## Archlinux 安装
-```sh
-1. vim /etc/pacman.conf
-> # 去掉注释#Color开启颜色提示
 
-2. vim /etc/pacman.d/mirrorlist
+```sh
+> vim /etc/pacman.conf
+# 去掉注释#Color开启颜色提示
+
+> vim /etc/pacman.d/mirrorlist
 ```
 
 ## 听课到时间
+
 听课时间：[26:38]
- - [(https://www.bilibili.com/video/BV11J411a7Tp)]
+ [听课地址](https://www.bilibili.com/video/BV11J411a7Tp)
