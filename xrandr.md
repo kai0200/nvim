@@ -93,3 +93,9 @@ cd ~/Downloads/cnethack
 wine 启动游戏.exe
 
 # 增加xrandr /etc/profile.d/HDMI1.sh
+
+# 问题：
+- 搜狗输入法不能贴靠屏幕边缘？
+- vscode 每次启动屏幕都会被改为1024x768
+- 结果发现/etc/profile 文件里增加了 xrandr -s 3, 去掉以后可以了
+
