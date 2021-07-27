@@ -14,9 +14,9 @@ keycode 105 = Escape NoSymbol Escape
 ! 改键以后还需要把改好的Control_L 重新加入contrl组
 add control = Control_L
 
-! '\' 更换 <-
-!keycode  51 = BackSpace BackSpace BackSpace BackSpace1
-!keycode  22 = backslash bar backslash bar
+! 更换 '\' <-
+keycode  51 = BackSpace BackSpace BackSpace BackSpace
+keycode  22 = backslash bar backslash bar
 
 ! Control_L+hjkluiop  
 !keycode 9 = Mode_switch Escape
@@ -69,8 +69,8 @@ keysym equal = equal plus F12
 
 ! Exchange left Alt and left Win
 ! Remove key
-!remove mod1 = Alt_L
-!remove mod4 = Super_L
+remove mod1 = Alt_L
+remove mod4 = Super_L
 !remove Lock = Caps_Lock
 
 ! Change key
@@ -79,5 +79,5 @@ keysym equal = equal plus F12
 
 ! Add key
 !add Lock = Caps_Lock
-!add mod1 = Super_L
-!add mod4 = Alt_L
+add mod1 = Super_L
+add mod4 = Alt_L
