@@ -1,0 +1,49 @@
+{
+  "codeLens.enable": true,
+  "diagnostic.errorSign": "✘",
+  "diagnostic.warningSign": "",
+  "diagnostic.infoSign": "",
+  "suggest.noselect": true,
+  "tsserver.enableJavascript": true,
+  "typescript.format.insertSpaceAfterFunctionKeywordForAnonymousFunctions": false,
+  "typescript.format.insertSpaceAfterOpeningAndBeforeClosingNonemptyBraces": true,
+  "typescript.preferences.quoteStyle": "double",
+  "typescript.referencesCodeLens.enable": false,
+  "coc.preferences.extensionUpdateCheck": "daily",
+  "coc.preferences.formatOnType": true,
+  "coc.preferences.willSaveHandlerTimeout": 1000,
+  "coc.preferences.formatOnSaveFiletypes": [
+    "c",
+    "go",
+    "python",
+    "typescript",
+    "java",
+    "json",
+    "jsonc"
+  ],
+  "coc.source.around.firstMatch": false,
+  "coc.source.file.ignoreHidden": false,
+  "diagnostic.format": "%message [%source]",
+  "diagnostic.virtualText": true,
+  "diagnostic.checkCurrentLine": true,
+  "diagnostic.separateRelatedInformationAsDiagnostics": true,
+  "list.normalMappings": {
+    "<C-c>": "do:exit"
+  },
+  "list.insertMappings": {
+    "<C-c>": "do:exit"
+  },
+  "signature.target": "echo",
+  "suggest.timeout": 5000,
+  "suggest.defaultSortMethod": "none",
+  "suggest.asciiCharactersOnly": true,
+  "snippets.ultisnips.enable": false,
+  "snippets.ultisnips.usePythonx": false,
+  "snippets.extends": {
+    "javascriptreact": ["javascript"],
+    "typescript": ["javascript"]
+  },
+  "typescript.format.semicolons": "insert",
+  "typescript.preferences.useAliasesForRenames": false,
+  "python.pythonPath": "/User/wangkai/venv3.9.7/bin/python"
+}

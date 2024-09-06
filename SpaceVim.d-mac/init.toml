@@ -1,0 +1,287 @@
+#=============================================================================
+# dark_powered.toml --- dark powered configuration example for SpaceVim
+# Copyright (c) 2016-2017 Wang Shidong & Contributors
+# Author: Wang Shidong < wsdjeg at 163.com >
+# URL: https://spacevim.org
+# License: GPLv3  使用vim， nvim 还是有问题
+#=============================================================================
+
+# All SpaceVim option below [option] section
+[options]
+  # set spacevim theme. by default colorscheme layer is not loaded,
+  # if you want to use more colorscheme, please load the colorscheme
+  # layer
+  # 自动更新
+  automatic_update = false
+
+  default_indent = 4
+  expand_tab = true
+
+  #colorscheme = "gruvbox"
+  colorscheme = "onedark"
+  colorscheme_bg = "dark"
+  # Disable guicolors in basic mode, many terminal do not support 24bit
+  # true colors
+  enable_guicolors = true
+  enable_tabline_filetype_icon = true
+  enable_statusline_mode = true
+  statusline_unicode_symbols = true
+  # Disable statusline separator, if you want to use other value, please
+  # install nerd fonts
+  buffer_index_type = 4
+
+  # 目录显示默认显示在左边
+  #filetree_direction = "left"
+  # 禁用插件
+  #disabled_plugins = [""]
+
+  # 取消项目根目录
+  # 0: disable autochdir
+  # 1: change to project root automatically
+  # 2: change to directory of current file automatically
+  project_rooter_automatically = 0
+  change_directory_automatically = 1
+
+  filemanager = "defx"
+  enable_vimfiler_gitstatus = true
+  #filemanager = "vimfiler"
+  autocomplete_method = "coc"
+  #autocomplete_method = "deoplete"
+  bootstrap_before = "myspacevim#before"
+  bootstrap_after = "myspacevim#after"
+
+  vim_help_language = "cn"
+  # SPC x g t 翻译
+  # enable_googlesuggest = true
+
+  # options for statusline
+  # 设置状态栏上分割符号形状，如果字体安装失败，可以将值设为 "nil" 以禁用分割符号，
+  # 分割符包括以下几种 "arrow", "curve", "slant", "fire", "nil"，默认为箭头 "arrow"
+  # 设置活动窗口状态栏上的分割符号形状
+  statusline_separator = "fire"
+  # 设置非活动窗口状态栏上的分割符号形状
+  #statusline_inactive_separator = "bar"
+  #statusline_inactive_separator = "arrow"
+
+  # 设置顶部标签列表序号类型，有以下五种类型，分别是 0 - 4
+  buffer_index_type = 0
+  # 0: 1 ➛ ➊
+  # 1: 1 ➛ ➀
+  # 2: 1 ➛ ⓵
+  # 3: 1 ➛ ¹
+  # 4: 1 ➛ 1
+
+  # 是否在状态栏上显示当前模式，默认情况下，不显示 Normal/Insert 等
+  enable_statusline_mode = true
+
+  # 状态栏左端部分的构成
+  statusline_left_sections = ['winnr', 'major mode', 'filename', 'fileformat', 'minor mode lighters', 'version control info', 'search status']
+  # 状态栏右端部分的构成
+  statusline_right_sections = ['cursorpos', 'percentage', 'input method', 'date', 'time']
+  # 列表可以由以下一项或多项组成
+
+  # 'winnr' 当前窗口编号
+  # 'syntax checking'
+  # 'filename' 文件名
+  # 'fileformat' 文件格式
+  # 'major mode'
+  # 'minor mode lighters'
+  # 'cursorpos' 光标位置
+  # 'percentage' 百分比
+  # 'date' 日期
+  # 'time' 时间
+  # 'whitespace' 打开或者保存文件时，如果第 n 行的行尾有空格则显示 trailing[n]，并不能实时显示出行尾有空格的行号。
+  # 'battery status' 电池状态
+  # 'input method' 输入法
+  # 'search status' 搜索状态
+[[layers]]
+  name = "checkers"
+#show_cursor_error = false
+
+[[layers]]
+  name = "chinese"
+
+[[layers]]
+  name = "colorscheme"
+
+[[layers]]
+  name = "lang#c"
+  clang_executable = "/usr/bin/clang"
+  [layer.clang_std]
+    c = "c11"
+    cpp = "c++1z"
+    objc = "c11"
+    objcpp = "c++1z"
+
+# Enable autocomplete layer
+[[layers]]
+  name = 'autocomplete'
+  auto_completion_return_key_behavior = "complete"
+  auto_completion_tab_key_behavior = "smart"
+
+[[layers]]
+    name = 'shell'
+    default_position = 'float'
+    #default_position = 'top'
+    default_height = 35
+
+[[layers]]
+  name = 'Shougo/vimproc.vim'
+
+[[layers]]
+  name = "git"
+
+[[layers]]
+  name = "github"
+
+# <Leader> y 复制到系统剪切板 <Leader> p 从系统剪切版本粘贴
+[[layers]]
+  name = "default"
+
+[[layers]]
+  name = 'lang#go'
+
+#[[layers]]
+#  name = "core#statusline"
+[[layers]]
+  name = "core#statusline"
+# ----------------------------------------------------------
+# python
+# 1. SPC bf 自动格式化 yapf pip install --user yapf
+# 2. 自动删除未使用的import pip install --user autoflake
+# 3. 排序import             pip install --user isort
+# 4. 代码测试覆盖情况统计   pip install --user coverage
+# 5. 快捷键: 'gd' 'SPC l g d'
+# 启动 python 或 ipython 交互进程，快捷键为： SPC l s i
+
+# SPC l s b	发送整个文件内容至 REPL
+# SPC l s l	发送当前行内容至 REPL
+# SPC l s s	发送已选中的内容至 REPL
+# SPC l i r	使用 autoflake 移除未使用的导包
+# SPC l i s	使用 isort 对导包进行排序
+# normal	SPC l c r	coverager report
+# normal	SPC l c s	coverager show
+# normal	SPC l c e	coverager session
+# normal	SPC l c f	coverager refresh
+#        '# vim: expandtab softtabstop=4 shiftwidth=4',
+[[layers]]
+  name = 'lang#python'
+  enable_typeinfo = true # 显示类型,可以注释
+#format_on_save = true
+  python_file_head = [
+        '# -*- coding: utf-8 -*-',
+        '# vim: expandtab softtabstop=4 shiftwidth=4',
+        '',
+        ''
+  ]
+  python_interpreter = '/usr/local/bin/python3'
+#enabled_linters = ['python', 'pylint']
+
+#[[layers]]
+#  name = "format"
+
+[[layers]]
+   name = "debug"
+
+#[[layers]]  # 由于使用了vim-markdown 禁用此配置
+#  name = "lang#markdown"
+
+# markdown
+# SPC b f	Normal	格式化当前文件
+# SPC l k	Normal/Visual	为光标下的单词或者选中文本增加 URL 链接
+# SPC l K	Normal/Visual	为光标下的单词或者选中文本增加图片链接
+# SPC l p	Normal	通过浏览器实时预览当前文件
+
+#  插件
+# <Leader> f <Space>	模糊查找快捷键，并执行该快捷键
+# <Leader> f e	模糊搜索寄存器
+# <Leader> f h	模糊搜索 history/yank
+# <Leader> f j	模糊搜索 jump, change
+# <Leader> f l	模糊搜索 location list
+# <Leader> f m	模糊搜索 output messages
+# <Leader> f o	模糊搜索当前函数列表
+# <Leader> f t	模糊搜索全局函数列表
+# <Leader> f q	模糊搜索 quickfix list
+# <Leader> f r	重置上次搜索窗口
+#[[layers]]
+#  name = "unite"
+
+# m 标签栏目
+# 快捷键	功能描述
+# m a	显示书签列表
+# m m	切换当前行标签状态
+# m n	跳至下一个书签
+# m p	跳至前一个书签
+# m i	给当前行标签添加说明
+[[layers]]
+    name = "tools"
+
+[[layers]]
+  name = "core#statusline"
+
+[[layers]]
+  name = "lang#java"
+
+#[[layers]]
+#  name = "lsp"
+#  filetypes = [
+#    "java"
+#  ]
+#  [layers.override_cmd]
+#    java = [
+#    "java",
+#    "-Declipse.application=org.eclipse.jdt.ls.core.id1",
+#    "-Dosgi.bundles.defaultStartLevel=4",
+#    "-Declipse.product=org.eclipse.jdt.ls.core.product",
+#    "-Dlog.protocol=true",
+#    "-Dlog.level=NONE",
+#    "-noverify",
+#    "-Xmx1G",
+#    "-jar",
+#        "~/.SpaceVim.d/jdt-language-server/plugins/org.eclipse.equinox.launcher_1.6.400.v20210924-0641.jar",
+#        "-configuration",
+#        "~/.SpaceVim.d/jdt-language-server/config_mac",
+#        "-data",
+#        "~/.cache/javalsp"
+#    ]
+# =======
+# ================= Custom_plugins =================================================
+# =======
+
+# 多光标操作
+#[[custom_plugins]]
+#  name = 'terryma/vim-multiple-cursors'
+
+
+# 以悬浮窗口的形式打开终端
+[[custom_plugins]]
+  name = 'voldikss/vim-floaterm'
+
+# coc.nvim 核心配置，不要删除
+[[custom_plugins]]
+  name = 'neoclide/coc.nvim'
+  merge = 0
+  build =  'yarn install --frozen-lockfile'
+
+# tmux 兼容插件
+#[[custom_plugins]]
+#  name = 'wellle/tmux-complete.vim'
+
+# For defx
+[[custom_plugins]]
+  name = 'roxma/nvim-yarp'
+[[custom_plugins]]
+  name = 'roxma/vim-hug-neovim-rpc'
+[[custom_plugins]]
+  name = 'sei40kr/SpaceVim-onedark'
+
+# markdown 表格和预览 等
+[[custom_plugins]]
+  name = 'iamcco/markdown-preview.nvim'
+[[custom_plugins]]
+  name = 'dhruvasagar/vim-table-mode'
+  on = 'TableModeToggle'
+[[custom_plugins]]
+  name = 'godlygeek/tabular'
+[[custom_plugins]]
+  name = 'plasticboy/vim-markdown'
